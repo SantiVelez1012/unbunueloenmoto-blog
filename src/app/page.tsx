@@ -1,9 +1,20 @@
-import Image from "next/image";
+"use client";
+
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  return (<div>
+  const router = useRouter()
 
-    <h1>Home</h1>
-  </div>
+  return (
+
+    <main>
+
+
+
+      <button type="button" onClick={() => router.push('/blog')}>
+        Site Home
+      </button>
+    </main>
+
   );
 }
