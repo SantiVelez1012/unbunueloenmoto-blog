@@ -12,7 +12,7 @@ const BlogPage = () => {
     ];
 
     return (
-        <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+        <div className='' data-theme="dark">
             <h1>Blog</h1>
             <div>
                 {posts.map((post) => (
@@ -22,9 +22,11 @@ const BlogPage = () => {
                         <button type="button" onClick={() => router.push(`/blog/${post.id}`)}>
                             Go to Post: {post.id}
                         </button>
+                        
                     </div>
                 ))}
             </div>
+
         </div>
     );
 };
