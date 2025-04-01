@@ -1,4 +1,4 @@
-import { fetchGraphQL } from "../content-delivery/postsDatasource";
+import { fetchGraphQL } from "../../../lib/content-delivery/postsDatasource";
 
 export class getPostsUseCase{
 

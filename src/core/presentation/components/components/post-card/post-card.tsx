@@ -1,4 +1,4 @@
-import { PostListed } from '@/lib/models/posts/postListed'
+import { PostListed } from '@/core/domain/entities/postListed'
 import React from 'react'
 
 function PostCard({post} : any ) {
@@ -10,8 +10,8 @@ function PostCard({post} : any ) {
                     alt="Shoes" />
             </figure>
             <div className="card-body">
-                <h2 className="card-title">Card Title</h2>
-                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+                <h2 className="card-title">{post.title}</h2>
+                <p>{post.summary}</p>
                 <div className="card-actions justify-end">
                     <button className="btn btn-primary"> Ver Publicación </button>
                 </div>
