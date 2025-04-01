@@ -1,5 +1,6 @@
 import React from 'react'
 import NavbarLinks from './components/navbar-links';
+import ChannelLogo from '../channelLogo/channelLogo';
 
 function Navbar({
     children,
@@ -27,7 +28,13 @@ function Navbar({
                             </svg>
                         </label>
                     </div>
-                    <div className="mx-2 flex-1 px-2">El Blog de Un Buñuelo En Moto</div>
+                    <div className="flex flex-1 flex-row justify-items-center">
+                    
+                            <a href="/" className="btn btn-ghost normal-case text-xl">
+                                <img src="/logos/channel-logo.png" alt="" className='w-[40px] h-[40px]'/>
+                            </a>
+                        <div className="mx-0 my-auto">El Blog de Un Buñuelo En Moto</div>
+                    </div>
                     <div className="hidden flex-none lg:block">
                         <ul className="menu menu-horizontal">
 
