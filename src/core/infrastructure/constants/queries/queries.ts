@@ -2,15 +2,16 @@ export class Queries {
 
     static getLatestPosts = `
         query {
-            postCollection {
-            items {
-                title
-                slug
-                summary
-            }
+            blogPostCollection {
+                items {
+                    title
+                    urlSlug
+                    postSummary
+                    coverImage{
+                        url
+                    }
+                }
             }
         }
     `;
-
-
 }

@@ -34,10 +34,10 @@ export class HttpClient {
       return this.request<T>(endpoint, { method: "GET", ...options });
     }
   
-    post<T>(endpoint: string, body: unknown, options?: RequestInit) {
+    post<T>(endpoint: string, body: any, options?: RequestInit) {
       return this.request<T>(endpoint, {
         method: "POST",
-        body: JSON.stringify(body),
+        body: body,
         ...options,
       });
     }

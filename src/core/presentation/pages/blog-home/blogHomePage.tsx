@@ -2,10 +2,12 @@ import { PostListed } from '@/core/domain/entities/postListed';
 import { useRouter } from 'next/navigation';
 import React from 'react'
 import PostCard from '../../components/components/post-card/post-card';
+import { useGetLatestPosts } from '@/hooks/use-get-latest-posts/useGetLatestPosts';
+import { GetLatestPostsUseCase } from '@/core/application/use-cases/getLatestPostsUseCase';
 
 function BlogHomePage() {
-    
-    const router = useRouter();
+
+    const {data, isLoading, error} = useGetLatestPosts();
 
     const posts2: PostListed[] = [
         { slug: '1', title: 'First Blog Post', summary: 'This is the content of the first blog post.', image: '', createdAt: '' },
