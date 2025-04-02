@@ -11,7 +11,7 @@ export default function RootLayout({
     <html data-theme="dark" lang="es">
       <body>
         <Navbar> 
-          <main className="flex-1 p-4 h-full">
+          <main className="flex-1 h-full">
             {children}
           </main>
         </Navbar>

@@ -1,9 +1,6 @@
-import { PostListed } from '@/core/domain/entities/postListed';
-import { useRouter } from 'next/navigation';
 import React from 'react'
-import PostCard from '../../components/post-card/post-card';
 import { useGetLatestPosts } from '@/hooks/use-get-latest-posts/useGetLatestPosts';
-import { GetLatestPostsUseCase } from '@/core/application/use-cases/getLatestPostsUseCase';
+import HeroBanner from '../../components/hero-banner/heroBanner';
 
 function BlogHomePage() {
 
@@ -16,8 +13,9 @@ function BlogHomePage() {
     // ];
 
     return (
-        <div className='h-300' data-theme="dark">
-            <h1>Blog</h1>
+        <div className='w-full h-300' data-theme="dark">
+
+            <HeroBanner />
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
                 {/* {posts2.map((post) => (
                     // <PostCard key={post.slug} post={post}/>
