@@ -1,7 +1,7 @@
 import { PostListed } from '@/core/domain/entities/postListed';
 import { useRouter } from 'next/navigation';
 import React from 'react'
-import PostCard from '../../components/components/post-card/post-card';
+import PostCard from '../../components/post-card/post-card';
 import { useGetLatestPosts } from '@/hooks/use-get-latest-posts/useGetLatestPosts';
 import { GetLatestPostsUseCase } from '@/core/application/use-cases/getLatestPostsUseCase';
 
