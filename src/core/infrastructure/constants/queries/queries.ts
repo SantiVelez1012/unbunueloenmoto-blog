@@ -9,6 +9,16 @@ export class Queries {
                     postSummary
                     coverImage{
                         url
+                        fileName
+                        contentType
+                        title
+                    }
+                    createdAt
+                    tagsCollection{
+                        items{
+                            name
+                            tagId    
+                        }
                     }
                 }
             }

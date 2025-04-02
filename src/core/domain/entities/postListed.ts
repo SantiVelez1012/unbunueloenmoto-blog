@@ -1,7 +1,18 @@
-export interface PostListed{
+import { AssetImage } from "./assets";
+
+export type PostListed = {
     title: string;
-    summary: string;
-    slug: string;
-    image: string;
+    postSummary: string;
+    urlSlug: string;
+    image: AssetImage;
     createdAt: string;
+    tagsCollecton: PostTag[];
 }
+
+
+export type PostTag = {
+    name: string;
+    tagId: string;
+}
+
+
