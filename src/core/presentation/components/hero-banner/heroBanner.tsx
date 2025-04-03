@@ -12,7 +12,7 @@ function HeroBanner() {
                 <div className="max-w-md">
                     <h1 className="mb-5 text-5xl font-bold text-amber-50">El Blog de Un Buñuelo en Moto</h1>
                     <p className="mb-5 text-amber-50">
-                        Aquí próximamente encontrarás diversos artículos relacionados a las motos, a los viajes y tips de manejos, espera mucho más!!
+                        Aquí próximamente encontrarás diversas páginas relacionadas a las motos, a los viajes y temas variados!!, espera mucho más!!
                     </p>
                 </div>
             </div>
