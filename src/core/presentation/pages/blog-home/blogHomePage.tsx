@@ -4,7 +4,7 @@ import HeroBanner from '../../components/hero-banner/heroBanner';
 
 function BlogHomePage() {
 
-    const {data, isLoading, error} = useGetLatestPosts();
+    // const {data, isLoading, error} = useGetLatestPosts();
 
     // const posts2: PostListed[] = [
     //     { slug: '1', title: 'First Blog Post', summary: 'This is the content of the first blog post.', image: '', createdAt: '' },
@@ -13,7 +13,7 @@ function BlogHomePage() {
     // ];
 
     return (
-        <div className='w-full h-300' data-theme="dark">
+        <div className='w-full' data-theme="dark">
 
             <HeroBanner />
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>

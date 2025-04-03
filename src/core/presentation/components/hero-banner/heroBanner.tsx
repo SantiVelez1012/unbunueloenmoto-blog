@@ -3,7 +3,7 @@ import React from 'react'
 function HeroBanner() {
     return (
         <div
-            className="hero h-[400px] md:min-h-[700px]"
+            className="hero h-[600px] md:min-h-[700px]"
             style={{
                 backgroundImage: "url(/imgs/hero-banner.jpg)",
             }}>
@@ -12,7 +12,7 @@ function HeroBanner() {
                 <div className="max-w-md">
                     <h1 className="mb-5 text-5xl font-bold text-amber-50">El Blog de Un Buñuelo en Moto</h1>
                     <p className="mb-5 text-amber-50">
-                        Aquí encontrarás diversos artículos relacionados a las motos, a los viajes y tips de manejos, espera mucho más!!
+                        Aquí próximamente encontrarás diversos artículos relacionados a las motos, a los viajes y tips de manejos, espera mucho más!!
                     </p>
                 </div>
             </div>
