@@ -1,4 +1,5 @@
 import { ContentfulHttpClient } from '@/core/infrastructure/api/http/contentful/contentful-http-client';
+import { LatestPostsRespone } from '@/core/infrastructure/entities/latest-posts-response';
 import { PostsRepository } from "@/core/infrastructure/repositories/postsRepository";
 
 export class PostsRepositoryImpl implements PostsRepository {
@@ -9,7 +10,7 @@ export class PostsRepositoryImpl implements PostsRepository {
         this.contentfulHttpClient = contentfulHttpClient;
     }
 
-    async getLatestPosts(): Promise<any[]> {
+    async getLatestPosts(): Promise<LatestPostsRespone> {
         const response:any = await this.contentfulHttpClient.getLatestPosts();
         return response;
     }

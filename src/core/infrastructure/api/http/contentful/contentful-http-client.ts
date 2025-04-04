@@ -1,5 +1,6 @@
 import { Queries } from "@/core/infrastructure/constants/queries/queries";
 import { HttpClient } from "../httpClient";
+import { LatestPostsRespone } from "@/core/infrastructure/entities/latest-posts-response";
 
 const CONTENTFUL_API_URL = `${process.env.NEXT_PUBLIC_CONTENTFUL_API_URL}${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`;
 
@@ -19,15 +20,12 @@ export class ContentfulHttpClient {
         this.client = contentfulApiClient;
     }
 
-    async getLatestPosts(): Promise<any[]> {
-        console.log(Queries.getLatestPosts);
-        const response: any = await this.client.post('', JSON.stringify({query: Queries.getLatestPosts}) , this.requestHeaders, );
+    async getLatestPosts(): Promise<LatestPostsRespone> {
+        const response: any = await this.client.post('', JSON.stringify({ query: Queries.getLatestPosts }), this.requestHeaders,);
         return response;
     }
 
-    async getEntry<T>(endpoint: string): Promise<T> {
-        return this.client.get<T>(endpoint);
-    }
+
 }
 
 

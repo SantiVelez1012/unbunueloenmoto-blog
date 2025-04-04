@@ -1,11 +1,12 @@
 import { GetLatestPostsUseCase } from "@/core/application/use-cases/getLatestPostsUseCase";
+import { PostListed } from "@/core/domain/entities/postListed";
 import { useEffect, useState } from "react";
 
 export function useGetLatestPosts() {
 
     const useCase = new GetLatestPostsUseCase();
 
-    const [data, setData] = useState<any>(null);
+    const [data, setData] = useState<PostListed[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<Error | null>(null);
 
@@ -19,13 +20,12 @@ export function useGetLatestPosts() {
                 if (isMounted) {
                     setData(response);
                 }
-                console.log(response);
             }
             catch (error: any) {
                 if (isMounted) {
                     setError(error);
                 }
-
+                
                 console.log('error', error)
             }
             finally {
