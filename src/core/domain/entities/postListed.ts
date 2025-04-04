@@ -4,15 +4,19 @@ export type PostListed = {
     title: string;
     postSummary: string;
     urlSlug: string;
-    image: AssetImage;
+    coverImage: AssetImage;
     createdAt: string;
-    tagsCollecton: PostTag[];
+    tagsCollection: PostTags;
+}
+
+export type PostTags = {
+    items: PostTag[];
 }
 
 
 export type PostTag = {
-    name: string;
-    tagId: string;
+        name: string;
+        tagId: string;
 }
 
 

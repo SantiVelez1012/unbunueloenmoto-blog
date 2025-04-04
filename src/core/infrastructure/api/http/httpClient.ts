@@ -3,7 +3,6 @@ export class HttpClient {
   
     constructor(baseUrl: string) {
       this.baseUrl = baseUrl;
-      console.log("Base URL:", baseUrl);
     }
   
     async request<T>(

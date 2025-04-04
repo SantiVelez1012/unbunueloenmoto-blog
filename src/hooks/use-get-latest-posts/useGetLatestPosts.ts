@@ -12,21 +12,22 @@ export function useGetLatestPosts() {
 
     useEffect(() => {
         let isMounted = true;
-        async function fetchData() {
+        fetchData();
+        function fetchData() {
 
             setIsLoading(true);
             try {
-                const response = await useCase.execute();
-                if (isMounted) {
-                    setData(response);
-                }
+                useCase.execute().then((response) => {
+                    setData(response.blogPostCollection.items);
+                });
+
             }
             catch (error: any) {
                 if (isMounted) {
                     setError(error);
                 }
                 
-                console.log('error', error)
+                console.error('error', error);
             }
             finally {
                 if (isMounted) {
@@ -34,12 +35,11 @@ export function useGetLatestPosts() {
                 }
             }
         }
-        fetchData();
 
         return () => {
             isMounted = false;
         };
-    }, []);
+    }, [isLoading]);
 
     return { data, isLoading, error };
 

@@ -1,17 +1,33 @@
 import { PostListed } from '@/core/domain/entities/postListed'
 import React from 'react'
+import { PostTag } from '../../../domain/entities/postListed';
 
-function PostCard({post} : any ) {
+
+interface PostCardProps {
+    post: PostListed;
+}
+
+function PostCard({ post }: PostCardProps) {
+
+    const postTags: PostTag[] = post.tagsCollection.items;
     return (
-        <div className="card bg-base-100 image-full w-90 shadow-sm">
+
+        <div className="card bg-base-300 w-96 shadow-md">
             <figure>
                 <img
-                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                    alt="Shoes" />
+                    src={post.coverImage.url}
+                    alt={post.coverImage.title} />
             </figure>
             <div className="card-body">
+                <div className="card-actions justify-end">
+                    {postTags.map((tag) => (
+                        <div key={tag.name} className='flex justify-center'>
+                            <div className="badge badge-primary badge-outline">{tag.name}</div>
+                        </div>
+                    ))}
+                </div>
                 <h2 className="card-title">{post.title}</h2>
-                <p>{post.summary}</p>
+                <p>{post.postSummary}</p>
                 <div className="card-actions justify-end">
                     <button className="btn btn-primary"> Ver Publicación </button>
                 </div>

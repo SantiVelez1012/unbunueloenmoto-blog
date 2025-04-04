@@ -3,7 +3,7 @@ import React from 'react'
 function HeroBanner() {
     return (
         <div
-            className="hero h-[900px] md:min-h-screen"
+            className="hero min-h-[600px]"
             style={{
                 backgroundImage: "url(/imgs/hero-banner.jpg)",
             }}>

@@ -8,8 +8,11 @@ export class GetLatestPostsUseCase{
 
     constructor() {}
 
-    execute(): Promise<PostListed[]> {        
-        const response:any= this.postsRepository.getLatestPosts();
-        return response.data.postCollection.items;
+    async execute(): Promise<any> {        
+        return this.postsRepository.getLatestPosts().then((response) => {
+            return response;
+        }).catch((error) => {
+            return error;
+        });
     }
 }

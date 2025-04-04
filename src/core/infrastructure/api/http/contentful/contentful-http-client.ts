@@ -22,7 +22,7 @@ export class ContentfulHttpClient {
 
     async getLatestPosts(): Promise<LatestPostsRespone> {
         const response: any = await this.client.post('', JSON.stringify({ query: Queries.getLatestPosts }), this.requestHeaders,);
-        return response;
+        return response.data;
     }
 
 
