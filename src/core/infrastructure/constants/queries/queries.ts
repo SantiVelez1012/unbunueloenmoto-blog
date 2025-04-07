@@ -2,7 +2,7 @@ export class Queries {
 
     static getLatestPosts = `
         query {
-            blogPostCollection {
+            blogPostCollection (limit: 3, order: createdAt_DESC) {
                 items {
                     title
                     urlSlug
