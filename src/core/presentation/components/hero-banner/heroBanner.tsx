@@ -1,12 +1,11 @@
-import React from 'react'
+import React from 'react';
+import Image from 'next/image';
 
 function HeroBanner() {
     return (
         <div
-            className="hero min-h-[600px]"
-            style={{
-                backgroundImage: "url(/imgs/hero-banner.jpg)",
-            }}>
+            className="hero min-h-[600px] bg-[url('/imgs/hero-banner.jpg')] bg-cover bg-center"
+            >
             <div className="hero-overlay"></div>
             <div className="hero-content text-neutral-content text-center">
                 <div className="max-w-md">

@@ -1,5 +1,5 @@
 import React from 'react'
-import ChannelLogo from '../channelLogo/channelLogo'
+import ChannelLogo from '../channel-logo/channelLogo'
 
 function Footer() {
     return (

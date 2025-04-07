@@ -1,5 +1,6 @@
 import { PostListed } from '@/core/domain/entities/postListed'
 import React from 'react'
+import Image from 'next/image';
 import { PostTag } from '../../../domain/entities/postListed';
 
 
@@ -14,9 +15,11 @@ function PostCard({ post }: PostCardProps) {
 
         <div className="card bg-base-300 w-96 shadow-md">
             <figure>
-                <img
+                <Image
                     src={post.coverImage.url}
-                    alt={post.coverImage.title} />
+                    alt={post.coverImage.title}
+                    width={384}
+                    height={216} />
             </figure>
             <div className="card-body">
                 <div className="card-actions justify-end">
