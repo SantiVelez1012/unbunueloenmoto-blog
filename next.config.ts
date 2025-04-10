@@ -1,11 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  eslint:{
+  eslint: {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains: ['images.ctfassets.net'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.ctfassets.net',
+      },
+    ],
   },
   /* config options here */
 };
