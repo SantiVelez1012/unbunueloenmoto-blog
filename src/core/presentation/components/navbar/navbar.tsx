@@ -1,6 +1,6 @@
 import React from 'react'
 import NavbarLinks from './components/navbar-links';
-import ChannelLogo from '../channelLogo/channelLogo';
+import ChannelLogo from '../channel-logo/channelLogo';
 
 function Navbar({
     children,
