@@ -19,7 +19,8 @@ function PostCard({ post }: PostCardProps) {
                     src={post.coverImage.url}
                     alt={post.coverImage.title}
                     width={384}
-                    height={216} />
+                    height={216}
+                    style={{ height: 'auto' }} />
             </figure>
             <div className="card-body">
                 <div className="card-actions justify-end">

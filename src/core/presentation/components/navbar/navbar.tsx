@@ -45,7 +45,7 @@ function Navbar({
                 {/* Page content here */}
                 {children}
             </div>
-            <div className="drawer-side">
+            <div className="drawer-side z-10">
                 <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
                 <ul className="menu bg-base-200 min-h-full w-80 p-4">
                     <NavbarLinks />

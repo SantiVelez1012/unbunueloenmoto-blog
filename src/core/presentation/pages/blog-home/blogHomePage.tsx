@@ -14,8 +14,8 @@ function BlogHomePage() {
             <div className='flex justify-center items-center mt-10'>
                 <h2 className='text-2xl text-white'>Últimas Publicaciones</h2>
             </div>
-            { isLoading && <LatestPostsSkeleton /> }
-            <div className='flex justify-center items-center mt-5 self-center mx-5 md:mx-0'>
+            {isLoading && <LatestPostsSkeleton />}
+            {!isLoading && <div className='flex justify-center items-center mt-5 self-center md:mx-0'>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-5'>
                     {posts.map((post) => (
                         <div key={post.urlSlug} className='flex justify-center'>
@@ -23,7 +23,7 @@ function BlogHomePage() {
                         </div>
                     ))}
                 </div>
-            </div>
+            </div>}
 
             <div className='flex justify-center items-center my-10'>
                 <button className='btn btn-primary'>Ver todas las publicaciones</button>
