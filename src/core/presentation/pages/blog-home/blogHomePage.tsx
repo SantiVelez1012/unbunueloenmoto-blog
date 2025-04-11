@@ -3,6 +3,7 @@ import HeroBanner from '../../components/hero-banner/heroBanner';
 import { useGetLatestPosts } from '@/hooks/get-latest-posts/useGetLatestPosts';
 import PostCard from '../../components/post-card/postCard';
 import LatestPostsSkeleton from '../../components/latest-posts-skeleton/latestPostsSkeleton';
+import { Copies } from '../../constants/copies/copies';
 
 function BlogHomePage() {
 
@@ -10,7 +11,7 @@ function BlogHomePage() {
 
     return (
         <div className='w-full overflow-y-auto' data-theme="dark">
-            <HeroBanner />
+            <HeroBanner info={Copies.homeBannerInfo} />
             <div className='flex justify-center items-center mt-10'>
                 <h2 className='text-2xl text-white'>Últimas Publicaciones</h2>
             </div>
