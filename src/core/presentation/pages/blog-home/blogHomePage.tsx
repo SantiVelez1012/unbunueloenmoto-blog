@@ -1,6 +1,6 @@
 import React from 'react'
 import HeroBanner from '../../components/hero-banner/heroBanner';
-import { useGetLatestPosts } from '@/hooks/use-get-latest-posts/useGetLatestPosts';
+import { useGetLatestPosts } from '@/hooks/get-latest-posts/useGetLatestPosts';
 import PostCard from '../../components/post-card/postCard';
 import LatestPostsSkeleton from '../../components/latest-posts-skeleton/latestPostsSkeleton';
 

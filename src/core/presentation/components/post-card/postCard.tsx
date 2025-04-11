@@ -2,6 +2,7 @@ import { PostListed } from '@/core/domain/entities/postListed'
 import React from 'react'
 import Image from 'next/image';
 import { PostTag } from '../../../domain/entities/postListed';
+import { useRouter } from 'next/navigation';
 
 
 interface PostCardProps {
@@ -11,6 +12,12 @@ interface PostCardProps {
 function PostCard({ post }: PostCardProps) {
 
     const postTags: PostTag[] = post.tagsCollection.items;
+    const router = useRouter();
+
+    const handlePostClick = () => {
+        router.push(`/blog/${post.urlSlug}`);
+    }
+
     return (
 
         <div className="card bg-base-300 w-96 shadow-md">
@@ -33,7 +40,7 @@ function PostCard({ post }: PostCardProps) {
                 <h2 className="card-title">{post.title}</h2>
                 <p>{post.postSummary}</p>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary"> Ver Publicación </button>
+                    <button onClick={handlePostClick} className="btn btn-primary"> Ver Publicación </button>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-import { GetLatestPostsUseCase } from "@/core/application/use-cases/getLatestPostsUseCase";
+import { GetLatestPostsUseCase } from "@/core/application/use-cases/get-latest-posts/getLatestPostsUseCase";
 import { PostListed } from "@/core/domain/entities/postListed";
 import { useEffect, useState } from "react";
 

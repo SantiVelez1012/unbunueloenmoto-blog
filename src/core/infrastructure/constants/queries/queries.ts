@@ -24,4 +24,29 @@ export class Queries {
             }
         }
     `;
+
+
+    static getPostBySlug = (slug: string) => `
+        query {
+            blogPostCollection (where: {urlSlug: "${slug}"}) {
+                items {
+                    title
+                    urlSlug
+                    postSummary
+                    coverImage{
+                        url
+                        fileName
+                        contentType
+                        title
+                    }
+                    createdAt
+                    tagsCollection{
+                        items{
+                            name
+                            tagId    
+                        }
+                    }
+                }
+            }
+        }`;
 }
