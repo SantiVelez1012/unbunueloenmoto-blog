@@ -1,6 +1,6 @@
 import { HeroBannerInfo } from "../../models/hero-banner-info/heroBannerInfo";
 
-export class Copies{
+export class Copies {
 
 
     static homeBannerInfo: HeroBannerInfo = {
