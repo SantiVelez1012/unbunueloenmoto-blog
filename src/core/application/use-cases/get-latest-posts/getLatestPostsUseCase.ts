@@ -1,7 +1,6 @@
 import { PostsRepository } from "@/core/infrastructure/repositories/postsRepository";
 import { PostsRepositoryImpl } from "../../../domain/repositories/postsRepositoryImpl";
 import { ContentfulHttpClient } from '@/core/infrastructure/api/http/contentful/contentful-http-client';
-import { PostListed } from "@/core/domain/entities/postListed";
 import { LatestPostsRespone } from "@/core/infrastructure/entities/latest-posts-response";
 
 export class GetLatestPostsUseCase{

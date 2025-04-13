@@ -11,7 +11,7 @@ export class PostsRepositoryImpl implements PostsRepository {
     }
 
     async getLatestPosts(): Promise<LatestPostsRespone> {
-        const response:any = await this.contentfulHttpClient.getLatestPosts();
+        const response: LatestPostsRespone = await this.contentfulHttpClient.getLatestPosts();
         return response;
     }
 

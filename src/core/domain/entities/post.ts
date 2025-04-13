@@ -9,6 +9,8 @@ export type BlogPost = {
     coverImage: AssetImage;
     createdAt: string;
     tagsCollection: PostTags;
-    content: any;
-
+    content: PostContent;
 }
+
+
+export type PostContent = {}

@@ -18,13 +18,14 @@ function BlogPostPage({ postSlug }: BlogPostPageProps) {
       {isLoading && !error && <Loader />}
 
       {!isLoading && !error && post &&
-        <HeroBanner info={{
+        (<HeroBanner info={{
           title: '',
           description: '',
           imageUrl: post.coverImage.url,
           imageAlt: post.coverImage.title
         }} />
-      }
+      )
+    }
 
 
     </div>
