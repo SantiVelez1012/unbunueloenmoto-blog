@@ -28,7 +28,7 @@ export class Queries {
 
     static getPostBySlug = (slug: string) => `
         query {
-            blogPostCollection (where: {urlSlug: "${slug}"}) {
+            blogPostCollection (where: {urlSlug: "${slug}"} limit: 1) {
                 items {
                     title
                     urlSlug
@@ -38,6 +38,17 @@ export class Queries {
                         fileName
                         contentType
                         title
+                    }
+                    content{
+                        json
+                        links {
+                            assets {
+                                block {
+                                sys { id }
+                                url
+                                }
+                            }
+                        }
                     }
                     createdAt
                     tagsCollection{

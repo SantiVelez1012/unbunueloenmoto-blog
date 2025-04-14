@@ -7,7 +7,7 @@ import { Copies } from '../../constants/copies/copies';
 
 function BlogHomePage() {
 
-    const { data: posts, isLoading, error } = useGetLatestPosts();
+    const { data: posts, isLoading } = useGetLatestPosts();
 
     return (
         <div className='w-full overflow-y-auto' data-theme="dark">

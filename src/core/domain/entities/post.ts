@@ -13,4 +13,7 @@ export type BlogPost = {
 }
 
 
-export type PostContent = {}
+export type PostContent = {
+    json: any;
+    links:any;
+}

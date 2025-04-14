@@ -1,8 +1,8 @@
 "use client";
 import { useGetPostBySlug } from '@/hooks/get-post-by-slug/useGetPostBySlug';
 import React from 'react'
-import HeroBanner from '../../components/hero-banner/heroBanner';
 import Loader from '../../components/loader/loader';
+import PostTemplate from '../../templates/blog-post-page/postTemplate';
 
 type BlogPostPageProps = {
   postSlug: string
@@ -18,13 +18,8 @@ function BlogPostPage({ postSlug }: BlogPostPageProps) {
       {isLoading && !error && <Loader />}
 
       {!isLoading && !error && post &&
-        (<HeroBanner info={{
-          title: '',
-          description: '',
-          imageUrl: post.coverImage.url,
-          imageAlt: post.coverImage.title
-        }} />
-      )
+        <PostTemplate post={post} />
+      
     }
 
 
