@@ -11,11 +11,15 @@ export class PostsRepositoryImpl implements PostsRepository {
     }
 
     async getLatestPosts(): Promise<LatestPostsRespone> {
-        const response:any = await this.contentfulHttpClient.getLatestPosts();
+        const response: LatestPostsRespone = await this.contentfulHttpClient.getLatestPosts();
         return response;
     }
 
     async getPostBySlug(slug: string): Promise<any> {
-        return;
+        const response: any = await this.contentfulHttpClient.getPostBySlug(slug);
+        if (response?.blogPostCollection?.items?.length > 0) {
+            return response?.blogPostCollection?.items[0];
+        }
+        throw Error(`Post with slug ${slug} not found`);
     }
 }

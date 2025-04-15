@@ -1,12 +1,12 @@
-import { GetLatestPostsUseCase } from "@/core/application/use-cases/getLatestPostsUseCase";
-import { PostListed } from "@/core/domain/entities/postListed";
+import { GetPostBySlugUseCase } from "@/core/application/use-cases/get-post-by-slug/getPostBySlugUseCase";
+import { BlogPost } from "@/core/domain/entities/post";
 import { useEffect, useState } from "react";
 
-export function useGetLatestPosts() {
+export function useGetPostBySlug(slug: string) {
 
-    const useCase = new GetLatestPostsUseCase();
+    const useCase = new GetPostBySlugUseCase();
 
-    const [data, setData] = useState<PostListed[]>([]);
+    const [data, setData] = useState<BlogPost>();
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<Error | null>(null);
 
@@ -17,8 +17,9 @@ export function useGetLatestPosts() {
 
             setIsLoading(true);
             try {
-                useCase.execute().then((response) => {
-                    setData(response.blogPostCollection.items);
+                useCase.execute(slug).then((response) => {
+                    setData(response);
+                    console.log('blog post', response);
                 });
 
             }

@@ -25,6 +25,11 @@ export class ContentfulHttpClient {
         return response.data;
     }
 
+    async getPostBySlug(slug: string): Promise<any> {
+        const response: any = await this.client.post('', JSON.stringify({ query: Queries.getPostBySlug(slug) }), this.requestHeaders,);
+        return response.data;
+    }
+
 
 }
 
