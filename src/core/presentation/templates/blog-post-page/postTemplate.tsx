@@ -1,7 +1,6 @@
 import { BlogPost } from '@/core/domain/entities/post'
 import React from 'react'
 import HeroBanner from '../../components/hero-banner/heroBanner'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { renderRichText } from '@/lib/richTextRenderer'
 
 type PostTemplateProps = {
