@@ -16,12 +16,20 @@ function PostTemplate({ post }: PostTemplateProps) {
                 imageUrl: post.coverImage.url,
                 imageAlt: post.coverImage.title
             }} />
-            
+
             <section className='flex justify-center my-10 w-full min-h-screen'>
-                
-                <div className='w-full max-w-5xl px-6 py-8'>
-                    <h1 className='text-3xl font-bold mb-20'>{post.title}</h1>
-                    
+
+                <div className='w-full max-w-5xl px-6 py-2'>
+                    <h1 className='text-3xl font-bold my-6'>{post.title}</h1>
+
+                    <div className='flex items-center gap-4 mb-10'>
+                        {post.tagsCollection.items.map((tag) => (
+                            <div key={tag.name} className='flex justify-center'>
+                                <div className="badge badge-primary badge-outline">{tag.name}</div>
+                            </div>
+                        ))}
+                    </div>
+
                     {renderRichText(post.content.json, post.content.links)}
 
                 </div>
