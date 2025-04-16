@@ -2,9 +2,7 @@
 import { useGetPostBySlug } from '@/hooks/get-post-by-slug/useGetPostBySlug';
 import React from 'react'
 import Loader from '../../components/loader/loader';
-import dynamic from 'next/dynamic';
-
-const PostTemplate = dynamic(() => import('../../templates/blog-post-page/postTemplate'), { ssr: false });
+import PostTemplate from '../../templates/blog-post-page/postTemplate';
 
 type BlogPostPageProps = {
   postSlug: string
@@ -23,8 +21,6 @@ function BlogPostPage({ postSlug }: BlogPostPageProps) {
         <PostTemplate post={post} />
       
     }
-
-
     </div>
   )
 }

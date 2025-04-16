@@ -1,6 +1,8 @@
-import Loader from "@/core/presentation/components/loader/loader"
+export const dynamic = 'force-dynamic';
+
 import BlogPostPage from "@/core/presentation/pages/blog-post/blogPostPage"
-import { Suspense } from "react"
+import { Loader } from "lucide-react";
+import { Suspense } from "react";
 
 export default async function Page({
     params,
@@ -9,7 +11,7 @@ export default async function Page({
 }) {
     const { slug } = await params
     return <>
-    
+
         <Suspense fallback={<Loader />}>
             <BlogPostPage postSlug={slug} />
         </Suspense>
