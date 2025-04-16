@@ -1,5 +1,6 @@
 import { BlogPost } from '@/core/domain/entities/post';
 import { BlogPostCollection } from './blog-post-collection';
+import { Document } from '@contentful/rich-text-types';
 
 export interface PostResponse{
     blogPostCollection: BlogPostCollection<BlogPost>
@@ -22,7 +23,7 @@ export interface CoverImage {
 }
 
 export interface Content {
-    json: Json
+    json: Document
     links: Links
 }
 
