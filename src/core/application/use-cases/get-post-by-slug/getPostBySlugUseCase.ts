@@ -5,15 +5,14 @@ import { PostsRepository } from "@/core/infrastructure/repositories/postsReposit
 
 export class GetPostBySlugUseCase {
 
-
     private postsRepository: PostsRepository = new PostsRepositoryImpl(new ContentfulHttpClient());
     constructor() {}
 
     async execute(slug: string): Promise<BlogPost> {
         return this.postsRepository.getPostBySlug(slug).then((response) => {
-            console.log(response);
-            return response;
+            return response.blogPostCollection.items[0];
         }).catch((error) => {
+            console.log(error);
             return error;
         });
     }

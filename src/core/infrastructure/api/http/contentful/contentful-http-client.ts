@@ -1,6 +1,8 @@
 import { Queries } from "@/core/infrastructure/constants/queries/queries";
 import { HttpClient } from "../httpClient";
-import { LatestPostsRespone } from "@/core/infrastructure/entities/latest-posts-response";
+import { BlogBaseResponse } from "@/core/infrastructure/entities/base-response";
+import { LatestPostsRespone } from '../../../entities/latest-posts-response';
+import { PostResponse } from "@/core/infrastructure/entities/post";
 
 const CONTENTFUL_API_URL = `${process.env.NEXT_PUBLIC_CONTENTFUL_API_URL}${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`;
 
@@ -21,12 +23,12 @@ export class ContentfulHttpClient {
     }
 
     async getLatestPosts(): Promise<LatestPostsRespone> {
-        const response: any = await this.client.post('', JSON.stringify({ query: Queries.getLatestPosts }), this.requestHeaders,);
+        const response: BlogBaseResponse<LatestPostsRespone> = await this.client.post('', { query: Queries.getLatestPosts }, this.requestHeaders);
         return response.data;
     }
-
-    async getPostBySlug(slug: string): Promise<any> {
-        const response: any = await this.client.post('', JSON.stringify({ query: Queries.getPostBySlug(slug) }), this.requestHeaders,);
+    
+    async getPostBySlug(slug: string): Promise<PostResponse> {
+        const response: BlogBaseResponse<PostResponse> = await this.client.post('', { query: Queries.getPostBySlug(slug) }, this.requestHeaders);
         return response.data;
     }
 
