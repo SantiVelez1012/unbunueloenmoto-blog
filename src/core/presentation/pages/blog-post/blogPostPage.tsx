@@ -2,7 +2,9 @@
 import { useGetPostBySlug } from '@/hooks/get-post-by-slug/useGetPostBySlug';
 import React from 'react'
 import Loader from '../../components/loader/loader';
-import PostTemplate from '../../templates/blog-post-page/postTemplate';
+import dynamic from 'next/dynamic';
+
+const PostTemplate = dynamic(() => import('../../templates/blog-post-page/postTemplate'), { ssr: false });
 
 type BlogPostPageProps = {
   postSlug: string
