@@ -1,6 +1,6 @@
 import React from 'react'
 import NavbarLinks from './components/navbar-links';
-import ChannelLogo from '../channel-logo/channelLogo';
+import Image from 'next/image';
 
 function Navbar({
     children,
@@ -31,7 +31,7 @@ function Navbar({
                     <div className="flex flex-1 flex-row justify-items-center">
                     
                             <a href="/" className="btn btn-ghost normal-case text-xl">
-                                <img src="/logos/channel-logo.png" alt="" className='w-[40px] h-[40px]'/>
+                                <Image width={40} height={40} src="/logos/channel-logo.png" alt="" className='w-[40px] h-[40px]'/>
                             </a>
                         <div className="mx-0 my-auto">El Blog de Un Buñuelo En Moto</div>
                     </div>

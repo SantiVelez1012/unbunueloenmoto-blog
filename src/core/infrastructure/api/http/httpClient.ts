@@ -21,7 +21,6 @@ export class HttpClient {
         if (!response.ok) {
           throw new Error(`API Error: ${response.status} ${response.statusText}`);
         }
-  
         return response.json() as Promise<T>;
       } catch (error) {
         console.error("HTTP Error:", error);
@@ -33,11 +32,11 @@ export class HttpClient {
       return this.request<T>(endpoint, { method: "GET", ...options });
     }
   
-    post<T>(endpoint: string, body: any, options?: RequestInit) {
+    post<T>(endpoint: string, body: Record<string, unknown>, options?: RequestInit) {
       return this.request<T>(endpoint, {
-        method: "POST",
-        body: body,
-        ...options,
+      method: "POST",
+      body: JSON.stringify(body),
+      ...options,
       });
     }
   

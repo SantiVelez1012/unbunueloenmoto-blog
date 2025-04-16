@@ -1,14 +1,14 @@
 import { GetPostBySlugUseCase } from "@/core/application/use-cases/get-post-by-slug/getPostBySlugUseCase";
 import { BlogPost } from "@/core/domain/entities/post";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function useGetPostBySlug(slug: string) {
 
-    const useCase = new GetPostBySlugUseCase();
+    const useCase = useRef(new GetPostBySlugUseCase());
 
-    const [data, setData] = useState<BlogPost>();
+    const [data, setData] = useState<BlogPost>({} as BlogPost);
     const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState<Error | null>(null);
+    const [error, setError] = useState<unknown | null>(null);
 
     useEffect(() => {
         let isMounted = true;
@@ -17,13 +17,12 @@ export function useGetPostBySlug(slug: string) {
 
             setIsLoading(true);
             try {
-                useCase.execute(slug).then((response) => {
+                useCase.current.execute(slug).then((response) => {
                     setData(response);
-                    console.log('blog post', response);
                 });
 
             }
-            catch (error: any) {
+            catch (error: unknown) {
                 if (isMounted) {
                     setError(error);
                 }
@@ -40,7 +39,7 @@ export function useGetPostBySlug(slug: string) {
         return () => {
             isMounted = false;
         };
-    }, [isLoading]);
+    }, [isLoading, slug]);
 
     return { data, isLoading, error };
 

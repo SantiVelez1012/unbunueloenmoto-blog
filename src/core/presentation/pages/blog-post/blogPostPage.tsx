@@ -21,8 +21,6 @@ function BlogPostPage({ postSlug }: BlogPostPageProps) {
         <PostTemplate post={post} />
       
     }
-
-
     </div>
   )
 }

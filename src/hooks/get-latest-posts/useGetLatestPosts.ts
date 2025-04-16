@@ -1,14 +1,14 @@
 import { GetLatestPostsUseCase } from "@/core/application/use-cases/get-latest-posts/getLatestPostsUseCase";
 import { PostListed } from "@/core/domain/entities/postListed";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function useGetLatestPosts() {
 
-    const useCase = new GetLatestPostsUseCase();
+    const useCase = useRef(new GetLatestPostsUseCase());
 
     const [data, setData] = useState<PostListed[]>([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState<Error | null>(null);
+    const [error, setError] = useState<unknown | null>(null);
 
     useEffect(() => {
         let isMounted = true;
@@ -17,12 +17,12 @@ export function useGetLatestPosts() {
 
             setIsLoading(true);
             try {
-                useCase.execute().then((response) => {
+                useCase.current.execute().then((response) => {
                     setData(response.blogPostCollection.items);
                 });
 
             }
-            catch (error: any) {
+            catch (error: unknown) {
                 if (isMounted) {
                     setError(error);
                 }
