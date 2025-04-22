@@ -6,7 +6,7 @@ export function useGetPostBySlug(slug: string) {
 
     const useCase = useRef(new GetPostBySlugUseCase());
 
-    const [data, setData] = useState<BlogPost>({} as BlogPost);
+    const [data, setData] = useState<BlogPost | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<unknown | null>(null);
 
