@@ -1,12 +1,13 @@
-import { GetPostBySlugUseCase } from "@/core/application/use-cases/get-post-by-slug/getPostBySlugUseCase";
-import { BlogPost } from "@/core/domain/entities/post";
+
+import { GetSubscribersCountUseCase } from "@/core/application/use-cases/get-subscribers-count/getSubscribersCountUseCase";
+import { SubscriberCountStatistics } from "@/core/infrastructure/entities/youtube-responses";
 import { useEffect, useRef, useState } from "react";
 
-export function useGetPostBySlug(slug: string) {
+export function useGetSubscribersCount() {
 
-    const useCase = useRef(new GetPostBySlugUseCase());
+    const useCase = useRef(new GetSubscribersCountUseCase());
 
-    const [data, setData] = useState<BlogPost | null>(null);
+    const [count, setCount] = useState<SubscriberCountStatistics | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<unknown | null>(null);
 
@@ -17,8 +18,8 @@ export function useGetPostBySlug(slug: string) {
 
             setIsLoading(true);
             try {
-                useCase.current.execute(slug).then((response) => {
-                    setData(response);
+                useCase.current.execute().then((response) => {
+                    setCount(response);
                 });
 
             }
@@ -26,8 +27,6 @@ export function useGetPostBySlug(slug: string) {
                 if (isMounted) {
                     setError(error);
                 }
-                
-                console.error('error', error);
             }
             finally {
                 if (isMounted) {
@@ -39,8 +38,8 @@ export function useGetPostBySlug(slug: string) {
         return () => {
             isMounted = false;
         };
-    }, [isLoading, slug]);
+    }, [isLoading]);
 
-    return { data, isLoading, error };
+    return { count, isLoading, error };
 
 };
