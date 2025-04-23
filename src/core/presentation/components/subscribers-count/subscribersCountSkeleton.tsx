@@ -2,7 +2,7 @@ import React from 'react'
 
 function SubscribersCountSkeleton() {
   return (
-    <div>subscribersCountSkeleton</div>
+    <div className="skeleton w-64 h-10"></div>
   )
 }
 
