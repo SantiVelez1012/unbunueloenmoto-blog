@@ -60,4 +60,32 @@ export class Queries {
                 }
             }
         }`;
+
+
+
+    static getPaginatedPosts = (limit = 5, skip = 0) => `
+        query GetBlogPosts($limit: Int!, $skip: Int!) {
+            blogPostCollection(limit: $limit, skip: $skip, order: date_DESC) {
+                items {
+                    title
+                    urlSlug
+                    postSummary
+                    coverImage{
+                        url
+                        fileName
+                        contentType
+                        title
+                    }
+                    createdAt
+                    tagsCollection{
+                        items{
+                            name
+                            tagId    
+                        }
+                    }
+                }
+            }
+        }
+    `;
+
 }
