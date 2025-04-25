@@ -30,7 +30,6 @@ function BlogHomePage() {
                             </div>
                         ))
                     }
-
                 </div>
             </div>
 

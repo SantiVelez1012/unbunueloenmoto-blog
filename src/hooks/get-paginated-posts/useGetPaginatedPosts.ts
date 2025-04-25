@@ -1,29 +1,30 @@
 import { GetPaginatedPostsUseCase } from "@/core/application/use-cases/get-paginated-posts/getPaginatedPostsUseCase";
-import { PostListed } from "@/core/domain/entities/postListed";
 import { useEffect, useRef, useState } from "react";
+import { usePostsContext } from "../use-post-context/usePostContext";
 
 export function useGetPaginatedPosts() {
 
     const useCase = useRef(new GetPaginatedPostsUseCase());
-    const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 6;
-    const [data, setData] = useState<PostListed[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<unknown | null>(null);
-
+    const { postsByPage, currentPage, setCurrentPage, setPostsForPage } = usePostsContext();
+    
+    
     useEffect(() => {
         let isMounted = true;
+
+        const skip = (currentPage - 1) * pageSize;
+
+        if (postsByPage[currentPage]) return;
+
         fetchData();
         function fetchData() {
-
-            const skip = (currentPage - 1) * pageSize;
-
             setIsLoading(true);
             try {
                 useCase.current.execute(pageSize, skip).then((response) => {
-                    setData(response.blogPostCollection.items);
+                    setPostsForPage(currentPage, response.blogPostCollection.items);
                 });
-
             }
             catch (error: unknown) {
                 if (isMounted) {
@@ -42,8 +43,10 @@ export function useGetPaginatedPosts() {
         return () => {
             isMounted = false;
         };
-    }, [isLoading]);
+    }, [currentPage]);
 
-    return { data, isLoading, error, currentPage, setCurrentPage, pageSize };
+    const posts = postsByPage[currentPage] || [];
+
+    return { posts, isLoading, error, currentPage, setCurrentPage, pageSize };
 
 };

@@ -26,7 +26,6 @@ export class PostsRepositoryImpl implements PostsRepository {
 
     async getPaginatedPosts(pageSize: number, skip:number): Promise<any> {
         const response: any = await this.contentfulHttpClient.getPaginatedPosts(pageSize, skip );
-        console.log(response);
         return response;
     }
 }
