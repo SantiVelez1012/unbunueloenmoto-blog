@@ -7,6 +7,10 @@ import PostCard from '../../components/post-card/postCard';
 
 function BlogPostList() {
     const { posts, isLoading, error, currentPage, setCurrentPage, pageSize } = useGetPaginatedPosts();
+
+    const handlePageChange = (page: number) => () => {
+        setCurrentPage(page);
+    }
     return (
         <div className='flex flex-col gap-5 justify-center items-center m-10 h-full'>
             <span className="md:mb-5 text-center"> <h1 className='text-3xl'> Todas las publicaciones </h1> </span>
@@ -26,9 +30,9 @@ function BlogPostList() {
             )}
 
             <div className="join mt-10">
-                <button className="join-item btn btn-lg">«</button>
+                {currentPage > 1 && (<button className="join-item btn btn-lg" onClick={handlePageChange(currentPage - 1)}>«</button>)}
                 <button className="join-item btn btn-lg cursor-default">Página {currentPage}</button>
-                <button className="join-item btn btn-lg">»</button>
+                <button className="join-item btn btn-lg" onClick={handlePageChange(currentPage + 1)}>»</button>
             </div>
         </div>
     )
