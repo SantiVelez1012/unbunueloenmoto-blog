@@ -8,15 +8,20 @@ export function useGetPaginatedPosts() {
     const pageSize = 6;
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<unknown | null>(null);
-    const { postsByPage, currentPage, setCurrentPage, setPostsForPage } = usePostsContext();
+    const { postsByPage, currentPage, setCurrentPage, setPostsForPage, isLastPage, setIsLastPage } = usePostsContext();
     
     
     useEffect(() => {
+        setIsLastPage(false);
         let isMounted = true;
-
         const skip = (currentPage - 1) * pageSize;
 
-        if (postsByPage[currentPage]) return;
+        if (postsByPage[currentPage]) {
+            if(postsByPage[currentPage].length < pageSize) {
+                setIsLastPage(true);
+            }
+            return
+        }
 
         fetchData();
         function fetchData() {
@@ -24,6 +29,9 @@ export function useGetPaginatedPosts() {
             try {
                 useCase.current.execute(pageSize, skip).then((response) => {
                     setPostsForPage(currentPage, response.blogPostCollection.items);
+                    if(response.blogPostCollection.items.length < pageSize) {
+                        setIsLastPage(true);
+                    }
                 });
             }
             catch (error: unknown) {
@@ -40,6 +48,7 @@ export function useGetPaginatedPosts() {
             }
         }
 
+
         return () => {
             isMounted = false;
         };
@@ -47,6 +56,6 @@ export function useGetPaginatedPosts() {
 
     const posts = postsByPage[currentPage] || [];
 
-    return { posts, isLoading, error, currentPage, setCurrentPage, pageSize };
+    return { posts, isLoading, error, currentPage, setCurrentPage, pageSize, isLastPage };
 
 };

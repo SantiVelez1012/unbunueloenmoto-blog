@@ -6,7 +6,7 @@ import PostCard from '../../components/post-card/postCard';
 
 
 function BlogPostList() {
-    const { posts, isLoading, error, currentPage, setCurrentPage, pageSize } = useGetPaginatedPosts();
+    const { posts, isLoading, error, currentPage, setCurrentPage, isLastPage } = useGetPaginatedPosts();
 
     const handlePageChange = (page: number) => () => {
         setCurrentPage(page);
@@ -32,7 +32,7 @@ function BlogPostList() {
             <div className="join mt-10">
                 {currentPage > 1 && (<button className="join-item btn btn-lg" onClick={handlePageChange(currentPage - 1)}>«</button>)}
                 <button className="join-item btn btn-lg cursor-default">Página {currentPage}</button>
-                <button className="join-item btn btn-lg" onClick={handlePageChange(currentPage + 1)}>»</button>
+                {!isLastPage && <button className="join-item btn btn-lg" onClick={handlePageChange(currentPage + 1)}>»</button>}
             </div>
         </div>
     )
