@@ -20,7 +20,7 @@ export function useGetPaginatedPosts() {
             if(postsByPage[currentPage].length < pageSize) {
                 setIsLastPage(true);
             }
-            return
+            return;
         }
 
         fetchData();
@@ -28,10 +28,14 @@ export function useGetPaginatedPosts() {
             setIsLoading(true);
             try {
                 useCase.current.execute(pageSize, skip).then((response) => {
-                    setPostsForPage(currentPage, response.blogPostCollection.items);
                     if(response.blogPostCollection.items.length < pageSize) {
                         setIsLastPage(true);
                     }
+                    if(response.blogPostCollection.items.length === 0) {
+                        setIsLastPage(true);
+                        return;
+                    }
+                    setPostsForPage(currentPage, response.blogPostCollection.items);
                 });
             }
             catch (error: unknown) {
@@ -52,7 +56,7 @@ export function useGetPaginatedPosts() {
         return () => {
             isMounted = false;
         };
-    }, [currentPage]);
+    }, [currentPage, postsByPage, setPostsForPage, setIsLastPage, pageSize]);
 
     const posts = postsByPage[currentPage] || [];
 

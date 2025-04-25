@@ -1,12 +1,11 @@
 import { useGetPaginatedPosts } from '@/hooks/get-paginated-posts/useGetPaginatedPosts';
-import { usePostsContext } from '@/hooks/use-post-context/usePostContext';
 import React from 'react'
 import { PostsSkeleton } from '../../components/posts-skeleton/postsSkeleton';
 import PostCard from '../../components/post-card/postCard';
 
 
 function BlogPostList() {
-    const { posts, isLoading, error, currentPage, setCurrentPage, isLastPage } = useGetPaginatedPosts();
+    const { posts, isLoading, currentPage, setCurrentPage, isLastPage } = useGetPaginatedPosts();
 
     const handlePageChange = (page: number) => () => {
         setCurrentPage(page);

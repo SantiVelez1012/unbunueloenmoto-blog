@@ -62,7 +62,7 @@ export class Queries {
         }`;
 
 
-
+    //eslint-disable-next-line @typescript-eslint/no-unused-vars
     static getPaginatedPosts = (_limit = 6, _skip = 0) => `
         query GetBlogPosts($limit: Int!, $skip: Int!) {
             blogPostCollection(limit: $limit, skip: $skip, order: createdAt_DESC) {
