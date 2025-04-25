@@ -1,6 +1,4 @@
-import { useGetSubscribersCount } from '@/hooks/get-subscribers-count/useGetSubscribersCount';
 import Link from 'next/link';
-import { Suspense } from 'react';
 import SubscribersCountSkeleton from './subscribersCountSkeleton';
 
 type SubscribersCountProps = {

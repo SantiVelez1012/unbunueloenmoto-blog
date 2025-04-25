@@ -1,7 +1,7 @@
 import { Queries } from "@/core/infrastructure/constants/queries/queries";
 import { HttpClient } from "../httpClient";
 import { BlogBaseResponse } from "@/core/infrastructure/entities/base-response";
-import { LatestPostsRespone } from '../../../entities/latest-posts-response';
+import { PostsResponse } from '../../../entities/posts-response';
 import { PostResponse } from "@/core/infrastructure/entities/post";
 
 const CONTENTFUL_API_URL = `${process.env.NEXT_PUBLIC_CONTENTFUL_API_URL}${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`;
@@ -22,13 +22,18 @@ export class ContentfulHttpClient {
         this.client = contentfulApiClient;
     }
 
-    async getLatestPosts(): Promise<LatestPostsRespone> {
-        const response: BlogBaseResponse<LatestPostsRespone> = await this.client.post('', { query: Queries.getLatestPosts }, this.requestHeaders);
+    async getLatestPosts(): Promise<PostsResponse> {
+        const response: BlogBaseResponse<PostsResponse> = await this.client.post('', { query: Queries.getLatestPosts }, this.requestHeaders);
         return response.data;
     }
     
     async getPostBySlug(slug: string): Promise<PostResponse> {
         const response: BlogBaseResponse<PostResponse> = await this.client.post('', { query: Queries.getPostBySlug(slug) }, this.requestHeaders);
+        return response.data;
+    }
+
+    async getPaginatedPosts(pageSize: number, skip: number): Promise<PostsResponse> {
+        const response: BlogBaseResponse<PostsResponse> = await this.client.post('', {variables: { limit: pageSize, skip }, query: Queries.getPaginatedPosts()}, this.requestHeaders);
         return response.data;
     }
 

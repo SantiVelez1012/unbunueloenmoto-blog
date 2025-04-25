@@ -6,11 +6,17 @@ import LatestPostsSkeleton from '../../components/latest-posts-skeleton/latestPo
 import { Copies } from '../../constants/copies/copies';
 import SubscribersCount from '../../components/subscribers-count/subscribersCount';
 import { useGetSubscribersCount } from '@/hooks/get-subscribers-count/useGetSubscribersCount';
+import { useRouter } from 'next/navigation';
 
 function BlogHomePage() {
 
     const { data: posts, isLoading } = useGetLatestPosts();
     const { count, isLoading: isCountLoading } = useGetSubscribersCount();
+    const router = useRouter();
+
+    const handleAllPostsClick = () => {
+        router.push('/blog/all');
+    }
 
     return (
         <div className='w-full overflow-y-auto' data-theme="dark">
@@ -30,12 +36,11 @@ function BlogHomePage() {
                             </div>
                         ))
                     }
-
                 </div>
             </div>
 
             <div className='flex justify-center items-center my-10'>
-                <button className='btn btn-primary'>Ver todas las publicaciones</button>
+                <button className='btn btn-primary' onClick={handleAllPostsClick} >Ver todas las publicaciones</button>
             </div>
 
         </div>
