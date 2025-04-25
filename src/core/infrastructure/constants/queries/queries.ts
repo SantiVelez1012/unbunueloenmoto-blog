@@ -65,7 +65,7 @@ export class Queries {
 
     static getPaginatedPosts = (limit = 5, skip = 0) => `
         query GetBlogPosts($limit: Int!, $skip: Int!) {
-            blogPostCollection(limit: $limit, skip: $skip, order: date_DESC) {
+            blogPostCollection(limit: $limit, skip: $skip, order: createdAt_DESC) {
                 items {
                     title
                     urlSlug

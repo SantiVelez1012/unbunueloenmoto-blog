@@ -32,8 +32,8 @@ export class ContentfulHttpClient {
         return response.data;
     }
 
-    async getPostsByPage(page: number): Promise<any> {
-        const response: any = await this.client.post('', {query: Queries.getPaginatedPosts()}, this.requestHeaders);
+    async getPaginatedPosts(pageSize: number, skip: number): Promise<any> {
+        const response: any = await this.client.post('', {variables: { limit: pageSize, skip }, query: Queries.getPaginatedPosts()}, this.requestHeaders);
         console.log(response);
         return response.data;
     }
