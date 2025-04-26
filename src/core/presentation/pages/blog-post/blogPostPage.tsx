@@ -1,4 +1,3 @@
-export const revalidate = 60;
 "use client";
 
 import { useGetPostBySlug } from '@/hooks/get-post-by-slug/useGetPostBySlug';
