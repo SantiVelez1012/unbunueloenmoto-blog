@@ -1,4 +1,5 @@
 "use client";
+
 import { useGetPostBySlug } from '@/hooks/get-post-by-slug/useGetPostBySlug';
 import React from 'react'
 import Loader from '../../components/loader/loader';
