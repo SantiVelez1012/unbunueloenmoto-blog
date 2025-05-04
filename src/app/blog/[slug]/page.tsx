@@ -1,8 +1,19 @@
+export const revalidate = 60;
+import BlogPostPage from "@/core/presentation/pages/blog-post/blogPostPage"
+import { Loader } from "lucide-react";
+import { Suspense } from "react";
+
 export default async function Page({
     params,
 }: {
     params: Promise<{ slug: string }>
 }) {
     const { slug } = await params
-    return <div>My Post: {slug}</div>
+    return <>
+
+        <Suspense fallback={<Loader />}>
+            <BlogPostPage postSlug={slug} />
+        </Suspense>
+
+    </>
 }

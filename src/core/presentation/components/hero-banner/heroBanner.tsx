@@ -1,18 +1,23 @@
-import React from 'react'
+import React from 'react';
+import Image from 'next/image';
+import { HeroBannerInfo } from '../../models/hero-banner-info/heroBannerInfo';
 
-function HeroBanner() {
+type HeroBannerProps = {
+    info: HeroBannerInfo;
+}
+
+function HeroBanner({ info }: HeroBannerProps) {
     return (
         <div
-            className="hero h-[900px] md:min-h-screen"
-            style={{
-                backgroundImage: "url(/imgs/hero-banner.jpg)",
-            }}>
-            <div className="hero-overlay"></div>
-            <div className="hero-content text-neutral-content text-center">
+            className="hero min-h-[600px] h-full bg-base-300 relative"
+        >
+            <Image src={info.imageUrl} alt={info.imageAlt} fill priority className='min-h-[600px] z-0 bg-cover object-cover' loading='eager' />
+            <div className="hero-overlay z-1"></div>
+            <div className="hero-content text-neutral-content text-center z-10">
                 <div className="max-w-md">
-                    <h1 className="mb-5 text-5xl font-bold text-amber-50">El Blog de Un Buñuelo en Moto</h1>
+                    <h1 className="mb-5 text-5xl font-bold text-amber-50"> {info.title} </h1>
                     <p className="mb-5 text-amber-50">
-                        Aquí próximamente encontrarás diversas páginas relacionadas a las motos, a los viajes y temas variados!!, espera mucho más en esta web!!
+                        {info.description}
                     </p>
                 </div>
             </div>
