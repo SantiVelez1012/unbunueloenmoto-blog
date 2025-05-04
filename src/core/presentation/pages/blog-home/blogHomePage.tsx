@@ -8,6 +8,8 @@ import SubscribersCount from '../../components/subscribers-count/subscribersCoun
 import { useGetSubscribersCount } from '@/hooks/get-subscribers-count/useGetSubscribersCount';
 import { useRouter } from 'next/navigation';
 
+import Image from 'next/image';
+
 function BlogHomePage() {
 
     const { data: posts, isLoading } = useGetLatestPosts();
@@ -23,10 +25,11 @@ function BlogHomePage() {
             <HeroBanner info={Copies.homeBannerInfo} />
 
             <SubscribersCount isLoading={isCountLoading} count={count!} />
-            <div className='flex justify-center items-center mt-10 h-full'>
-                <h3 className='text-2xl text-white'>Últimas Publicaciones</h3>
+
+            <div className='flex justify-center items-center px-5 text-center mt-10 h-full'>
+                <h3 className='text-4xl text-white'>Últimas Publicaciones</h3>
             </div>
-            <div className='flex justify-center items-center mt-5 self-center md:mx-0 min-h-[250px]'>
+            <div className='flex justify-center items-center m-5 self-center md:mx-0 min-h-[250px]'>
                 {isLoading && <LatestPostsSkeleton />}
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-5'>
                     {!isLoading &&
@@ -43,6 +46,10 @@ function BlogHomePage() {
                 <button className='btn btn-primary' onClick={handleAllPostsClick} >Ver todas las publicaciones</button>
             </div>
 
+            <div className='flex flex-col gap-10 justify-center items-center my-20 h-full'>
+                <Image src={'/imgs/trabajo-si-hay.jpeg'} alt={'Trabaja con nosotros'} width={360} height={500} />
+
+            </div>
         </div>
     );
 }

@@ -30,10 +30,10 @@ export const renderRichText = (json: Document, links: Links) => {
             <Image
               alt={''}
               src={asset.url}
-              className="rounded-xl shadow-md mx-auto"
+              className="rounded-xl my-12 shadow-md mx-auto md:w-[75%] max-h-[500px]"
               width={600}
               height={400}
-              style={{ height: 'auto', width: '100%' }}
+              style={{ height: 'auto' }}
             />
           </div>
         );

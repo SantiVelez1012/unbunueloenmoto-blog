@@ -1,5 +1,4 @@
 export const revalidate = 60;
-
 import BlogPostPage from "@/core/presentation/pages/blog-post/blogPostPage"
 import { Loader } from "lucide-react";
 import { Suspense } from "react";
