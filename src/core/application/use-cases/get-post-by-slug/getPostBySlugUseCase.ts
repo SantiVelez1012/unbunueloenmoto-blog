@@ -10,7 +10,7 @@ export class GetPostBySlugUseCase {
 
     async execute(slug: string): Promise<BlogPost> {
         return this.postsRepository.getPostBySlug(slug).then((response) => {
-            return response.blogPostCollection.items[0] || null;
+            return response.blogPostCollection.items[0];
         }).catch((error) => {
             console.log(error);
             return error;

@@ -22,7 +22,6 @@ export function useGetPostBySlug(slug: string) {
                 if (isMounted) {
                     setError(error);
                 }
-
                 console.error('error', error);
             }
             finally {
