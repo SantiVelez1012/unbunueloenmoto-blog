@@ -9,6 +9,7 @@ export default function RootLayout({
 }>) {
   return (
     <html data-theme="dark" lang="es">
+      <head />
       <body>
         <Navbar> 
           <main className="flex-1 h-full">
@@ -16,7 +17,6 @@ export default function RootLayout({
           </main>
         </Navbar>
         <Footer />
-        
       </body>
     </html>
   );
