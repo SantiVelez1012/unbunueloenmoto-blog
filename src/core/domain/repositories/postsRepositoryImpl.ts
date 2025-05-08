@@ -18,10 +18,8 @@ export class PostsRepositoryImpl implements PostsRepository {
     
     async getPostBySlug(slug: string): Promise<PostResponse> {
         const response: PostResponse = await this.contentfulHttpClient.getPostBySlug(slug);
-        if (response.blogPostCollection.items.length > 0) {
-            return response;
-        }
-        throw Error(`Post with slug ${slug} not found`);
+        return response;
+
     }
 
     async getPaginatedPosts(pageSize: number, skip:number): Promise<PostsResponse> {
