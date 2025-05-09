@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://unbunueloenmoto.com
+
+# Sitemaps
+Sitemap: https://unbunueloenmoto.com/sitemap.xml

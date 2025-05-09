@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react'
 import HeroBanner from '../../components/hero-banner/heroBanner';
 import { useGetLatestPosts } from '@/hooks/get-latest-posts/useGetLatestPosts';
