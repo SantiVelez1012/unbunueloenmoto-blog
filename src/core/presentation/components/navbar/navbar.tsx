@@ -32,7 +32,7 @@ function Navbar({
                     <div className="flex flex-1 flex-row justify-items-center">
                     
                             <Link href="/" className="btn btn-ghost">
-                                <Image width={40} height={40} src="/logos/channel-logo.png" priority alt="logo" className='w-[100%] h-[40px]'/>
+                                <Image width={40} height={50} src="/logos/channel-logo.png" priority alt="logo" className='w-[100%] h-[40px]'/>
                             </Link>
                         <div className="mx-0 my-auto">unbunueloenmoto.com</div>
                     </div>
