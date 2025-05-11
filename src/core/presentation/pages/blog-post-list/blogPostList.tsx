@@ -11,7 +11,7 @@ function BlogPostList() {
         setCurrentPage(page);
     }
     return (
-        <div className='flex flex-col gap-5 justify-center items-center m-10 h-full min-h-screen'>
+        <div className='flex flex-col gap-5 justify-center bg-base-200 items-center m-10 h-full min-h-screen'>
             <span className="md:mb-5 text-center"> <h1 className='text-3xl'> Todas las publicaciones </h1> </span>
             {isLoading && <PostsSkeleton />}
             {!isLoading && posts.length > 0 && (
@@ -29,9 +29,9 @@ function BlogPostList() {
             )}
 
             <div className="join mt-10">
-                {currentPage > 1 && (<button className="join-item btn btn-lg" onClick={handlePageChange(currentPage - 1)}>«</button>)}
-                <button className="join-item btn btn-lg cursor-default">Página {currentPage}</button>
-                {!isLastPage && <button className="join-item btn btn-lg" onClick={handlePageChange(currentPage + 1)}>»</button>}
+                {currentPage > 1 && (<button className="join-item btn-primary btn btn-lg" onClick={handlePageChange(currentPage - 1)}>«</button>)}
+                <button className="join-item btn btn-lg cursor-default btn-primary">Página {currentPage}</button>
+                {!isLastPage && <button className="join-item btn btn-lg btn-primary" onClick={handlePageChange(currentPage + 1)}>»</button>}
             </div>
         </div>
     )

@@ -1,6 +1,7 @@
 import React from 'react'
 import NavbarLinks from './components/navbar-links';
 import Image from 'next/image';
+import Link from 'next/link';
 
 function Navbar({
     children,
@@ -30,19 +31,17 @@ function Navbar({
                     </div>
                     <div className="flex flex-1 flex-row justify-items-center">
                     
-                            <a href="/" className="btn btn-ghost normal-case text-xl">
-                                <Image width={40} height={40} src="/logos/channel-logo.png" alt="" className='w-[40px] h-[40px]'/>
-                            </a>
-                        <div className="mx-0 my-auto">El Blog de Un Buñuelo En Moto</div>
+                            <Link href="/" className="btn btn-ghost">
+                                <Image width={40} height={40} src="/logos/channel-logo.png" priority alt="logo" className='w-[100%] h-[40px]'/>
+                            </Link>
+                        <div className="mx-0 my-auto">unbunueloenmoto.com</div>
                     </div>
                     <div className="hidden flex-none lg:block">
                         <ul className="menu menu-horizontal">
-
                             <NavbarLinks />
                         </ul>
                     </div>
                 </div>
-                {/* Page content here */}
                 {children}
             </div>
             <div className="drawer-side z-10">
