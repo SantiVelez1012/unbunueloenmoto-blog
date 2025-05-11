@@ -13,7 +13,7 @@ function BlogPostPage({ postSlug }: BlogPostPageProps) {
 
   const { data: post, isLoading, error } = useGetPostBySlug(postSlug);
   return (
-    <div className='w-full min-h-screen overflow-y-auto' data-theme='dark'>
+    <div className='w-full min-h-screen overflow-y-auto bg-base-200' data-theme='dark'>
       {
         !(post && 'title' in post) && !isLoading &&
         <div className='flex flex-col align-middle items-center justify-center h-screen mx-10'>
