@@ -1,7 +1,6 @@
 import React from 'react';
 import ChannelLogo from '../channel-logo/channelLogo';
 import Link from 'next/link';
-import Image from 'next/image';
 
 function Footer() {
     return (
