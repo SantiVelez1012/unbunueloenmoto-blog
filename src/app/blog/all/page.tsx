@@ -1,17 +1,45 @@
-"use client"
-import { PostsProvider } from '@/context/post-context/postContext'
-import BlogPostList from '@/core/presentation/pages/blog-post-list/blogPostList'
+import BlogPostListProvider from '@/core/presentation/pages/blog-post-list/ blog-post-list-provider';
+import { Metadata } from 'next';
 import React from 'react'
+
+
+
+export const metadata: Metadata = {
+    title: 'Un Buñuelo en Moto | Todas las publicaciones',
+    description: 'Explora rutas, consejos y experiencias de motociclismo con Un Buñuelo en Moto. Únete a la comunidad motera de Colombia y más allá.',
+    keywords: ['motociclismo', 'rutas en moto', 'consejos para motociclistas', 'Un Buñuelo en Moto', 'viajes en moto', 'comunidad motera',
+        'motociclistas en Colombia', 'aventuras en moto', 'blog de motociclismo', 'experiencias en moto', 'moto turismo', 'motociclismo en Colombia',
+        'moto viajes', 'motociclismo y cultura', 'motociclismo y gastronomía', 'motociclismo y naturaleza', 'motociclismo y aventura',
+        'motociclismo y paisajes', 'motociclismo y carreteras', 'motociclismo y seguridad', 'motociclismo y tecnología', 'motociclismo y comunidad',
+    ],
+    authors: [{ name: 'Un Buñuelo en Moto' }],
+    openGraph: {
+        title: 'Un Buñuelo en Moto | Todas las publicaciones',
+        description: 'Explora rutas, consejos y experiencias de motociclismo con Un Buñuelo en Moto.',
+        url: 'https://unbunueloenmoto.com/blog/all',
+        images: [
+            {
+                url: 'https://www.unbunueloenmoto.com/imgs/hero-banner.jpg',
+                width: 1200,
+                height: 630,
+                alt: 'Un Buñuelo en Moto',
+            },
+        ],
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Un Buñuelo en Moto | Todas las publicaciones',
+        description: 'Explora rutas, y conoce más sobre el mundo de las motos con Un Buñuelo en Moto.',
+        images: ['https://www.unbunueloenmoto.com/imgs/hero-banner.jpg'],
+    },
+};
+
 
 function Page() {
 
   return (
-
-    <PostsProvider>
-      <div className="container mx-auto">
-        <BlogPostList />
-      </div>
-    </PostsProvider>
+    <BlogPostListProvider />
   )
 }
 

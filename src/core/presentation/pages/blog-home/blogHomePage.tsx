@@ -23,7 +23,7 @@ function BlogHomePage() {
     }
 
     return (
-        <div className='w-full overflow-y-auto' data-theme="dark">
+        <div className='w-full bg-base-200 overflow-y-auto' data-theme="dark">
             <HeroBanner info={Copies.homeBannerInfo} />
 
             <SubscribersCount isLoading={isCountLoading} count={count!} />
