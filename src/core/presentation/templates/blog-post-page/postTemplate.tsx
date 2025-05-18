@@ -17,7 +17,7 @@ function PostTemplate({ post }: PostTemplateProps) {
                 imageAlt: post.coverImage.title
             }} />
 
-            <section className='flex justify-center my-10 w-full min-h-screen'>
+            <section className='flex justify-center my-10 w-full min-h-dvh'>
 
                 <div className='w-full max-w-5xl px-6 py-2'>
                     <h1 className='text-3xl font-bold my-6'>{post.title}</h1>
