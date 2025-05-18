@@ -23,7 +23,7 @@ function PostCard({ post }: PostCardProps) {
         <div className="card bg-base-300 w-96 shadow-md">
             <figure>
                 <Image
-                    src={post.coverImage?.url || '/imgs/stock-post-image .jpg'}
+                    src={post.coverImage?.url || '/imgs/stock-post-image.jpg'}
                     alt={post.coverImage?.title || 'Fallback-Image'}
                     width={384}
                     height={216}

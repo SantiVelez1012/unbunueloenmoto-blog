@@ -11,7 +11,7 @@ function BlogPostList() {
         setCurrentPage(page);
     }
     return (
-        <div className='flex flex-col gap-5 justify-center bg-base-200 items-center m-10 h-full min-h-screen'>
+        <div className='flex flex-col gap-5 justify-center bg-base-200 items-center m-10 h-full min-h-dvh'>
             <span className="md:mb-5 text-center"> <h1 className='text-3xl'> Todas las publicaciones </h1> </span>
             {isLoading && <PostsSkeleton />}
             {!isLoading && posts.length > 0 && (
