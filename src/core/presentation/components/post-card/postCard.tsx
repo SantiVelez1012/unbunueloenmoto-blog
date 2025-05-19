@@ -25,9 +25,9 @@ function PostCard({ post }: PostCardProps) {
                 <Image
                     src={post.coverImage?.url || '/imgs/stock-post-image.jpg'}
                     alt={post.coverImage?.title || 'Fallback-Image'}
-                    width={384}
-                    height={216}
-                    style={{ height: 216 }} />
+                    width={400}
+                    height={240}
+                    className=' h-[210px] md:h-[250px] opacity-85' />
             </figure>
             <div className="card-body">
                 <div className="card-actions justify-end">

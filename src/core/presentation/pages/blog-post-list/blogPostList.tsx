@@ -29,9 +29,9 @@ function BlogPostList() {
             )}
 
             <div className="join mt-10">
-                {currentPage > 1 && (<button className="join-item btn-primary btn btn-lg" onClick={handlePageChange(currentPage - 1)}>«</button>)}
-                <button className="join-item btn btn-lg cursor-default btn-primary">Página {currentPage}</button>
-                {!isLastPage && <button className="join-item btn btn-lg btn-primary" onClick={handlePageChange(currentPage + 1)}>»</button>}
+                {currentPage > 1 && (<button className="join-item btn-primary btn btn-lg rounded-sm mr-5" onClick={handlePageChange(currentPage - 1)}>«</button>)}
+                <button className="join-item btn btn-lg cursor-default btn-primary rounded-sm">Página {currentPage}</button>
+                {!isLastPage && <button className="join-item btn btn-lg btn-primary rounded-sm ml-5" onClick={handlePageChange(currentPage + 1)}>»</button>}
             </div>
         </div>
     )
