@@ -11,6 +11,7 @@ import { useGetSubscribersCount } from '@/hooks/get-subscribers-count/useGetSubs
 import { useRouter } from 'next/navigation';
 
 import Image from 'next/image';
+import SocialMedia from '../../components/social-media/socialMedia';
 
 function BlogHomePage() {
 
@@ -25,7 +26,9 @@ function BlogHomePage() {
     return (
         <div className='w-full bg-base-200 overflow-y-auto' data-theme="dark">
             <HeroBanner info={Copies.homeBannerInfo} />
-
+            <div className="flex justify-center items-center w-full my-4 px-2">
+                <SocialMedia />
+            </div>
             <SubscribersCount isLoading={isCountLoading} count={count!} />
 
             <div className='flex justify-center items-center px-5 text-center mt-10 h-full'>
