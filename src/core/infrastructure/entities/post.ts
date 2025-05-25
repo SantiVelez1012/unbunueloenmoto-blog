@@ -89,6 +89,8 @@ export interface Assets {
 }
 
 export interface Block {
+    title: string;
+    description: any;
     sys: Sys2
     url: string
 }
