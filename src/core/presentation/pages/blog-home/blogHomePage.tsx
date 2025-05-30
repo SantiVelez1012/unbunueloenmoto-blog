@@ -59,4 +59,4 @@ function BlogHomePage() {
     );
 }
 
-export default BlogHomePage
+export default BlogHomePage;
