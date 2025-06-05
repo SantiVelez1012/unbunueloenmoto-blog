@@ -1,4 +1,4 @@
-import { PostListed } from "@/core/domain/entities/postListed";
+import { PostListed } from "@/features/blog/domain/entities/postListed";
 import { createContext, ReactNode, useState } from "react";
 
 export type PostsContextType = {

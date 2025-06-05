@@ -1,6 +1,7 @@
-import { YoutubeHttpClient } from "@/core/infrastructure/api/http/youtube/youtube-http-client";
-import { YoutubeSubscriberCountResponse } from "@/core/infrastructure/entities/youtube-responses";
-import { SubscribersRepository } from "@/core/infrastructure/repositories/subscribersRepository";
+import { YoutubeHttpClient } from "../../infrastructure/api/http/youtube/youtube-http-client";
+import { YoutubeSubscriberCountResponse } from "../../infrastructure/entities/youtube-responses";
+import { SubscribersRepository } from "../../infrastructure/repositories/subscribersRepository";
+
 
 export class SubscribersRepositoryImpl implements SubscribersRepository {
 

@@ -1,7 +1,8 @@
-import { ContentfulHttpClient } from '@/core/infrastructure/api/http/contentful/contentful-http-client';
-import { PostsResponse } from '@/core/infrastructure/entities/posts-response';
-import { PostResponse } from '@/core/infrastructure/entities/post';
-import { PostsRepository } from "@/core/infrastructure/repositories/postsRepository";
+import { ContentfulHttpClient } from "../../infrastructure/api/http/contentful/contentful-http-client";
+import { PostResponse } from "../../infrastructure/entities/post";
+import { PostsResponse } from "../../infrastructure/entities/posts-response";
+import { PostsRepository } from "../../infrastructure/repositories/postsRepository";
+
 
 export class PostsRepositoryImpl implements PostsRepository {
 

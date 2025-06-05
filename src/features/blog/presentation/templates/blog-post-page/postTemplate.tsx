@@ -1,7 +1,8 @@
-import { BlogPost } from '@/core/domain/entities/post'
+
 import React from 'react'
 import HeroBanner from '../../components/hero-banner/heroBanner'
 import { renderRichText } from '@/lib/richTextRenderer'
+import { BlogPost } from '@/features/blog/domain/entities/post'
 
 type PostTemplateProps = {
     post: BlogPost

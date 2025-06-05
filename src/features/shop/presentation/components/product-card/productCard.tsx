@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface ProductCardProps {
   image: string;
@@ -16,11 +17,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   onAddToCart,
 }) => (
   <div className="bg-gray-900 border border-gray-700 rounded-lg shadow-md p-4 max-w-xs flex flex-col items-center">
-    <img
+    {/* <Image
       src={image}
       alt={title}
       className="w-full h-44 object-cover rounded-md mb-3"
-    />
+      width={176}
+      height={176}
+    /> */}
     <div className="text-lg font-semibold mb-1 text-center text-gray-100">{title}</div>
     <div className="text-green-400 font-bold text-base mb-2">${price.toFixed(2)}</div>
     {description && (

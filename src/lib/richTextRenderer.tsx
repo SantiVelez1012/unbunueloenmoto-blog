@@ -2,7 +2,9 @@ import { BLOCKS, Document, INLINES, Node } from '@contentful/rich-text-types';
 import React from 'react';
 import Image from 'next/image';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { Links, Block } from '@/core/infrastructure/entities/post';
+import { Links, Block } from '@/features/blog/infrastructure/entities/post';
+
+
 
 export const renderRichText = (json: Document, links: Links) => {
   const assetMap: Map<string, Block> = new Map();

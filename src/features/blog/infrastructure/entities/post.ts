@@ -1,4 +1,5 @@
-import { BlogPost } from '@/core/domain/entities/post';
+
+import { BlogPost } from '../../domain/entities/post';
 import { BlogPostCollection } from './blog-post-collection';
 import { Document } from '@contentful/rich-text-types';
 
