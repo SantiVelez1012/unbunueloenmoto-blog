@@ -1,4 +1,5 @@
-import BlogHomePage from '@/core/presentation/pages/blog-home/blogHomePage';
+
+import BlogHomePage from '@/features/blog/presentation/pages/blog-home/blogHomePage';
 import { Metadata } from 'next';
 import React from 'react';
 

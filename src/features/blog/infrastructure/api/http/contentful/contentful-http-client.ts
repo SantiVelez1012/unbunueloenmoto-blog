@@ -1,8 +1,9 @@
-import { Queries } from "@/core/infrastructure/constants/queries/queries";
-import { HttpClient } from "../httpClient";
-import { BlogBaseResponse } from "@/core/infrastructure/entities/base-response";
-import { PostsResponse } from '../../../entities/posts-response';
-import { PostResponse } from "@/core/infrastructure/entities/post";
+import { HttpClient } from "@/features/shared/infrastructure/api/httpClient";
+import { Queries } from "../../../constants/queries/queries";
+import { BlogBaseResponse } from "../../../entities/base-response";
+import { PostResponse } from "../../../entities/post";
+import { PostsResponse } from "../../../entities/posts-response";
+
 
 const CONTENTFUL_API_URL = `${process.env.NEXT_PUBLIC_CONTENTFUL_API_URL}${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`;
 

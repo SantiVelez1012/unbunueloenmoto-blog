@@ -1,7 +1,8 @@
-import { SubscribersRepositoryImpl } from "@/core/domain/repositories/subscribersRepositoryImpl";
-import { YoutubeHttpClient } from "@/core/infrastructure/api/http/youtube/youtube-http-client";
-import { SubscriberCountStatistics } from "@/core/infrastructure/entities/youtube-responses";
-import { SubscribersRepository } from "@/core/infrastructure/repositories/subscribersRepository";
+import { SubscribersRepositoryImpl } from "../../domain/repositories/subscribersRepositoryImpl";
+import { YoutubeHttpClient } from "../../infrastructure/api/http/youtube/youtube-http-client";
+import { SubscriberCountStatistics } from "../../infrastructure/entities/youtube-responses";
+import { SubscribersRepository } from "../../infrastructure/repositories/subscribersRepository";
+
 
 export class GetSubscribersCountUseCase {
 

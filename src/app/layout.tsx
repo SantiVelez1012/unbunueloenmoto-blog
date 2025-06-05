@@ -1,5 +1,5 @@
 import "./globals.css";
-import Footer from "@/core/presentation/components/footer/footer";
+import Footer from "@/features/blog/presentation/components/footer/footer";
 
 export default function RootLayout({
   children,
@@ -9,7 +9,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head />
-      <body className="bg-base-200">
+      <body className="bg-base-200" data-theme="dark">
         {children}
         <Footer />
       </body>

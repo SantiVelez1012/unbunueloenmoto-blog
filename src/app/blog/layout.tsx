@@ -1,4 +1,5 @@
-import Navbar from "@/core/presentation/components/navbar/navbar";
+import Navbar from "@/features/blog/presentation/components/navbar/navbar";
+
 
 export default function BlogLayout({
     children,

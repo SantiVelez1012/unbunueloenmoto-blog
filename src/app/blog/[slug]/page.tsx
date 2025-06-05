@@ -1,5 +1,6 @@
 export const revalidate = 3600;
-import BlogPostPage from "@/core/presentation/pages/blog-post/blogPostPage"
+
+import BlogPostPage from "@/features/blog/presentation/pages/blog-post/blogPostPage";
 import { getPostBySlug } from "@/lib/posts";
 import { Metadata } from "next";
 

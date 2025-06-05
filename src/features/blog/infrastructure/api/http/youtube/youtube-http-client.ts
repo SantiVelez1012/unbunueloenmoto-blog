@@ -1,6 +1,7 @@
-import { YoutubeSubscriberCountResponse } from "@/core/infrastructure/entities/youtube-responses";
-import { HttpClient } from "../httpClient";
-import { YoutubeApiEndpoints } from "@/core/infrastructure/constants/endpoints/youtube-endpoints";
+import { HttpClient } from "@/features/shared/infrastructure/api/httpClient";
+import { YoutubeSubscriberCountResponse } from "../../../entities/youtube-responses";
+import { YoutubeApiEndpoints } from "../../../constants/endpoints/youtube-endpoints";
+
 
 const YOUTUBE_API_URL = `${process.env.NEXT_PUBLIC_YOUTUBE_API_URL}`;
 

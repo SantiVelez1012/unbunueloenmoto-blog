@@ -1,4 +1,5 @@
-import { BlogPost } from "@/core/domain/entities/post";
+
+import { BlogPost } from "@/features/blog/domain/entities/post";
 import { getPostBySlug } from "@/lib/posts";
 import { useEffect, useState } from "react";
 

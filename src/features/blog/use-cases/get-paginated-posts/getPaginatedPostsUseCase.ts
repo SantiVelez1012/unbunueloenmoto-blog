@@ -1,7 +1,8 @@
-import { PostsRepositoryImpl } from "@/core/domain/repositories/postsRepositoryImpl";
-import { ContentfulHttpClient } from "@/core/infrastructure/api/http/contentful/contentful-http-client";
-import { PostsResponse } from "@/core/infrastructure/entities/posts-response";
-import { PostsRepository } from "@/core/infrastructure/repositories/postsRepository";
+import { PostsRepositoryImpl } from "../../domain/repositories/postsRepositoryImpl";
+import { ContentfulHttpClient } from "../../infrastructure/api/http/contentful/contentful-http-client";
+import { PostsResponse } from "../../infrastructure/entities/posts-response";
+import { PostsRepository } from "../../infrastructure/repositories/postsRepository";
+
 
 export class GetPaginatedPostsUseCase {
 

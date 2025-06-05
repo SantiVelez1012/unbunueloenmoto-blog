@@ -1,6 +1,7 @@
 
-import { GetSubscribersCountUseCase } from "@/core/application/use-cases/get-subscribers-count/getSubscribersCountUseCase";
-import { SubscriberCountStatistics } from "@/core/infrastructure/entities/youtube-responses";
+
+import { SubscriberCountStatistics } from "@/features/blog/infrastructure/entities/youtube-responses";
+import { GetSubscribersCountUseCase } from "@/features/blog/use-cases/get-subscribers-count/getSubscribersCountUseCase";
 import { useEffect, useRef, useState } from "react";
 
 export function useGetSubscribersCount() {

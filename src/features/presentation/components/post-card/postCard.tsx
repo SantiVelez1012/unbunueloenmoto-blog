@@ -1,8 +1,8 @@
-import { PostListed } from '@/core/domain/entities/postListed'
-import React from 'react'
+
+
 import Image from 'next/image';
-import { PostTag } from '../../../domain/entities/postListed';
 import { useRouter } from 'next/navigation';
+import { PostListed, PostTag } from '../../../blog/domain/entities/postListed';
 
 
 interface PostCardProps {
