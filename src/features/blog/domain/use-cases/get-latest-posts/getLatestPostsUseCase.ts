@@ -1,7 +1,7 @@
-import { PostsRepositoryImpl } from "../../domain/repositories/postsRepositoryImpl";
-import { ContentfulHttpClient } from "../../infrastructure/api/http/contentful/contentful-http-client";
-import { PostsResponse } from "../../infrastructure/entities/posts-response";
-import { PostsRepository } from "../../infrastructure/repositories/postsRepository";
+import { ContentfulHttpClient } from "@/features/blog/infrastructure/api/http/contentful/contentful-http-client";
+import { PostsResponse } from "@/features/blog/infrastructure/entities/posts-response";
+import { PostsRepository } from "@/features/blog/infrastructure/repositories/postsRepository";
+import { PostsRepositoryImpl } from "../../repositories/postsRepositoryImpl";
 
 
 export class GetLatestPostsUseCase{

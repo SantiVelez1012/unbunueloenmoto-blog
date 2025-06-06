@@ -1,7 +1,8 @@
-import { BlogPost } from "../../domain/entities/post";
-import { PostsRepositoryImpl } from "../../domain/repositories/postsRepositoryImpl";
-import { ContentfulHttpClient } from "../../infrastructure/api/http/contentful/contentful-http-client";
-import { PostsRepository } from "../../infrastructure/repositories/postsRepository";
+import { ContentfulHttpClient } from "@/features/blog/infrastructure/api/http/contentful/contentful-http-client";
+import { PostsRepository } from "@/features/blog/infrastructure/repositories/postsRepository";
+import { BlogPost } from "../../entities/post";
+import { PostsRepositoryImpl } from "../../repositories/postsRepositoryImpl";
+
 
 export class GetPostBySlugUseCase {
 
