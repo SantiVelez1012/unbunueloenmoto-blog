@@ -1,7 +1,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { usePostsContext } from "../use-post-context/usePostContext";
-import { GetPaginatedPostsUseCase } from "@/features/blog/use-cases/get-paginated-posts/getPaginatedPostsUseCase";
+import { GetPaginatedPostsUseCase } from "@/features/blog/domain/use-cases/get-paginated-posts/getPaginatedPostsUseCase";
+
 
 export function useGetPaginatedPosts() {
 

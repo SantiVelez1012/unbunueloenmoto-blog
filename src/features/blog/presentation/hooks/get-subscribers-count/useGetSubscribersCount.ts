@@ -1,13 +1,15 @@
 
-import { PostListed } from "@/features/blog/domain/entities/postListed";
-import { GetLatestPostsUseCase } from "@/features/blog/use-cases/get-latest-posts/getLatestPostsUseCase";
+
+import { GetSubscribersCountUseCase } from "@/features/blog/domain/use-cases/get-subscribers-count/getSubscribersCountUseCase";
+import { SubscriberCountStatistics } from "@/features/blog/infrastructure/entities/youtube-responses";
+
 import { useEffect, useRef, useState } from "react";
 
-export function useGetLatestPosts() {
+export function useGetSubscribersCount() {
 
-    const useCase = useRef(new GetLatestPostsUseCase());
+    const useCase = useRef(new GetSubscribersCountUseCase());
 
-    const [data, setData] = useState<PostListed[]>([]);
+    const [count, setCount] = useState<SubscriberCountStatistics | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<unknown | null>(null);
 
@@ -19,7 +21,7 @@ export function useGetLatestPosts() {
             setIsLoading(true);
             try {
                 useCase.current.execute().then((response) => {
-                    setData(response.blogPostCollection.items);
+                    setCount(response);
                 });
 
             }
@@ -27,8 +29,6 @@ export function useGetLatestPosts() {
                 if (isMounted) {
                     setError(error);
                 }
-                
-                console.error('error', error);
             }
             finally {
                 if (isMounted) {
@@ -42,6 +42,6 @@ export function useGetLatestPosts() {
         };
     }, [isLoading]);
 
-    return { data, isLoading, error };
+    return { count, isLoading, error };
 
 };

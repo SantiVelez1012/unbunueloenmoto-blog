@@ -1,10 +1,10 @@
 "use client";
 
-import { useGetPostBySlug } from '@/hooks/get-post-by-slug/useGetPostBySlug';
 import React from 'react'
 import Loader from '../../components/loader/loader';
 import PostTemplate from '../../templates/blog-post-page/postTemplate';
 import Link from 'next/link';
+import { useGetPostBySlug } from '../../hooks/get-post-by-slug/useGetPostBySlug';
 
 type BlogPostPageProps = {
   postSlug: string

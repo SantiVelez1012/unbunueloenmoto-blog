@@ -2,16 +2,18 @@
 
 import React from 'react'
 import HeroBanner from '../../components/hero-banner/heroBanner';
-import { useGetLatestPosts } from '@/hooks/get-latest-posts/useGetLatestPosts';
+
 import PostCard from '../../components/post-card/postCard';
 import LatestPostsSkeleton from '../../components/latest-posts-skeleton/latestPostsSkeleton';
 import { Copies } from '../../constants/copies/copies';
 import SubscribersCount from '../../components/subscribers-count/subscribersCount';
-import { useGetSubscribersCount } from '@/hooks/get-subscribers-count/useGetSubscribersCount';
+
 import { useRouter } from 'next/navigation';
 
 import Image from 'next/image';
 import SocialMedia from '../../components/social-media/socialMedia';
+import { useGetLatestPosts } from '../../hooks/get-latest-posts/useGetLatestPosts';
+import { useGetSubscribersCount } from '../../hooks/get-subscribers-count/useGetSubscribersCount';
 
 function BlogHomePage() {
 

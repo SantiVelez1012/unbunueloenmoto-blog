@@ -1,7 +1,9 @@
-import { useGetPaginatedPosts } from '@/hooks/get-paginated-posts/useGetPaginatedPosts';
+
 import React from 'react'
 import { PostsSkeleton } from '../../components/posts-skeleton/postsSkeleton';
 import PostCard from '../../components/post-card/postCard';
+import { useGetPaginatedPosts } from '../../hooks/get-paginated-posts/useGetPaginatedPosts';
+import { PostListed } from '@/features/blog/domain/entities/postListed';
 
 
 function BlogPostList() {
@@ -18,7 +20,7 @@ function BlogPostList() {
                 <>
                     <div className='flex justify-center items-center mt-5 self-center'>
                         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 my-5 max-w-full">
-                            {posts.map((post) => (
+                            {posts.map((post: PostListed) => (
                                 <div key={post.urlSlug} className='flex justify-center'>
                                     <PostCard post={post} />
                                 </div>

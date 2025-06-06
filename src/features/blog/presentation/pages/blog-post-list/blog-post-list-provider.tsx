@@ -1,7 +1,8 @@
 "use client";
-import { PostsProvider } from '@/context/post-context/postContext'
+
 import React from 'react'
 import BlogPostList from './blogPostList'
+import { PostsProvider } from '../../post-context/postContext';
 
 function BlogPostListProvider() {
   return (
