@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 interface ProductCardProps {
   image: string;
@@ -10,7 +10,7 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
-  image,
+  // image,
   title,
   price,
   description,
