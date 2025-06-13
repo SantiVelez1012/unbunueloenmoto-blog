@@ -362,6 +362,18 @@
   resolved "https://registry.npmjs.org/@rushstack/eslint-patch/-/eslint-patch-1.11.0.tgz"
   integrity sha512-zxnHvoMQVqewTJr/W4pKjF0bMGiKJv1WX7bSrkl46Hg0QjESbzBROWK0Wg4RphzSOS5Jiy7eFimmM3UgMrMZbQ==
 
+"@shopify/graphql-client@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@shopify/graphql-client/-/graphql-client-1.4.0.tgz#850a757890cf198b0a8b9e09594c633e6cbd01fc"
+  integrity sha512-tyjXkZ/rGK+x3Ep5Y0y0e6q1RbUwv759rsrkzyO7ZDK1cdTc8HP6KcbaNwTNpHO/a0ItbXMFGz5wUIRZqgDMaA==
+
+"@shopify/storefront-api-client@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@shopify/storefront-api-client/-/storefront-api-client-1.0.8.tgz#bad34920ff09dbeb67500ab5ffdaa6ff29152ca7"
+  integrity sha512-F8llAG9ANQl9HEgsjwhjOik9FcLarPFBe5DrqwbDx+qildHc1jBgWzDlIPvZAeI/fOztcXJrpGopE11S8nkAAA==
+  dependencies:
+    "@shopify/graphql-client" "^1.4.0"
+
 "@swc/counter@0.1.3":
   version "0.1.3"
   resolved "https://registry.npmjs.org/@swc/counter/-/counter-0.1.3.tgz"
