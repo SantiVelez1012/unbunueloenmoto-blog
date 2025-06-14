@@ -8,6 +8,6 @@ export async function GET() {
     const data = await useCase.execute(20);
     return NextResponse.json(data);
   } catch (error) {
-    return NextResponse.json({ error: 'Failed to fetch products' }, { status: 500 });
+    return NextResponse.json({ error: error }, { status: 500 });
   }
 }
