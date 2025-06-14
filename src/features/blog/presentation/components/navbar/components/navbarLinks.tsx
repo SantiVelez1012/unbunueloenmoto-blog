@@ -6,7 +6,7 @@ export default function NavbarLinks() {
     <>
       <li><Link href='/'>Home</Link></li>
       <li><Link href='/blog/all'>Articulos de blog</Link></li>
-      {/* <li><a>Sobre mi</a></li> */}
+      <li><Link href='/shop'>Tienda Buñuela</Link></li>
     </>
   )
 }

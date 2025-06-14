@@ -18,19 +18,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     <Image
       src={image}
       alt={title}
-      className="w-full h-auto object-cover rounded-md mb-3"
+      className="w-full h-[250px] object-cover rounded-md mb-3"
       width={176}
       height={176}
       priority={true}
     />
     <div className="text-lg font-semibold mb-1 text-center text-gray-100">{title}</div>
-    <div className="text-green-400 font-bold text-base mb-2">${price}</div>
+    <div className="text-green-400 font-bold text-base my-2">${price}</div>
     {onAddToCart && (
       <button
         className="mt-auto px-4 py-2 bg-blue-500 text-gray-100 rounded hover:bg-blue-600 font-semibold transition-colors"
         onClick={onAddToCart}
       >
-        Añadir al carrito
+        Agregar al carrito
       </button>
     )}
   </div>
