@@ -65,8 +65,7 @@ function HomePageTemplate() {
       <div className="container mx-auto px-4 flex flex-col items-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {products.map((product) => (
-            <ProductCard key={product.id} image={product.imageUrl || ""} handle={product.id} title={product.title} price={product.maxPrice.toString()} onAddToCart={() => {
-              console.log("Adding to cart:", product.title);
+            <ProductCard key={product.id} image={product.imageUrl || ""} productId={product.id} title={product.title} price={product.maxPrice.toString()} onAddToCart={() => {
               const cartItem: CartItem = {
                 id: product.id,
                 title: product.title,

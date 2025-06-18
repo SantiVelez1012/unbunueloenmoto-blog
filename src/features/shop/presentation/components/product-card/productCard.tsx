@@ -6,7 +6,7 @@ interface ProductCardProps {
   image: string;
   title: string;
   price: string;
-  handle?: string;
+  productId?: string;
   onAddToCart?: () => void;
 }
 
@@ -14,18 +14,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   image,
   title,
   price,
-  handle,
+  productId,
   onAddToCart,
 }) => {
   const router = useRouter();
 
   const goToProductDetail = () => {
-    if (handle) {
-      router.push(`/products/${handle}`);
+    if (productId) {
+      router.push(`/products/${productId}`);
     }
   };
-
-  
 
   return (
     <div
