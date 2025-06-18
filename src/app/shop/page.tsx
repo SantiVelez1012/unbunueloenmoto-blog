@@ -3,8 +3,6 @@ import HomePageTemplate from '@/features/shop/presentation/templates/home-templa
 function Page() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-200">
-      
-
       <HomePageTemplate />
     </div>
   );
