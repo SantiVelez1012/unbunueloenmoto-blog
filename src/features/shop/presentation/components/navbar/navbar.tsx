@@ -1,7 +1,9 @@
+'use client';
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import NavbarLinks from './nav-links/navbarLinks';
+import Cart from '../cart/cart';
 
 function Navbar({ children }: { children: React.ReactNode }) {
     return (
@@ -65,7 +67,7 @@ function Navbar({ children }: { children: React.ReactNode }) {
                             <h2 className="text-xl font-bold">Carrito de compras</h2>
                             <label htmlFor="cart-drawer" className="btn btn-sm btn-ghost">✕</label>
                         </div>
-                        <div className="text-center text-gray-500">Tu carrito está vacío.</div>
+                        <Cart />
                     </div>
                 </div>
             </div>

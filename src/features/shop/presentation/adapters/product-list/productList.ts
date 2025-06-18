@@ -7,8 +7,8 @@ export interface ProductCardViewModel {
   description: string;
   imageUrl: string | null;
   imageAlt: string | null;
-  minPrice: string;
-  maxPrice: string;
+  minPrice: number;
+  maxPrice: number;
   currency: string;
 }
 

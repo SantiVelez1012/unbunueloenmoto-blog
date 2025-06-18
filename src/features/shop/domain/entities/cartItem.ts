@@ -4,7 +4,7 @@ export interface CartItem {
   handle: string;
   imageUrl: string | null;
   imageAlt: string | null;
-  price: string;
+  price: number;
   currency: string;
   quantity: number;
 }

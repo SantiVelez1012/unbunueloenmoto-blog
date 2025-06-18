@@ -46,7 +46,7 @@ export interface PriceRange {
 }
 
 export interface VariantPrice {
-    amount:       string;
+    amount:       number;
     currencyCode: CurrencyCode;
 }
 

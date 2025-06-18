@@ -25,6 +25,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     }
   };
 
+  
+
   return (
     <div
       className="bg-gray-900 border border-gray-700 rounded-lg shadow-md p-4 max-w-xs flex flex-col items-center cursor-pointer transition-transform duration-200 hover:scale-105 hover:shadow-xl group focus:outline-none focus:ring-2 focus:ring-blue-500"

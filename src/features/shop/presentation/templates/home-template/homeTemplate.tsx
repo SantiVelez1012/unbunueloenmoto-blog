@@ -3,8 +3,13 @@ import React, { useEffect, useState } from "react";
 import { ProductCard } from "../../components/product-card/productCard";
 import { mapProductListToViewModel, ProductCardViewModel } from "../../adapters/product-list/productList";
 import Loader from "@/features/shared/presentation/components/loader/loader";
+import { useCartStore } from "@/features/shop/infrastructure/state/cart.store";
+import { CartItem } from "@/features/shop/domain/entities/cartItem";
 
 function HomePageTemplate() {
+
+  const addItem = useCartStore(state => state.addItem);
+
   const [products, setProducts] = useState<ProductCardViewModel[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<unknown>(null);
@@ -60,7 +65,20 @@ function HomePageTemplate() {
       <div className="container mx-auto px-4 flex flex-col items-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {products.map((product) => (
-            <ProductCard key={product.id} image={product.imageUrl || ""} handle={product.id} title={product.title} price={product.maxPrice} onAddToCart={() => { console.log(product); }} />
+            <ProductCard key={product.id} image={product.imageUrl || ""} handle={product.id} title={product.title} price={product.maxPrice.toString()} onAddToCart={() => {
+              console.log("Adding to cart:", product.title);
+              const cartItem: CartItem = {
+                id: product.id,
+                title: product.title,
+                price: product.maxPrice,
+                quantity: 1,
+                imageUrl: product.imageUrl || "",
+                imageAlt: product.imageAlt || null,
+                handle: product.handle || "",
+                currency: product.currency || "COP",
+              };
+              addItem(cartItem);
+            }} />
           ))}
         </div>
       </div>
