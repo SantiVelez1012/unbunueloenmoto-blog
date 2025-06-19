@@ -1,6 +1,6 @@
 export class ShopifyQueries {
 
-    static getAllProductsQuery = `
+  static getAllProductsQuery = `
       query GetAllProducts($first: Int = 20, $after: String) {
         products(first: $first, after: $after) {
           pageInfo {
@@ -31,6 +31,36 @@ export class ShopifyQueries {
                   currencyCode
                 }
               }
+            }
+          }
+        }
+      }
+    `;
+
+
+  static getProductByIdQuery = `
+      query GetProductById($id: ID!) {
+        product(id: $id) {
+          id
+          title
+          handle
+          description
+          images(first: 1) {
+            edges {
+              node {
+                url
+                altText
+              }
+            }
+          }
+          priceRange {
+            minVariantPrice {
+              amount
+              currencyCode
+            }
+            maxVariantPrice {
+              amount
+              currencyCode
             }
           }
         }

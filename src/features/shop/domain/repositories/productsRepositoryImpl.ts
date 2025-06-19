@@ -24,4 +24,25 @@ export class ProductsRepositoryImpl implements ProductsRepository {
             endCursor: response.data.products.pageInfo.endCursor
         };
     }
+
+
+
+    async getProductById(id: string): Promise<ProductListResponse> {
+
+        const response = await this.shopifyHttpClient.client.request(ShopifyQueries.getProductByIdQuery, {
+            variables: {
+                id: id
+            }
+        });
+
+        return {
+            data: response.data,
+            pageInfo: response.data.product.pageInfo,
+            hasNextPage: response.data.product.pageInfo.hasNextPage,
+            endCursor: response.data.product.pageInfo.endCursor
+        };
+
+
+    }
+        
 }
