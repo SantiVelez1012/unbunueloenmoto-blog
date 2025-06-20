@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { extractShopifyNumericId } from '../../utils/productUtils';
 
 interface ProductCardProps {
   image: string;
@@ -21,7 +22,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   const goToProductDetail = () => {
     if (productId) {
-      router.push(`/products/${productId}`);
+      const numericId = extractShopifyNumericId(productId);
+      router.push(`/shop/products/${numericId}`);
     }
   };
 

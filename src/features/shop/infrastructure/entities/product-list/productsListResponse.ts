@@ -1,11 +1,12 @@
 export interface ProductListResponse {
-    data:        ProductData;
+    data:        ProductsData;
     pageInfo:    PageInfo;
     hasNextPage: boolean;
     endCursor:   string;
 }
 
-export interface ProductData {
+
+export interface ProductsData {
     products: Products;
 }
 
@@ -17,6 +18,7 @@ export interface Products {
 export interface ProductsEdge {
     node: PurpleNode;
 }
+
 
 export interface PurpleNode {
     id:          string;
@@ -58,3 +60,4 @@ export interface PageInfo {
     hasNextPage: boolean;
     endCursor:   string;
 }
+

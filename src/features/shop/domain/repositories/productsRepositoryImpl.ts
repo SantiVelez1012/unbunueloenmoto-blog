@@ -1,5 +1,6 @@
 import { ShopifyHttpClient } from "../../infrastructure/api/shopify-http-client";
 import { ShopifyQueries } from "../../infrastructure/constants/queries";
+import { ProductDetailsResponse } from "../../infrastructure/entities/product-details/productDetailsResponse";
 import { ProductListResponse } from "../../infrastructure/entities/product-list/productsListResponse";
 import { ProductsRepository } from "../../infrastructure/repositories/productsRepository";
 
@@ -27,19 +28,18 @@ export class ProductsRepositoryImpl implements ProductsRepository {
 
 
 
-    async getProductById(id: string): Promise<ProductListResponse> {
+    async getProductById(id: string): Promise<ProductDetailsResponse> {
 
         const response = await this.shopifyHttpClient.client.request(ShopifyQueries.getProductByIdQuery, {
             variables: {
-                id: id
+                id: `gid://shopify/Product/${id}`
             }
         });
 
+        console.log("Response from getProductById:", response);
+
         return {
             data: response.data,
-            pageInfo: response.data.product.pageInfo,
-            hasNextPage: response.data.product.pageInfo.hasNextPage,
-            endCursor: response.data.product.pageInfo.endCursor
         };
 
 

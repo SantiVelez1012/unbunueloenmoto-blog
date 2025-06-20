@@ -39,32 +39,47 @@ export class ShopifyQueries {
 
 
   static getProductByIdQuery = `
-      query GetProductById($id: ID!) {
-        product(id: $id) {
-          id
-          title
-          handle
-          description
-          images(first: 1) {
-            edges {
-              node {
-                url
-                altText
-              }
+    query GetProductById($id: ID!) {
+      product(id: $id) {
+        id
+        title
+        handle
+        description
+        descriptionHtml
+        availableForSale
+        images(first: 1) {
+          edges {
+            node {
+              url
+              altText
+              width
+              height
             }
           }
-          priceRange {
-            minVariantPrice {
-              amount
-              currencyCode
-            }
-            maxVariantPrice {
-              amount
-              currencyCode
+        }
+        priceRange {
+          minVariantPrice {
+            amount
+            currencyCode
+          }
+          maxVariantPrice {
+            amount
+            currencyCode
+          }
+        }
+        variants(first: 1) {
+          edges {
+            node {
+              id
+              price {
+                amount
+                currencyCode
+              }
+              availableForSale
             }
           }
         }
       }
-    `;
-
-};
+    }
+  `;
+}
