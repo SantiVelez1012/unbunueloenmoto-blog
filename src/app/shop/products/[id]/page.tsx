@@ -1,6 +1,6 @@
-import { ProductDetails } from "@/features/shop/infrastructure/entities/product-details/productDetailsResponse";
 import { mapProductDetailsToViewModel, ProductViewModel } from "@/features/shop/presentation/adapters/product-details/productDetails";
 import React from "react";
+import Image from "next/image";
 
 interface ProductDetailPageProps {
   params: { id: string };
@@ -19,7 +19,7 @@ async function getProduct(id: string) {
 export default async function Page({ params }: ProductDetailPageProps) {
   let product: ProductViewModel;
   try {
-    let productResponse = await getProduct(params.id);
+    const productResponse = await getProduct(params.id);
     product = mapProductDetailsToViewModel(productResponse);
   } catch {
     return (
@@ -37,28 +37,29 @@ export default async function Page({ params }: ProductDetailPageProps) {
         {/* Image Section */}
         <div className="flex-1 flex flex-col items-center justify-start">
           <div className="bg-base-100 rounded-lg border border-base-300 shadow p-4 w-full max-w-lg">
-            <img
-              src={product.imageUrl || "/placeholder.png"}
-              alt={product.imageAlt || product.title}
-              className="rounded-lg w-full object-contain aspect-square bg-white"
-            />
+            <Image src={product.imageUrl || "/placeholder.png"} width={600} height={600}
+              alt={product.imageAlt || product.title} className="rounded-lg w-full object-contain aspect-square bg-white" />
           </div>
-          {/* Thumbnails or gallery could go here */}
+
+          <div className="flex flex-1 flex-col items-start gap-3 mt-4 w-full max-w-lg">
+
+            <div className="mb-2 flex items-center gap-2">
+              {product.isAvailable ? (
+                <span className="badge badge-success badge-outline">Disponible</span>
+              ) : (
+                <span className="badge badge-error badge-outline">Agotado</span>
+              )}
+              <span className="text-xs text-gray-400">SKU: {product.id.split("/").pop()}</span>
+            </div>
+            <h1 className="text-3xl md:text-4xl font-bold mb-2">{product.title}</h1>
+            <div className="text-2xl md:text-3xl font-bold mb-4">
+              ${product.price.max} {product.price.currency}
+            </div>
+
+          </div>
         </div>
-        {/* Details Section */}
         <div className="flex-1 flex flex-col justify-start px-2 md:sticky md:top-10">
-          <div className="mb-2 flex items-center gap-2">
-            {product.isAvailable ? (
-              <span className="badge badge-success badge-outline">Disponible</span>
-            ) : (
-              <span className="badge badge-error badge-outline">Agotado</span>
-            )}
-            <span className="text-xs text-gray-400">SKU: {product.id.split("/").pop()}</span>
-          </div>
-          <h1 className="text-3xl md:text-4xl font-bold mb-2">{product.title}</h1>
-          <div className="text-2xl md:text-3xl font-bold text-primary mb-4">
-            {product.price.max} {product.price.currency}
-          </div>
+
           <div className="mb-6">
             {product.descriptionHtml ? (
               <div
