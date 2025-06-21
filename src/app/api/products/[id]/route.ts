@@ -10,9 +10,6 @@ interface Context {
 
 export async function GET(request: NextRequest, context: Context) {
   const id = await Promise.resolve(context.params.id);
-
-  console.log("Fetching product with ID:", id);
-
   try {
     const productsRepository = new ProductsRepositoryImpl();
     const useCase = new GetProductDetailsUseCase(productsRepository);
@@ -27,7 +24,6 @@ export async function GET(request: NextRequest, context: Context) {
 
     return NextResponse.json(data);
   } catch (error) {
-    console.error("Error fetching product:", error);
     return NextResponse.json(
       { error: "Failed to fetch product" },
       { status: 500 }

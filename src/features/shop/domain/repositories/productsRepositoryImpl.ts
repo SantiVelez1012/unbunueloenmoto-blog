@@ -36,8 +36,6 @@ export class ProductsRepositoryImpl implements ProductsRepository {
             }
         });
 
-        console.log("Response from getProductById:", response);
-
         return {
             data: response.data,
         };
