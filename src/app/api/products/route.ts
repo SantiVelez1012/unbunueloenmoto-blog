@@ -6,7 +6,6 @@ export async function GET() {
   const productsRepository = new ProductsRepositoryImpl();
   try {
     const useCase = new GetAllProductsUseCase(productsRepository);
-    //TODO: Change the number of products to fetch, for a property from ui
     const data = await useCase.execute(20);
     return NextResponse.json(data);
   } catch (error) {
