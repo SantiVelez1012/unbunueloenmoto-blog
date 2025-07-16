@@ -5,6 +5,7 @@ import { mapProductListToViewModel, ProductCardViewModel } from "../../adapters/
 import Loader from "@/features/shared/presentation/components/loader/loader";
 import { useCartStore } from "@/features/shop/infrastructure/state/cart.store";
 import { CartItem } from "@/features/shop/domain/entities/cartItem";
+import { showToast } from "@/features/shared/presentation/utils/triggerToast";
 
 function HomePageTemplate() {
 
@@ -77,6 +78,7 @@ function HomePageTemplate() {
                 currency: product.currency || "COP",
               };
               addItem(cartItem);
+              showToast("Producto agregado al carrito");
             }} />
           ))}
         </div>

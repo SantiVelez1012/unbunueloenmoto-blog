@@ -1,5 +1,6 @@
 import "./globals.css";
 import Footer from "@/features/blog/presentation/components/footer/footer";
+import ToastHandler from '../features/shared/presentation/components/toast/toastHandler';
 
 export default function RootLayout({
   children,
@@ -10,6 +11,7 @@ export default function RootLayout({
     <html lang="es">
       <head />
       <body className="bg-base-200" data-theme="dark">
+        <ToastHandler />
         {children}
         <Footer />
       </body>
