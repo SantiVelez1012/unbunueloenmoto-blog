@@ -1,5 +1,6 @@
 import { HttpClient } from "../httpClient";
 import { DepartmentsResponse } from "../../entities/departmentsResponse";
+import { Department } from "@/features/shared/presentation/entities/department";
 
 const COLOMBIA_API_URL = `${process.env.NEXT_PUBLIC_COLOMBIA_API_URL}`;
 
@@ -15,7 +16,10 @@ export class GeographicInfoHttpClient {
     }
 
     async getDepartments(): Promise<DepartmentsResponse> {
-        const response: DepartmentsResponse = await this.client.get('Department');
+        const result: Department[] = await this.client.get('Department');
+        const response: DepartmentsResponse = {
+            departments: result
+        };
         return response;
     };
 

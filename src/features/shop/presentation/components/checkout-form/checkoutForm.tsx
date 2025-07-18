@@ -1,32 +1,37 @@
 "use client";
 
 import { useGetDepartments } from '@/features/shared/presentation/hooks/use-get-departments/useGetDepartments';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+
+type FormInputs = {
+    email: string;
+    firstName: string;
+    lastName: string;
+    address: string;
+    city: string;
+    state: string;
+    postalCode: string;
+    country: string;
+    phone: string;
+    additionalNotes: string;
+}
 
 export default function CheckoutForm() {
 
     const { departments, isLoading } = useGetDepartments();
 
-    const [formData, setFormData] = useState({
-        email: '',
-        firstName: '',
-        lastName: '',
-        address: '',
-        city: '',
-        state: '',
-        postalCode: '',
-        country: 'Colombia',
-        phone: '',
-        additionalNotes: ''
-    });
+    const { register, handleSubmit, watch, formState: { errors } } = useForm<FormInputs>();
 
+
+    const onSubmit: SubmitHandler<FormInputs> = (data) => console.log(data);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        console.log('Form data updated:', watch);
     };
 
     return (
-        <section className="space-y-6">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <h2 className="text-2xl font-bold">Información de contacto</h2>
 
             <div className="form-control w-full">
@@ -35,10 +40,10 @@ export default function CheckoutForm() {
                 </label>
                 <input
                     type="email"
+                    defaultValue=""
                     placeholder="tucorreo@email.com"
                     className="input input-bordered w-full"
-                    name="email"
-                    value={formData.email}
+                    {...register("email", { required: true })}
                     onChange={handleChange}
                 />
             </div>
@@ -50,16 +55,14 @@ export default function CheckoutForm() {
                     type="text"
                     placeholder="Nombre"
                     className="input input-bordered w-full"
-                    name="firstName"
-                    value={formData.firstName}
+                    {...register("firstName", { required: true })}
                     onChange={handleChange}
                 />
                 <input
                     type="text"
                     placeholder="Apellido"
                     className="input input-bordered w-full"
-                    name="lastName"
-                    value={formData.lastName}
+                    {...register("lastName", { required: true })}
                     onChange={handleChange}
                 />
             </div>
@@ -68,44 +71,37 @@ export default function CheckoutForm() {
                 type="text"
                 placeholder="Dirección"
                 className="input input-bordered w-full"
-                name="address"
-                value={formData.address}
+                {...register("address", { required: true })}
                 onChange={handleChange}
             />
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <input
-                    type="text"
-                    placeholder="Ciudad"
-                    className="input input-bordered w-full"
-                    name="city"
-                    value={formData.city}
-                    onChange={handleChange}
-                />
-                <input
-                    type="text"
-                    placeholder="Departamento"
-                    className="input input-bordered w-full"
-                    name="state"
-                    value={formData.state}
-                    onChange={handleChange}
-                />
-                <input
-                    type="text"
-                    placeholder="País"
-                    className="input input-bordered w-full"
-                    name="country"
-                    value={formData.country}
-                    onChange={handleChange}
-                />
-            </div>
+            <select id="state" {...register("state", { required: true })} onChange={() => {handleChange}} className="select select-bordered w-full">
+                <option value="">Seleccione un departamento</option>
+                {isLoading ? (
+                    <option disabled>Cargando...</option>
+                ) : (
+                    departments!.map(department => (
+                        <option key={department.id} value={department.name}>
+                            {department.name}
+                        </option>
+                    ))
+                )}
+            </select>
 
             <input
                 type="text"
-                placeholder="Teléfono"
+                placeholder="Ciudad"
                 className="input input-bordered w-full"
-                name="phone"
-                value={formData.phone}
+                {...register("city", { required: true })}
+                onChange={handleChange}
+            />
+
+
+            <input
+                type="text"
+                placeholder="Celular"
+                className="input input-bordered w-full"
+                {...register("phone", { required: true })}
                 onChange={handleChange}
             />
 
@@ -113,14 +109,13 @@ export default function CheckoutForm() {
                 type="text"
                 placeholder="Notas Adicionales"
                 className="w-full textarea textarea-bordered"
-                name="additionalNotes"
-                value={formData.additionalNotes}
+                {...register("additionalNotes", { required: true })}
                 onChange={handleChange}
             />
 
             <div className="mt-6">
-                <button className="btn btn-primary w-full">Finalizar Pedido</button>
+                <button type='submit' className="btn btn-primary w-full">Finalizar Pedido</button>
             </div>
-        </section>
+        </form>
     )
 }

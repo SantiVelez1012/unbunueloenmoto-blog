@@ -11,7 +11,10 @@ export class GeographicInfoRepositoryImpl implements GeographicInfoRepository {
     }
 
     getDepartments(): Promise<DepartmentsResponse> {
-        return this.geographicInfoHttpClient.getDepartments();
+        const response = this.geographicInfoHttpClient.getDepartments().then((response) => {
+            return response;
+        });
+        return response;
     }
 
 };

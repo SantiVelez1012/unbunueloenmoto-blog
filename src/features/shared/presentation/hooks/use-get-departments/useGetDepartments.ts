@@ -8,13 +8,32 @@ export function useGetDepartments() {
     const [isLoading, setIsLoading] = useState(true);
     const useCase = useRef(new GetDepartmentsUseCase());
 
+
+
+
+
     useEffect(() => {
-        useCase.current.execute().then((response) => {
-            setDepartments(response);
-        }).finally(() => {
-            setIsLoading(false);
-        });
-    }, []);
+
+
+        const fetchData = async () => {
+            try {
+                useCase.current.execute().then((response) => {
+                    setDepartments(response);
+                    console.log('Departamentos obtenidos:', response);
+                    console.log('Total de departamentos:', departments);
+                }).finally(() => {
+                    setIsLoading(false);
+                });
+            }
+            catch (error: unknown) {
+                console.error('Error al obtener departamentos:', error);
+                setDepartments([]);
+                setIsLoading(false);
+            }
+        };
+
+        fetchData();
+    }, [useCase]);
 
     return { departments, isLoading };
 
