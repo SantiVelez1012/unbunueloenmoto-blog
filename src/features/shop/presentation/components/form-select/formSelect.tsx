@@ -23,10 +23,7 @@ function FormSelect({ name, options, isLoading, placeholder, isClearable, contro
             rules={{ required: true }}
             render={({ field }) => (
                 <Select
-                    {...field}
-                    options={
-                        options
-                    }
+                    options={options}
                     isLoading={isLoading}
                     placeholder={placeholder}
                     isClearable={isClearable}
@@ -35,14 +32,14 @@ function FormSelect({ name, options, isLoading, placeholder, isClearable, contro
                     styles={{
                         control: (base) => ({
                             ...base,
-                            backgroundColor: "oklch(0.25 0.02 252.45)", // Tailwind bg-base-200
+                            backgroundColor: "oklch(0.25 0.02 252.45)",
                             color: "#fff",
-                            borderColor: "#374151", // Tailwind border-base-300
+                            borderColor: "#374151",
                             minHeight: "2.6rem",
                         }),
                         menu: (base) => ({
                             ...base,
-                            backgroundColor: "oklch(0.25 0.02 252.45)", // Tailwind bg-base-300
+                            backgroundColor: "oklch(0.25 0.02 252.45)",
                             color: "#fff",
                         }),
                         option: (base, state) => ({
@@ -58,10 +55,14 @@ function FormSelect({ name, options, isLoading, placeholder, isClearable, contro
                             ...base,
                             color: "#fff",
                         }),
+                        input: (base) => ({
+                            ...base,
+                            color: "#fff",
+                        }),
                     }}
                     isSearchable
-                    onChange={(option) => {field.onChange(option ? option : "");}}
-                    value={options.find(opt => opt === field.value) || null}
+                    onChange={option => field.onChange(option || null)}
+                    value={field.value || null}
                 />
             )}
         />
