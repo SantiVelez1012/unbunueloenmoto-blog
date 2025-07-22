@@ -17,7 +17,7 @@ function ProductDetailsTemplate({ product }: ProductDetailsTemplateProps) {
 
 
     return (
-        <div className="min-h-screen bg-base-200 flex items-center justify-center py-10">
+        <div className="min-h-[100dvh] bg-base-200 flex items-center justify-center pb-10">
             <div className="container mx-auto max-w-6xl bg-base-100 rounded-lg shadow-lg border border-base-300 p-0 md:p-8 flex flex-col md:flex-row gap-10">
                 <div className="flex-1 flex flex-col items-center justify-start">
                     <div className="bg-base-100 rounded-lg border border-base-300 shadow p-4 w-full max-w-lg">
