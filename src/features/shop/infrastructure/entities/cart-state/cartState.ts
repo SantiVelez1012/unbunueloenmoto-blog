@@ -6,4 +6,5 @@ export interface CartState {
     removeItem: (id: string) => void;
     clearCart: () => void;
     total: () => number;
+    getTotalPriceByProduct: (id: string) => number;
 }

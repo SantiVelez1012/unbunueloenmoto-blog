@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ProductCard } from "../../components/product-card/productCard";
 import { mapProductListToViewModel, ProductCardViewModel } from "../../adapters/product-list/productList";
 import Loader from "@/features/shared/presentation/components/loader/loader";
-import { useCartStore } from "@/features/shop/infrastructure/state/cart.store";
+import { useCartStore } from "@/features/shop/infrastructure/state/cartStore";
 import { CartItem } from "@/features/shop/domain/entities/cartItem";
 import { showToast } from "@/features/shared/presentation/utils/triggerToast";
 

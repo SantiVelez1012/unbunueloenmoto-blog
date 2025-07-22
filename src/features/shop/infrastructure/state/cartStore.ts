@@ -20,6 +20,10 @@ export const useCartStore = create<CartState>()(
           set({ items: [...get().items, item] });
         }
       },
+      getTotalPriceByProduct: (id: string) => {
+        const item = get().items.find(i => i.id === id);
+        return item ? item.price * item.quantity : 0;
+      },
       removeItem: (id) => set({ items: get().items.filter(i => i.id !== id) }),
       clearCart: () => set({ items: [] }),
       total: () =>

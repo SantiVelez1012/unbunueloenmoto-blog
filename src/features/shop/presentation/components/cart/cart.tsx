@@ -1,11 +1,12 @@
-import { useCartStore } from '@/features/shop/infrastructure/state/cart.store';
+import { useCartStore } from '@/features/shop/infrastructure/state/cartStore';
 import React from 'react';
 import SidebarCartItem from '../cart-item/sidebarCartItem';
+import Link from 'next/link';
 
 function Cart() {
     const items = useCartStore(state => state.items);
     const total = useCartStore(state => state.total());
-    
+
 
     return (
         <div className="w-full max-w-sm min-h-full bg-base-200 text-base-content flex flex-col">
@@ -28,7 +29,14 @@ function Cart() {
                         <span className="text-lg font-semibold">Total:</span>
                         <span className="text-xl font-bold">{items[0]?.currency}$ {total}</span>
                     </div>
-                    <button className="btn btn-primary btn-block mt-4">Finalizar compra</button>
+
+                    <Link
+                        className="btn btn-primary btn-block mt-4"
+                        href="/shop/checkout"
+
+                    >
+                        Finalizar compra
+                    </Link>
                 </>
             )}
         </div>

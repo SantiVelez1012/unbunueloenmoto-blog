@@ -1,6 +1,6 @@
 "use client";
 
-import { useCartStore } from '@/features/shop/infrastructure/state/cart.store';
+import { useCartStore } from '@/features/shop/infrastructure/state/cartStore';
 import Image from 'next/image';
 import React from 'react';
 import { ProductViewModel } from '../../adapters/product-details/productDetails';

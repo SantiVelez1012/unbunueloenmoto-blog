@@ -40,7 +40,7 @@ export default function CheckoutForm() {
 
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 p-6">
             <h2 className="text-2xl font-bold">Información de contacto</h2>
 
             <div className="form-control w-full">

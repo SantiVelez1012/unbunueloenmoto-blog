@@ -1,5 +1,5 @@
 import { CartItem } from '@/features/shop/domain/entities/cartItem';
-import { useCartStore } from '@/features/shop/infrastructure/state/cart.store';
+import { useCartStore } from '@/features/shop/infrastructure/state/cartStore';
 import React from 'react';
 import Image from 'next/image';
 import { Trash2 } from 'lucide-react';
