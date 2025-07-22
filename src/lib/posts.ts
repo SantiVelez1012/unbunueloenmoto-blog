@@ -1,5 +1,6 @@
-import { GetPostBySlugUseCase } from "@/core/application/use-cases/get-post-by-slug/getPostBySlugUseCase";
-import { BlogPost } from "@/core/domain/entities/post";
+
+import { BlogPost } from "@/features/blog/domain/entities/post";
+import { GetPostBySlugUseCase } from "@/features/blog/domain/use-cases/get-post-by-slug/getPostBySlugUseCase";
 import { cache } from "react";
 
 export const getPostBySlug = cache(async (slug: string) : Promise<BlogPost | null> => {

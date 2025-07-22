@@ -1,6 +1,6 @@
-import Navbar from "@/core/presentation/components/navbar/navbar";
 import "./globals.css";
-import Footer from "@/core/presentation/components/footer/footer";
+import Footer from "@/features/blog/presentation/components/footer/footer";
+import ToastHandler from '../features/shared/presentation/components/toast/toastHandler';
 
 export default function RootLayout({
   children,
@@ -10,12 +10,9 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head />
-      <body>
-        <Navbar> 
-          <main className="bg-base-200 flex-1 h-full">
-            {children}
-          </main>
-        </Navbar>
+      <body className="bg-base-200" data-theme="dark">
+        <ToastHandler />
+        {children}
         <Footer />
       </body>
     </html>
