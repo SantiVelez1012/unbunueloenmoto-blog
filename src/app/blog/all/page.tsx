@@ -1,4 +1,5 @@
-import BlogPostListProvider from '@/core/presentation/pages/blog-post-list/ blog-post-list-provider';
+
+import BlogPostListProvider from '@/features/blog/presentation/pages/blog-post-list/blog-post-list-provider';
 import { Metadata } from 'next';
 import React from 'react'
 
