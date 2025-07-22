@@ -2,18 +2,15 @@ import { ProductsRepositoryImpl } from "@/features/shop/domain/repositories/prod
 import { GetProductDetailsUseCase } from "@/features/shop/domain/use-cases/get-product-details-use-case/getProductDetailsUseCase";
 import { NextRequest, NextResponse } from "next/server";
 
-interface Context {
-  params: {
-    id: string;
-  };
-}
-
-export async function GET(request: NextRequest, context: Context) {
+export async function GET(
+  request: NextRequest,
+  context: { params: Promise<{ id: string }> }
+) {
   try {
-    const id = await Promise.resolve(context.params.id);
     const productsRepository = new ProductsRepositoryImpl();
     const useCase = new GetProductDetailsUseCase(productsRepository);
-    const data = await useCase.execute(id);
+    const params = await context.params;
+    const data = await useCase.execute(params.id);
 
     if (!data) {
       return NextResponse.json(
@@ -25,7 +22,7 @@ export async function GET(request: NextRequest, context: Context) {
     return NextResponse.json(data);
   } catch (error) {
     return NextResponse.json(
-      { error: error },
+      { error: error instanceof Error ? error.message : error },
       { status: 500 }
     );
   }

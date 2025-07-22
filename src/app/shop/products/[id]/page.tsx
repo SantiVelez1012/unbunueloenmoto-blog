@@ -2,9 +2,9 @@ import { mapProductDetailsToViewModel, ProductViewModel } from "@/features/shop/
 import React from "react";
 import ProductDetailsTemplate from "@/features/shop/presentation/templates/product-details-template/productDetailsTemplate";
 
-interface ProductDetailPageProps {
-  params: { id: string };
-}
+type ProductDetailPageProps = {
+  params: Promise<{ id: string }>
+};
 
 async function getProduct(id: string) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
@@ -17,9 +17,10 @@ async function getProduct(id: string) {
 }
 
 export default async function Page({ params }: ProductDetailPageProps) {
+  const { id } = await params;
   let product: ProductViewModel;
   try {
-    const productResponse = await getProduct(params.id);
+    const productResponse = await getProduct(id);
     product = mapProductDetailsToViewModel(productResponse);
   } catch {
     return (
