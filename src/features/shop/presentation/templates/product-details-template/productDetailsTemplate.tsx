@@ -6,6 +6,7 @@ import React from 'react';
 import { ProductViewModel } from '../../adapters/product-details/productDetails';
 import { CartItem } from '@/features/shop/domain/entities/cartItem';
 import { showToast } from '@/features/shared/presentation/utils/triggerToast';
+import { formatThousands } from '../../utils/productUtils';
 
 type ProductDetailsTemplateProps = {
     product: ProductViewModel;
@@ -37,7 +38,7 @@ function ProductDetailsTemplate({ product }: ProductDetailsTemplateProps) {
                         </div>
                         <h1 className="text-3xl md:text-4xl font-bold mb-2">{product.title}</h1>
                         <div className="text-2xl md:text-3xl font-bold mb-4">
-                            ${product.price.max} {product.price.currency}
+                            ${formatThousands(product.price.max)} {product.price.currency}
                         </div>
 
                     </div>
@@ -54,7 +55,7 @@ function ProductDetailsTemplate({ product }: ProductDetailsTemplateProps) {
                             <p className="text-base">{product.description}</p>
                         )}
                     </div>
-                    <div className="flex items-center gap-3 mb-6">
+                    {/* <div className="flex items-center gap-3 mb-6">
                         <label htmlFor="quantity" className="text-sm font-medium">Cantidad:</label>
                         <input
                             id="quantity"
@@ -63,7 +64,7 @@ function ProductDetailsTemplate({ product }: ProductDetailsTemplateProps) {
                             defaultValue={1}
                             className="input input-bordered input-sm w-20"
                         />
-                    </div>
+                    </div> */}
                     <div className="flex flex-col gap-3">
                         <button
                             className="btn btn-outline btn-lg w-full font-bold text-lg"

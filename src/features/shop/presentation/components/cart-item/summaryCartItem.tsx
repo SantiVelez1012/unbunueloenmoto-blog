@@ -3,6 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import { formatThousands } from '../../utils/productUtils';
 import { useCartStore } from '@/features/shop/infrastructure/state/cartStore';
+import RemoveFromCartButton from './remove-button/removeFromCartButton';
 
 type SummaryCartItemProps = {
     cartItem: CartItem;
@@ -17,6 +18,9 @@ function SummaryCartItem({ cartItem }: SummaryCartItemProps) {
                 <p className="font-medium">{cartItem.title}</p>
                 <p className="text-sm text-gray-400">Precio unitario: $ {formatThousands(cartItem.price)}</p>
                 <p className="text-sm text-gray-500">Cantidad: {cartItem.quantity}</p>
+                <section className='mt-2'>
+                    <RemoveFromCartButton item={cartItem} />
+                </section>
             </div>
             <p className="font-semibold">$ {formatThousands(totalPrice)}</p>
         </div>

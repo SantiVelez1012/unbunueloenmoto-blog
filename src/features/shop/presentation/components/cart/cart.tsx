@@ -31,9 +31,12 @@ function Cart() {
                     </div>
 
                     <Link
-                        className="btn btn-primary btn-block mt-4"
                         href="/shop/checkout"
-
+                        className="btn btn-primary btn-block mt-4"
+                        onClick={() => {
+                            const drawerCheckbox = document.getElementById('cart-drawer') as HTMLInputElement | null;
+                            if (drawerCheckbox) drawerCheckbox.checked = false;
+                        }}
                     >
                         Finalizar compra
                     </Link>

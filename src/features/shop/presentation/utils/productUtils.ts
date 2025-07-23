@@ -5,5 +5,6 @@ export function extractShopifyNumericId(gid: string): string {
 
 
 export function formatThousands(price: number): string {
-  return price.toLocaleString('es-ES');
+  const number = Math.floor(price);
+  return number.toLocaleString('es-ES');
 }
