@@ -1,9 +1,9 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import NavbarLinks from './nav-links/navbarLinks';
 import Cart from '../cart/cart';
+import Link from 'next/link';
 
 function Navbar({ children }: { children: React.ReactNode }) {
     return (
@@ -35,12 +35,8 @@ function Navbar({ children }: { children: React.ReactNode }) {
                             </Link>
                             <div className="mx-0 my-auto">Buñuelo Shop</div>
                         </div>
-                        <div className="hidden flex-none lg:block">
-                            <ul className="menu menu-horizontal">
-                                <li>
-                                    <Link href="/">Blog</Link>
-                                </li>
-                            </ul>
+                        <div className='hidden flex-none lg:block'>
+                            <NavbarLinks />
                         </div>
                         <div className="flex-none">
                             <label htmlFor="cart-drawer" className="btn btn-ghost btn-circle mr-5">

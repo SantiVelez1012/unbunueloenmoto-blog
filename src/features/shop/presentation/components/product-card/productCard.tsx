@@ -23,7 +23,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const goToProductDetail = () => {
     if (productId) {
       const numericId = extractShopifyNumericId(productId);
-      router.push(`/products/${numericId}`);
+      router.push(`/shop/products/${numericId}`);
     }
   };
 
