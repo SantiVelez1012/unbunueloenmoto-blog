@@ -1,12 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { extractShopifyNumericId } from '../../utils/productUtils';
+import { extractShopifyNumericId, formatThousands } from '../../utils/productUtils';
 
 interface ProductCardProps {
   image: string;
   title: string;
-  price: string;
+  price: number;
   productId?: string;
   onAddToCart?: () => void;
 }
@@ -23,7 +23,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const goToProductDetail = () => {
     if (productId) {
       const numericId = extractShopifyNumericId(productId);
-      router.push(`/shop/products/${numericId}`);
+      router.push(`/products/${numericId}`);
     }
   };
 
@@ -50,7 +50,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         priority={true}
       />
       <div className="text-lg font-semibold mb-1 text-center text-gray-100">{title}</div>
-      <div className="text-green-400 font-bold text-base my-2">${price}</div>
+      <div className="text-green-400 font-bold text-base my-2">${formatThousands(price)}</div>
       {onAddToCart && (
         <button
           className="mt-auto px-4 py-2 cursor-pointer bg-blue-500 text-gray-100 rounded hover:bg-blue-600 font-semibold transition-colors z-10"
