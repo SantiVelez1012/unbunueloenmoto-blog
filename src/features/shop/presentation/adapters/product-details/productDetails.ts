@@ -10,8 +10,8 @@ export interface ProductViewModel {
   imageUrl: string | null;
   imageAlt: string | null;
   price: {
-    min: string;
-    max: string;
+    min: number;
+    max: number;
     currency: string;
   };
   variant: {
@@ -35,8 +35,8 @@ export function mapProductDetailsToViewModel(response: ProductDetailsResponse): 
     imageUrl: product.images.edges[0]?.node.url ?? null,
     imageAlt: product.images.edges[0]?.node.altText ?? null,
     price: {
-      min: product.priceRange.minVariantPrice.amount,
-      max: product.priceRange.maxVariantPrice.amount,
+      min: Math.floor(Number(product.priceRange.minVariantPrice.amount)),
+      max: Math.floor(Number(product.priceRange.maxVariantPrice.amount)),
       currency: product.priceRange.minVariantPrice.currencyCode
     },
     variant: product.variants.edges[0] ? {

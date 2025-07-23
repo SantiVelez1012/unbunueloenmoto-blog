@@ -1,16 +1,14 @@
 import { CartItem } from '@/features/shop/domain/entities/cartItem';
-import { useCartStore } from '@/features/shop/infrastructure/state/cartStore';
 import React from 'react';
 import Image from 'next/image';
-import { Trash2 } from 'lucide-react';
+import { formatThousands } from '../../utils/productUtils';
+import RemoveFromCartButton from './remove-button/removeFromCartButton';
 
 interface SidebarCartItemProps {
     item: CartItem;
 }
 
 function SidebarCartItem({ item }: SidebarCartItemProps) {
-
-    const removeItem = useCartStore(state => state.removeItem);
 
     return (
         <div key={item.id} className="card card-side bg-base-100 shadow-md">
@@ -21,16 +19,10 @@ function SidebarCartItem({ item }: SidebarCartItemProps) {
                 <div className="flex-1">
                     <div className="font-semibold text-base">{item.title}</div>
                     <div className="text-sm text-gray-400">
-                        {item.quantity} x <span className="font-bold">{item.currency} {Number(item.price).toFixed(2)}</span>
+                        {item.quantity} x <span className="font-bold">{item.currency} {formatThousands(item.price)}</span>
                     </div>
                 </div>
-                <button
-                    className="btn btn-square btn-outline btn-error btn-xs"
-                    aria-label={`Eliminar ${item.title}`}
-                    onClick={() => removeItem(item.id)}
-                >
-                    <Trash2 className='h-4 w-4' />
-                </button>
+               <RemoveFromCartButton item={item} />
             </div>
         </div>
     )
