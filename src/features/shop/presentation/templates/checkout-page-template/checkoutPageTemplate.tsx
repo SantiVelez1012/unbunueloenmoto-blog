@@ -5,9 +5,32 @@ import OrderSummary from '../../components/order-summary/orderSummary'
 import CheckoutForm from '../../components/checkout-form/checkoutForm'
 import { useCartStore } from '@/features/shop/infrastructure/state/cartStore'
 import Link from 'next/link'
+import { CheckoutFormInputs } from '../../models/checkoutModel';
+import { CreateOrderUseCase } from '@/features/shop/domain/use-cases/create-order-use-case/createOrderUseCase'
 
 function CheckoutPageTemplate() {
     const itemsCount = useCartStore((state) => state.items).length;
+    const items = useCartStore(state => state.items);
+
+    const useCase = new CreateOrderUseCase();
+
+
+    function sendInfo( data: CheckoutFormInputs ) {
+        console.log("Información del cliente:", data);
+        useCase.execute(data)
+            .then(response => {
+                if (response.ok) {
+                    console.log("Orden creada exitosamente");
+
+                } else {
+                    console.error("Error al crear la orden:", response.statusText);
+                }
+            })
+            .catch(error => {
+                console.error("Error al enviar la información:", error);
+            });
+        console.log("Carrito de compras:", items);
+    }
 
 
     if(itemsCount === 0) {
@@ -29,7 +52,7 @@ function CheckoutPageTemplate() {
             </span>
 
             <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
-                <CheckoutForm />
+                <CheckoutForm submit={sendInfo} />
                 <OrderSummary />
             </div>
         </section>

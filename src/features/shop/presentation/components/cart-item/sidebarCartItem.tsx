@@ -1,7 +1,7 @@
 import { CartItem } from '@/features/shop/domain/entities/cartItem';
 import React from 'react';
 import Image from 'next/image';
-import { formatThousands } from '../../utils/productUtils';
+import { formatThousands } from '../../../domain/utils/productUtils';
 import RemoveFromCartButton from './remove-button/removeFromCartButton';
 
 interface SidebarCartItemProps {

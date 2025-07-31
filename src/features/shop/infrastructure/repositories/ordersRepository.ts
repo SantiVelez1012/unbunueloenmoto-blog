@@ -1,3 +1,5 @@
+import { OrderCreateRequest } from "../../domain/entities/orderCreateRequest";
+
 export abstract class OrdersRepository {
-    abstract createOrder(): Promise<any>;
+    abstract createOrder(request: OrderCreateRequest): Promise<any>;
 };

@@ -1,8 +1,8 @@
 export class OrdersQueries {
 
     static orderCreateMutation = `
-        mutation orderCreate($input: OrderCreateInput!) {
-            orderCreate(input: $input) {
+        mutation orderCreate($order: OrderCreateOrderInput!) {
+            orderCreate(order: $order) {
                 order {
                     id
                     name
@@ -15,5 +15,24 @@ export class OrdersQueries {
             }
         }
     `;
+
+
+    static getVariantIdQuery = `
+        query getVariants($ids: [ID!]!) {
+        nodes(ids: $ids) {
+            ... on Product {
+            id
+            variants(first: 1) {
+                edges {
+                node {
+                    id
+                    title
+                }
+                }
+            }
+            }
+        }
+        }
+  `;
 
 }

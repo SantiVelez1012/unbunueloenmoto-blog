@@ -4,31 +4,23 @@ import { useGetDepartments } from '@/features/shared/presentation/hooks/use-get-
 import React, { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import FormSelect from '../form-select/formSelect';
-import { SelectFormValue } from '@/features/shared/presentation/entities/formsEntities';
 import { useGetCitiesByDepartment } from '@/features/shared/presentation/hooks/use-get-cities-by-department/useGetCitiesByDepartment';
+import { CheckoutFormInputs } from '../../models/checkoutModel';
 
-type FormInputs = {
-    email: string;
-    firstName: string;
-    lastName: string;
-    address: string;
-    city: string;
-    state: SelectFormValue;
-    country: string;
-    phone: string;
-    additionalNotes: string;
-}
+type CheckoutFormProps = {
+    submit: (data: CheckoutFormInputs) => void;
+};
 
-export default function CheckoutForm() {
+export default function CheckoutForm({ submit }: CheckoutFormProps) {
 
     const { departments, isLoading } = useGetDepartments();
 
     const { isLoading: citiesLoading, cities, getCitiesByDepartment } = useGetCitiesByDepartment();
 
-    const { control, register, handleSubmit, watch, resetField, formState: { errors } } = useForm<FormInputs>();
+    const { control, register, handleSubmit, watch, resetField, formState: { errors } } = useForm<CheckoutFormInputs>();
 
 
-    const onSubmit: SubmitHandler<FormInputs> = (data) => console.log(data);
+    const onSubmit: SubmitHandler<CheckoutFormInputs> = (data) => submit!(data);
 
     const stateValue = watch("state")?.value;
     useEffect(() => {
@@ -116,7 +108,20 @@ export default function CheckoutForm() {
                 )}
             </div>
             <div>
-                <FormSelect name='state' control={control} options={departments} isLoading={isLoading} placeholder='Selecciona un departamento...' />
+                <input
+                    type="text"
+                    placeholder="País*"
+                    value="Colombia"
+                    className="form-control input input-bordered w-full"
+                    {...register("country", { required: true })}
+                    readOnly
+                />
+                {errors.country && (
+                    <span className="text-error text-sm mt-1">Este campo es obligatorio</span>
+                )}
+            </div>
+            <div>
+                <FormSelect name='state' disabled={false} control={control} options={departments} isLoading={isLoading} placeholder='Selecciona un departamento...' />
                 {errors.state && (
                     <span className="text-error text-sm mt-1">Este campo es obligatorio</span>
                 )}
@@ -124,7 +129,7 @@ export default function CheckoutForm() {
 
 
             <div>
-                <FormSelect name='city' control={control} options={cities} isLoading={citiesLoading} placeholder='Selecciona tu ciudad...' />
+                <FormSelect name='city' disabled={false} control={control} options={cities} isLoading={citiesLoading} placeholder='Selecciona tu ciudad...' />
                 {errors.city && (
                     <span className="text-error text-sm mt-1">Este campo es obligatorio</span>
                 )}

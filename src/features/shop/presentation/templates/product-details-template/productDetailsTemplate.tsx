@@ -6,7 +6,7 @@ import React from 'react';
 import { ProductViewModel } from '../../adapters/product-details/productDetails';
 import { CartItem } from '@/features/shop/domain/entities/cartItem';
 import { showToast } from '@/features/shared/presentation/utils/triggerToast';
-import { formatThousands } from '../../utils/productUtils';
+import { formatThousands } from '../../../domain/utils/productUtils';
 
 type ProductDetailsTemplateProps = {
     product: ProductViewModel;
