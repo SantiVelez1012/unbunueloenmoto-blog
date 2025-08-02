@@ -1,5 +1,4 @@
 import { CheckoutFormInputs } from "@/features/shop/presentation/models/checkoutModel";
-import { useCartStore } from "@/features/shop/infrastructure/state/cartStore";
 import { generateOrder, transformClientInfo } from "@/features/shop/presentation/utils/checkoutUtils";
 import { OrderCreateRequest } from "../../entities/orderCreateRequest";
 import { ResolveVariantIdsUseCase } from "./resolveVariantIdsUseCase";
@@ -9,7 +8,7 @@ export class CreateOrderUseCase {
 
     private resolveIdsUsecase = new ResolveVariantIdsUseCase();
 
-    async execute(clientData: CheckoutFormInputs, cart: CartItem[]): Promise<any> {
+    async execute(clientData: CheckoutFormInputs, cart: CartItem[]): Promise<Response> {
 
         const clientInfo = transformClientInfo(clientData);
 

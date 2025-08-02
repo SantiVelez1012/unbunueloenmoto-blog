@@ -1,7 +1,7 @@
 import { CartItem } from "../entities/cartItem";
 import { CheckoutItem } from "../entities/checkoutItem";
 
-export function transformCartProductsToCheckoutModel(cart: CartItem[], variantIds: Record<string, string>): CheckoutItem[] {
+export function transformCartProductsToCheckoutModel(cart: CartItem[]): CheckoutItem[] {
 
     return cart.map(item => ({
         variantId: item.id,

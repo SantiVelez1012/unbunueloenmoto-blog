@@ -1,3 +1,4 @@
+import { ClientResponse } from "@shopify/admin-api-client";
 import { AdminHttpClient } from "../../infrastructure/api/admin-http-client";
 import { OrdersQueries } from "../../infrastructure/constants/orders-queries";
 import { OrdersRepository } from "../../infrastructure/repositories/ordersRepository";
@@ -7,7 +8,7 @@ export class OrdersRepositoryImpl implements OrdersRepository {
 
     private adminHttpClient = AdminHttpClient.getInstance();
 
-    async createOrder( request: OrderCreateRequest ): Promise<any> {
+    async createOrder( request: OrderCreateRequest ): Promise<ClientResponse> {
         return await this.adminHttpClient.client.request(OrdersQueries.orderCreateMutation, request).then((response) => {
             return response;
         }).catch((error) => {
