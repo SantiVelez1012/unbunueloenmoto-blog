@@ -2,8 +2,10 @@ import { ProductDetailsResponse } from "../entities/product-details/productDetai
 import { ProductListResponse } from "../entities/product-list/productsListResponse";
 
 export abstract class ProductsRepository {
-    
-   abstract getAllProducts(first: number, after?: string): Promise<ProductListResponse>;
+
+    abstract getAllProducts(first: number, after?: string): Promise<ProductListResponse>;
 
     abstract getProductById(id: string): Promise<ProductDetailsResponse>;
+
+    abstract getProductsVariantIds(productIds: string[]): Promise<Record<string, string>>;
 };

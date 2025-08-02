@@ -11,11 +11,13 @@ type FormSelectProps = {
     isLoading?: boolean;
     placeholder?: string;
     isClearable?: boolean;
+    disabled: boolean;
+    defaultValue?: SelectFormValue | null;
     /* eslint-disable-next-line */
     control: Control<any>;
 }
 
-function FormSelect({ name, options, isLoading, placeholder, isClearable, control }: FormSelectProps) {
+function FormSelect({ name, options, isLoading, placeholder, isClearable, control, disabled, defaultValue }: FormSelectProps) {
     return (
         <Controller
             name={name}
@@ -23,6 +25,8 @@ function FormSelect({ name, options, isLoading, placeholder, isClearable, contro
             rules={{ required: true }}
             render={({ field }) => (
                 <Select
+                    isDisabled={disabled}
+                    defaultValue={defaultValue}
                     options={options}
                     isLoading={isLoading}
                     placeholder={placeholder}

@@ -82,4 +82,23 @@ export class ShopifyQueries {
       }
     }
   `;
+
+
+  static getVariantIdsQuery = `
+        query getVariants($ids: [ID!]!) {
+        nodes(ids: $ids) {
+            ... on Product {
+            id
+            variants(first: 1) {
+                edges {
+                node {
+                    id
+                    title
+                }
+                }
+            }
+            }
+        }
+        }
+  `;
 }
