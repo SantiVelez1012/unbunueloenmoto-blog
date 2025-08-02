@@ -17,22 +17,4 @@ export class OrdersQueries {
     `;
 
 
-    static getVariantIdQuery = `
-        query getVariants($ids: [ID!]!) {
-        nodes(ids: $ids) {
-            ... on Product {
-            id
-            variants(first: 1) {
-                edges {
-                node {
-                    id
-                    title
-                }
-                }
-            }
-            }
-        }
-        }
-  `;
-
 }

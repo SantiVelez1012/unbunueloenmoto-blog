@@ -1,5 +1,4 @@
-import { transformCartProductsToCheckoutModel } from "../../domain/adapters/productAdapter";
-import { CartItem } from "../../domain/entities/cartItem";
+import { CheckoutItem } from "../../domain/entities/checkoutItem";
 import { OrderCheckout } from "../../domain/entities/order";
 import { CheckoutFormInputs, CheckoutModel } from "../models/checkoutModel";
 
@@ -8,8 +7,8 @@ export function transformClientInfo(clientInfo: CheckoutFormInputs): CheckoutMod
         firstName: clientInfo.firstName,
         lastName: clientInfo.lastName,
         address1: clientInfo.address,
-        city: clientInfo.city.value,
-        province: clientInfo.state.value,
+        city: clientInfo.city.label,
+        province: clientInfo.state.label,
         country: clientInfo.country,
         phone: clientInfo.phone,
     };
@@ -17,11 +16,10 @@ export function transformClientInfo(clientInfo: CheckoutFormInputs): CheckoutMod
 }
 
 
-export function generateOrder( clientInfo: CheckoutModel, cart: CartItem[], email: string, additionalNotes: string ): OrderCheckout{
-    const products = transformCartProductsToCheckoutModel(cart);
+export function generateOrder( clientInfo: CheckoutModel, cart: CheckoutItem[], email: string, additionalNotes: string ): OrderCheckout{
     return {
         email: email,
-        lineItems: products,
+        lineItems: cart,
         shippingAddress: clientInfo,
         billingAddress: clientInfo,
         note: additionalNotes,

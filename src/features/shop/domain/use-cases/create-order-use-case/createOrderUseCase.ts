@@ -2,17 +2,28 @@ import { CheckoutFormInputs } from "@/features/shop/presentation/models/checkout
 import { useCartStore } from "@/features/shop/infrastructure/state/cartStore";
 import { generateOrder, transformClientInfo } from "@/features/shop/presentation/utils/checkoutUtils";
 import { OrderCreateRequest } from "../../entities/orderCreateRequest";
+import { ResolveVariantIdsUseCase } from "./resolveVariantIdsUseCase";
+import { CartItem } from "../../entities/cartItem";
 
 export class CreateOrderUseCase {
 
-    cart = useCartStore((state) => state.items);
+    private resolveIdsUsecase = new ResolveVariantIdsUseCase();
 
-
-    async execute(clientData: CheckoutFormInputs): Promise<any> {
+    async execute(clientData: CheckoutFormInputs, cart: CartItem[]): Promise<any> {
 
         const clientInfo = transformClientInfo(clientData);
 
-        const order = generateOrder(clientInfo, this.cart, clientData.email, clientData.additionalNotes);
+        const products = await this.resolveIdsUsecase.execute(cart);
+
+        const solvedProducts = cart.map(item => {
+            const variantId = products[item.id];
+            return {
+                variantId: variantId ? variantId : item.id,
+                quantity: item.quantity,
+            };
+        });
+
+        const order = generateOrder(clientInfo, solvedProducts, clientData.email, clientData.additionalNotes);
 
         const request: OrderCreateRequest = {
             variables: { order: order }
