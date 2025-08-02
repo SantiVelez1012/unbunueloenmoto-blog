@@ -16,6 +16,41 @@ async function getProduct(id: string) {
   return res.json();
 }
 
+// Generate metadata for SEO and social sharing
+export async function generateMetadata({ params }: ProductDetailPageProps) {
+  const { id } = await params;
+  try {
+    const productResponse = await getProduct(id);
+    const product = mapProductDetailsToViewModel(productResponse);
+
+    return {
+      title: product.title,
+      description: product.description,
+      openGraph: {
+        title: product.title,
+        description: product.description,
+        images: [
+          {
+            url: product.imageUrl,
+            alt: product.imageAlt || product.title,
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: product.title,
+        description: product.description,
+        images: [product.imageUrl],
+      },
+    };
+  } catch {
+    return {
+      title: "Producto no encontrado",
+      description: "No se pudo cargar el producto.",
+    };
+  }
+}
+
 export default async function Page({ params }: ProductDetailPageProps) {
   const { id } = await params;
   let product: ProductViewModel;

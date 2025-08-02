@@ -3,7 +3,7 @@
 import { useCartStore } from '@/features/shop/infrastructure/state/cartStore'
 import React from 'react'
 import SummaryCartItem from '../cart-item/summaryCartItem';
-import { formatThousands } from '../../utils/productUtils';
+import { formatThousands } from '../../../domain/utils/productUtils';
 
 function OrderSummary() {
     const cartItems = useCartStore(state => state.items);

@@ -1,3 +1,5 @@
+import { ClientResponse } from "@shopify/admin-api-client";
+import { AdminHttpClient } from "../../infrastructure/api/admin-http-client";
 import { ShopifyHttpClient } from "../../infrastructure/api/shopify-http-client";
 import { ShopifyQueries } from "../../infrastructure/constants/queries";
 import { ProductDetailsResponse } from "../../infrastructure/entities/product-details/productDetailsResponse";
@@ -6,6 +8,7 @@ import { ProductsRepository } from "../../infrastructure/repositories/productsRe
 
 export class ProductsRepositoryImpl implements ProductsRepository {
     private shopifyHttpClient = ShopifyHttpClient.getInstance();
+    private adminHttpClient = AdminHttpClient.getInstance();
 
     async getAllProducts(
         first: number = 20,
@@ -42,5 +45,23 @@ export class ProductsRepositoryImpl implements ProductsRepository {
 
 
     }
-        
+
+    async getProductsVariantIds(productIds: string[]): Promise<Record<string, string>> {
+        const response: ClientResponse = await this.adminHttpClient.client.request(ShopifyQueries.getVariantIdsQuery, {
+            variables: {
+                ids: productIds
+            }
+        });
+
+        const result: Record<string, string> = {};
+
+        for (const node of response.data.nodes) {
+            if (node?.variants?.edges?.length > 0) {
+                result[node.id] = node.variants.edges[0].node.id;
+            }
+        }
+
+        return result;
+    }
+
 }

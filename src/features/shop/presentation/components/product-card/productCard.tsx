@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { extractShopifyNumericId, formatThousands } from '../../utils/productUtils';
+import { extractShopifyNumericId, formatThousands } from '../../../domain/utils/productUtils';
 
 interface ProductCardProps {
   image: string;
