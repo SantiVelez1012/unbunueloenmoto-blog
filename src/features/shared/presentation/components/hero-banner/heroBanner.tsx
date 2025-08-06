@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import { HeroBannerInfo } from '../../models/hero-banner-info/heroBannerInfo';
+import { HeroBannerInfo } from '@/features/blog/presentation/models/hero-banner-info/heroBannerInfo';
+
 
 type HeroBannerProps = {
     info: HeroBannerInfo;

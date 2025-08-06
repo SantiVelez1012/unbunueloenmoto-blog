@@ -1,7 +1,6 @@
 "use client";
 
-import React from 'react'
-import HeroBanner from '../../components/hero-banner/heroBanner';
+import React from 'react';
 
 import PostCard from '../../components/post-card/postCard';
 import LatestPostsSkeleton from '../../components/latest-posts-skeleton/latestPostsSkeleton';
@@ -13,6 +12,7 @@ import { useRouter } from 'next/navigation';
 import SocialMedia from '../../components/social-media/socialMedia';
 import { useGetLatestPosts } from '../../hooks/get-latest-posts/useGetLatestPosts';
 import { useGetSubscribersCount } from '../../hooks/get-subscribers-count/useGetSubscribersCount';
+import HeroBanner from '@/features/shared/presentation/components/hero-banner/heroBanner';
 
 function BlogHomePage() {
 
