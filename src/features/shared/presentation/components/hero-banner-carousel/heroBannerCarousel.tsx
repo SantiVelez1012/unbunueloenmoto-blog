@@ -2,7 +2,6 @@ import React from 'react';
 import { HeroBannerInfo } from '../../entities/hero-banner-info/heroBannerInfo';
 import HeroBanner from '../hero-banner/heroBanner';
 import { Carousel } from '../carousel';
-import { Link } from 'lucide-react';
 
 type HeroBannerCarouselProps = {
     banners: HeroBannerInfo[];
