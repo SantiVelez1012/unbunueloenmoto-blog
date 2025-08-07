@@ -6,7 +6,7 @@ export async function GET() {
   const productsRepository = new ProductsRepositoryImpl();
   try {
     const useCase = new GetAllProductsUseCase(productsRepository);
-    const data = await useCase.execute(20);
+    const data = await useCase.execute(50);
     return NextResponse.json(data);
   } catch (error) {
     return NextResponse.json({ error: error }, { status: 500 });

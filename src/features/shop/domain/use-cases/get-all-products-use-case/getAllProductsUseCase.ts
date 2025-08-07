@@ -9,7 +9,7 @@ export class GetAllProductsUseCase {
         this.productsRepository = productsRepository;
     }
 
-    async execute(first: number = 20, after?: string): Promise<ProductListResponse> {
+    async execute(first: number = 40, after?: string): Promise<ProductListResponse> {
         return this.productsRepository.getAllProducts(first, after)
             .then((response) => {
                 return response;

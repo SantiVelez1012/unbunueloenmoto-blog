@@ -1,7 +1,7 @@
 export class ShopifyQueries {
 
   static getAllProductsQuery = `
-      query GetAllProducts($first: Int = 20, $after: String) {
+      query GetAllProducts($first: Int, $after: String) {
         products(first: $first, after: $after) {
           pageInfo {
             hasNextPage
