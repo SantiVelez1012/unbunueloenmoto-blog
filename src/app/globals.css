@@ -121,3 +121,28 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Carousel animations */
+@keyframes carousel-progress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Smooth carousel transitions */
+@utility carousel-smooth {
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Carousel fade effect utility */
+@utility carousel-fade {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+@utility carousel-fade-active {
+  opacity: 1;
+}

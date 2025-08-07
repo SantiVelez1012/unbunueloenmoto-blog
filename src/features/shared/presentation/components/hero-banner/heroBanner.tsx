@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import { HeroBannerInfo } from '@/features/blog/presentation/models/hero-banner-info/heroBannerInfo';
+import Link from 'next/link';
+import { HeroBannerInfo } from '@/features/shared/presentation/entities/hero-banner-info/heroBannerInfo';
 
 
 type HeroBannerProps = {
@@ -8,9 +9,9 @@ type HeroBannerProps = {
 }
 
 function HeroBanner({ info }: HeroBannerProps) {
-    return (
+    const BannerContent = (
         <div
-            className="hero min-h-[600px] h-full bg-base-300 relative"
+            className="hero min-h-[600px] h-full bg-base-300 relative cursor-pointer"
         >
             <Image src={info.imageUrl} alt={info.imageAlt} fill priority className='min-h-[600px] w-full z-0 bg-cover object-cover' />
             <div className="hero-overlay z-1"></div>
@@ -23,7 +24,11 @@ function HeroBanner({ info }: HeroBannerProps) {
                 </div>
             </div>
         </div>
-    )
+    );
+
+    return info.link
+        ? <Link href={info.link}>{BannerContent}</Link>
+        : BannerContent;
 }
 
-export default HeroBanner
+export default HeroBanner;
