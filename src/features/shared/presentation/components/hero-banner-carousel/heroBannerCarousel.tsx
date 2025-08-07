@@ -11,7 +11,7 @@ function HeroBannerCarousel({ banners }: HeroBannerCarouselProps) {
     return (
         <Carousel>
             {banners.map((banner) => (
-                <HeroBanner info={banner} />
+                <HeroBanner info={banner} key={banner.title} />
             ))}
 
         </Carousel>
