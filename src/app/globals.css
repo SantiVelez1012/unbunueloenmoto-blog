@@ -133,16 +133,16 @@
 }
 
 /* Smooth carousel transitions */
-@utility carousel-smooth {
+.carousel-smooth {
   transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Carousel fade effect utility */
-@utility carousel-fade {
+.carousel-fade {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
 }
 
-@utility carousel-fade-active {
+.carousel-fade-active {
   opacity: 1;
 }

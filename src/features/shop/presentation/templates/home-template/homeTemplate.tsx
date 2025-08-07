@@ -56,7 +56,7 @@ function HomePageTemplate() {
 
   return (
     <div className="min-h-screen bg-base-200 mb-10">
-      <div className="w-full mb-15">
+      <div className="w-full mb-16">
         <HeroBannerCarousel banners={ShopCopies.SHOP_BANNER_CAROUSEL} />
       </div>
 

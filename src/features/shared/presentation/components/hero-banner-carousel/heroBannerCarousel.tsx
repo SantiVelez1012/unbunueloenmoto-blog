@@ -10,8 +10,8 @@ type HeroBannerCarouselProps = {
 function HeroBannerCarousel({ banners }: HeroBannerCarouselProps) {
     return (
         <Carousel>
-            {banners.map((banner, index) => (
-                <HeroBanner info={banner} key={index} />
+            {banners.map((banner) => (
+                <HeroBanner info={banner} />
             ))}
 
         </Carousel>
