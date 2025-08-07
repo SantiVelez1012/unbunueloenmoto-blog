@@ -3,4 +3,5 @@ export type HeroBannerInfo = {
     description: string;
     imageUrl: string;
     imageAlt: string;
+    link?: string;
 }
