@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { extractShopifyNumericId, formatThousands } from '../../../domain/utils/productUtils';
+import { ShoppingCart } from 'lucide-react';
 
 interface ProductCardProps {
   image: string;
@@ -28,40 +29,65 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   };
 
   return (
-    <div
-      className="bg-gray-900 border border-gray-700 rounded-lg shadow-md p-4 max-w-xs flex flex-col items-center cursor-pointer transition-transform duration-200 hover:scale-105 hover:shadow-xl group focus:outline-none focus:ring-2 focus:ring-blue-500"
-      onClick={goToProductDetail}
-      tabIndex={0}
-      role="button"
-      aria-label={`Ver detalles de ${title}`}
-      onKeyDown={e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          goToProductDetail();
-        }
-      }}
-    >
-      <Image
-        src={image}
-        alt={title}
-        className="w-full h-[250px] object-cover rounded-md mb-3 group-hover:opacity-90 transition-opacity"
-        width={176}
-        height={176}
-        priority={true}
-      />
-      <div className="text-lg font-semibold mb-1 text-center text-gray-100">{title}</div>
-      <div className="text-green-400 font-bold text-base my-2">${formatThousands(price)}</div>
-      {onAddToCart && (
-        <button
-          className="mt-auto px-4 py-2 cursor-pointer bg-blue-500 text-gray-100 rounded hover:bg-blue-600 font-semibold transition-colors z-10"
-          onClick={e => {
-            e.stopPropagation();
-            onAddToCart();
+    <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group overflow-hidden">
+      <figure className="relative overflow-hidden">
+        <Image
+          src={image}
+          alt={title}
+          className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+          width={400}
+          height={256}
+          priority={true}
+        />
+      </figure>
+
+      <div className="card-body p-6">
+        <h3
+          className="card-title text-lg font-bold text-base-content line-clamp-2 cursor-pointer hover:text-base-content/60 transition-colors duration-200"
+          onClick={goToProductDetail}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              goToProductDetail();
+            }
           }}
         >
-          Agregar al carrito
-        </button>
-      )}
+          {title}
+        </h3>
+        <div className="flex items-center justify-between mt-2">
+          <div className="flex flex-col">
+            <span className="text-2xl font-bold text-base-content">
+              ${formatThousands(price)}
+            </span>
+            <span className="text-sm text-base-content/60">COP</span>
+          </div>
+        </div>
+        <div className="card-actions justify-between items-center mt-4">
+          <button
+            className="btn btn-outline btn-sm"
+            onClick={(e) => {
+              e.stopPropagation();
+              goToProductDetail();
+            }}
+          >
+            Ver detalles
+          </button>
+          {onAddToCart && (
+            <button
+              className="btn btn-primary btn-sm gap-2 flex-1 ml-2"
+              onClick={(e) => {
+                e.stopPropagation();
+                onAddToCart();
+              }}
+            >
+              <ShoppingCart size={16} />
+              Agregar
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
