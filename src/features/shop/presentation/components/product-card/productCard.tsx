@@ -39,25 +39,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           height={256}
           priority={true}
         />
-        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-          <div className="flex gap-3">
-            <button
-              className="btn btn-circle btn-primary btn-sm shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100"
-              onClick={(e) => {
-                e.stopPropagation();
-                goToProductDetail();
-              }}
-              aria-label={`Ver detalles de ${title}`}
-            >
-              <Eye size={16} />
-            </button>
-          </div>
-        </div>
       </figure>
 
       <div className="card-body p-6">
         <h3 
-          className="card-title text-lg font-bold text-base-content line-clamp-2 cursor-pointer hover:text-primary transition-colors duration-200"
+          className="card-title text-lg font-bold text-base-content line-clamp-2 cursor-pointer hover:text-base-content/60 transition-colors duration-200"
           onClick={goToProductDetail}
         >
           {title}
