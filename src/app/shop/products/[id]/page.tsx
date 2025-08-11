@@ -16,7 +16,6 @@ async function getProduct(id: string) {
   return res.json();
 }
 
-// Generate metadata for SEO and social sharing
 export async function generateMetadata({ params }: ProductDetailPageProps) {
   const { id } = await params;
   try {
