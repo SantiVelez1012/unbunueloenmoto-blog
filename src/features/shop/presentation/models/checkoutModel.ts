@@ -1,4 +1,4 @@
-import { SelectFormValue } from "@/features/shared/presentation/entities/formsEntities";
+import { SelectFormValue } from '@/features/shared/presentation/entities/formsEntities';
 
 export interface CheckoutFormInputs{
     email: string;

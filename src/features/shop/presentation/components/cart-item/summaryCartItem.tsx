@@ -3,7 +3,8 @@ import React from 'react';
 import Image from 'next/image';
 import { formatThousands } from '../../../domain/utils/productUtils';
 import { useCartStore } from '@/features/shop/infrastructure/state/cartStore';
-import RemoveFromCartButton from './remove-button/removeFromCartButton';
+import { Trash2 } from 'lucide-react';
+import { showToast } from '@/features/shared/presentation/utils/triggerToast';
 
 type SummaryCartItemProps = {
     cartItem: CartItem;
@@ -19,7 +20,18 @@ function SummaryCartItem({ cartItem }: SummaryCartItemProps) {
                 <p className="text-sm text-gray-400">Precio unitario: $ {formatThousands(cartItem.price)}</p>
                 <p className="text-sm text-gray-500">Cantidad: {cartItem.quantity}</p>
                 <section className='mt-2'>
-                    <RemoveFromCartButton item={cartItem} />
+                    <button
+                        className="btn btn-xs btn-outline btn-error"
+                        aria-label={`Eliminar ${cartItem.title}`}
+                        onClick={() => {
+                            const removeItem = useCartStore.getState().removeItem;
+                            removeItem(cartItem.id);
+                            showToast('Producto eliminado del carrito');
+                        }}
+                    >
+                        <Trash2 size={12} />
+                        Eliminar
+                    </button>
                 </section>
             </div>
             <p className="font-semibold">$ {formatThousands(totalPrice)}</p>

@@ -1,170 +1,222 @@
 "use client";
 
-import { useGetDepartments } from '@/features/shared/presentation/hooks/use-get-departments/useGetDepartments';
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import FormSelect from '../form-select/formSelect';
-import { useGetCitiesByDepartment } from '@/features/shared/presentation/hooks/use-get-cities-by-department/useGetCitiesByDepartment';
 import { CheckoutFormInputs } from '../../models/checkoutModel';
+import { SelectFormValue } from '@/features/shared/presentation/entities/formsEntities';
+import LocationSelector from '../location-selector/locationSelector';
 
 type CheckoutFormProps = {
     submit: (data: CheckoutFormInputs) => void;
 };
 
 export default function CheckoutForm({ submit }: CheckoutFormProps) {
+    const [selectedDepartment, setSelectedDepartment] = useState<SelectFormValue | null>(null);
+    const [selectedCity, setSelectedCity] = useState<SelectFormValue | null>(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const { departments, isLoading } = useGetDepartments();
+    const { register, handleSubmit, formState: { errors } } = useForm<CheckoutFormInputs>();
 
-    const { isLoading: citiesLoading, cities, getCitiesByDepartment } = useGetCitiesByDepartment();
-
-    const { control, register, handleSubmit, watch, resetField, formState: { errors } } = useForm<CheckoutFormInputs>();
-
-
-    const onSubmit: SubmitHandler<CheckoutFormInputs> = (data) => submit!(data);
-
-    const stateValue = watch("state")?.value;
-    useEffect(() => {
-        if (stateValue) {
-            resetField("city");
-            getCitiesByDepartment(stateValue);
+    const onSubmit: SubmitHandler<CheckoutFormInputs> = async (data) => {
+        if (!selectedDepartment || !selectedCity) {
+            return;
         }
-    }, [stateValue, getCitiesByDepartment, resetField]);
 
+        setIsSubmitting(true);
+        try {
+            const formData: CheckoutFormInputs = {
+                ...data,
+                state: selectedDepartment,
+                city: selectedCity
+            };
+            await submit(formData);
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
+    const getDepartmentError = () => {
+        return !selectedDepartment ? 'Este campo es obligatorio' : undefined;
+    };
+
+    const getCityError = () => {
+        return selectedDepartment && !selectedCity ? 'Este campo es obligatorio' : undefined;
+    };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 p-6">
-            <h2 className="text-2xl font-bold">Información de contacto</h2>
+        <div className="card bg-base-100 shadow-lg">
+            <div className="card-body">
+                <h2 className="card-title text-2xl mb-6">Información de contacto</h2>
+                
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                    {/* Email */}
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Correo electrónico *</span>
+                        </label>
+                        <input
+                            type="email"
+                            placeholder="tucorreo@email.com"
+                            className="input input-bordered w-full"
+                            {...register("email", {
+                                required: "Este campo es obligatorio",
+                                pattern: {
+                                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                    message: "Ingresa un correo electrónico válido"
+                                }
+                            })}
+                        />
+                        {errors.email && (
+                            <label className="label">
+                                <span className="label-text-alt text-error">{errors.email.message}</span>
+                            </label>
+                        )}
+                    </div>
 
-            <div className="form-control w-full">
-                <label className="label">
-                    <span className="label-text">Correo electrónico</span>
-                </label>
-                <input
-                    type="email"
-                    defaultValue=""
-                    placeholder="tucorreo@email.com"
-                    className="input input-bordered w-full"
-                    {...register("email", {
-                        required: true,
-                        pattern: {
-                            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                            message: "Ingresa un correo electrónico válido"
-                        }
-                    })}
-                />
-                {errors.email && (
-                    <span className="text-error text-sm mt-1">{errors.email.message ? "Ingresa un correo electrónico válido" : "Este campo es obligatorio"}</span>
-                )}
-            </div>
+                    <div className="divider">Dirección de envío</div>
 
-            <h2 className="text-2xl font-bold">Dirección de envío</h2>
+                    {/* Name fields */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Nombre *</span>
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Tu nombre"
+                                className="input input-bordered w-full"
+                                {...register("firstName", {
+                                    required: "Este campo es obligatorio"
+                                })}
+                            />
+                            {errors.firstName && (
+                                <label className="label">
+                                    <span className="label-text-alt text-error">{errors.firstName.message}</span>
+                                </label>
+                            )}
+                        </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                    <input
-                        type="text"
-                        placeholder="Nombre*"
-                        className="form-control input input-bordered w-full"
-                        {...register("firstName", {
-                            required: true,
-                            pattern: {
-                                value: /^[a-zA-ZÀ-ÿ' -]{2,}$/,
-                                message: "Ingresa un nombre válido"
-                            }
-                        })}
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Apellido *</span>
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Tu apellido"
+                                className="input input-bordered w-full"
+                                {...register("lastName", {
+                                    required: "Este campo es obligatorio"
+                                })}
+                            />
+                            {errors.lastName && (
+                                <label className="label">
+                                    <span className="label-text-alt text-error">{errors.lastName.message}</span>
+                                </label>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Address */}
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Dirección *</span>
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Calle, carrera, número, apartamento"
+                            className="input input-bordered w-full"
+                            {...register("address", { required: "Este campo es obligatorio" })}
+                        />
+                        {errors.address && (
+                            <label className="label">
+                                <span className="label-text-alt text-error">{errors.address.message}</span>
+                            </label>
+                        )}
+                    </div>
+
+                    {/* Country */}
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">País *</span>
+                        </label>
+                        <input
+                            type="text"
+                            value="Colombia"
+                            className="input input-bordered w-full"
+                            {...register("country", { required: true })}
+                            readOnly
+                        />
+                    </div>
+
+                    {/* Location Selector */}
+                    <LocationSelector
+                        selectedDepartment={selectedDepartment}
+                        selectedCity={selectedCity}
+                        onDepartmentChange={setSelectedDepartment}
+                        onCityChange={setSelectedCity}
+                        departmentError={getDepartmentError()}
+                        cityError={getCityError()}
+                        disabled={isSubmitting}
                     />
-                    {errors.firstName && (
-                        <span className="text-error text-sm mt-1">Este campo es obligatorio</span>
-                    )}
-                </div>
-                <div>
-                    <input
-                        type="text"
-                        placeholder="Apellido*"
-                        className="form-control input input-bordered w-full"
-                        {...register("lastName", {
-                            required: true,
-                            pattern: {
-                                value: /^[a-zA-ZÀ-ÿ' -]{2,}$/,
-                                message: "Ingresa un apellido válido"
-                            }
-                        })}
-                    />
-                    {errors.lastName && (
-                        <span className="text-error text-sm mt-1">Este campo es obligatorio</span>
-                    )}
-                </div>
-            </div>
 
-            <div>
-                <input
-                    type="text"
-                    placeholder="Dirección*"
-                    className="form-control input input-bordered w-full"
-                    {...register("address", { required: true })}
-                />
-                {errors.address && (
-                    <span className="text-error text-sm mt-1">Este campo es obligatorio</span>
-                )}
-            </div>
-            <div>
-                <input
-                    type="text"
-                    placeholder="País*"
-                    value="Colombia"
-                    className="form-control input input-bordered w-full"
-                    {...register("country", { required: true })}
-                    readOnly
-                />
-                {errors.country && (
-                    <span className="text-error text-sm mt-1">Este campo es obligatorio</span>
-                )}
-            </div>
-            <div>
-                <FormSelect name='state' disabled={false} control={control} options={departments} isLoading={isLoading} placeholder='Selecciona un departamento...' />
-                {errors.state && (
-                    <span className="text-error text-sm mt-1">Este campo es obligatorio</span>
-                )}
-            </div>
+                    {/* Phone */}
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Celular *</span>
+                        </label>
+                        <input
+                            type="tel"
+                            placeholder="3001234567"
+                            className="input input-bordered w-full"
+                            {...register("phone", {
+                                required: "Este campo es obligatorio",
+                                pattern: {
+                                    value: /^3\d{9}$/,
+                                    message: "Ingresa un número de celular colombiano válido (10 dígitos, empieza por 3)"
+                                }
+                            })}
+                        />
+                        {errors.phone && (
+                            <label className="label">
+                                <span className="label-text-alt text-error">{errors.phone.message}</span>
+                            </label>
+                        )}
+                    </div>
 
+                    {/* Additional notes */}
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Notas adicionales</span>
+                        </label>
+                        <textarea
+                            placeholder="Instrucciones especiales para la entrega..."
+                            className="textarea textarea-bordered w-full"
+                            rows={3}
+                            {...register("additionalNotes")}
+                        />
+                    </div>
 
-            <div>
-                <FormSelect name='city' disabled={false} control={control} options={cities} isLoading={citiesLoading} placeholder='Selecciona tu ciudad...' />
-                {errors.city && (
-                    <span className="text-error text-sm mt-1">Este campo es obligatorio</span>
-                )}
+                    {/* Submit button */}
+                    <div className="form-control mt-8">
+                        <button 
+                            type="submit" 
+                            className={`btn btn-primary btn-lg btn-modern w-full ${isSubmitting ? 'loading' : ''}`}
+                            disabled={isSubmitting || !selectedDepartment || !selectedCity}
+                        >
+                            {isSubmitting ? 'Procesando...' : 'Finalizar Pedido'}
+                        </button>
+                        {(!selectedDepartment || !selectedCity) && (
+                            <label className="label">
+                                <span className="label-text-alt text-warning text-center w-full">
+                                    Por favor completa todos los campos obligatorios
+                                </span>
+                            </label>
+                        )}
+                    </div>
+                </form>
             </div>
-
-            <div>
-                <input
-                    type="text"
-                    placeholder="Celular*"
-                    className="input input-bordered w-full"
-                    {...register("phone", {
-                        required: true,
-                        pattern: {
-                            value: /^3\d{9}$/,
-                            message: "Ingresa un número de celular colombiano válido (10 dígitos, empieza por 3)"
-                        }
-                    })}
-                />
-                {errors.phone && (
-                    <span className="text-error text-sm">
-                        {errors.phone.message ? errors.phone.message : "Este campo es obligatorio"}
-                    </span>
-                )}
-            </div>
-
-            <input
-                type="text"
-                placeholder="Notas Adicionales*"
-                className="w-full input input-bordered"
-                {...register("additionalNotes", { required: true })}
-            />
-
-            <div className="mt-6">
-                <button type='submit' className="btn btn-primary w-full">Finalizar Pedido</button>
-            </div>
-        </form>
-    )
+        </div>
+    );
 }

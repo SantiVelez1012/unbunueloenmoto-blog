@@ -9,12 +9,12 @@ export const useCartStore = create<CartState>((set, get) => ({
       set({
         items: get().items.map(i =>
           i.id === item.id
-            ? { ...i, quantity: i.quantity + item.quantity }
+            ? { ...i, quantity: i.quantity + Math.abs(item.quantity) }
             : i
         ),
       });
     } else {
-      set({ items: [...get().items, item] });
+      set({ items: [...get().items, { ...item, quantity: Math.abs(item.quantity) }] });
     }
   },
   getTotalPriceByProduct: (id: string) => {

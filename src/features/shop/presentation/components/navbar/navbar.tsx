@@ -1,69 +1,153 @@
 'use client';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { Menu, ShoppingCart, X, User } from 'lucide-react';
 import NavbarLinks from './nav-links/navbarLinks';
 import Cart from '../cart/cart';
-import Link from 'next/link';
+import ThemeToggle from '../theme-toggle/themeToggle';
+import { useCartStore } from '@/features/shop/infrastructure/state/cartStore';
 
 function Navbar({ children }: { children: React.ReactNode }) {
+    const [isScrolled, setIsScrolled] = useState(false);
+    const itemsCount = useCartStore((state) => state.items.length);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 20);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
-        <div data-theme="dark">
+        <div>
             <div className="drawer">
                 <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col">
-                    <div className="navbar bg-base-300 w-full">
+                    {/* Sticky Navbar */}
+                    <div className={`navbar sticky-navbar transition-all duration-300 ${
+                        isScrolled ? 'py-2 shadow-lg' : 'py-4'
+                    }`}>
+                        {/* Mobile menu button */}
                         <div className="flex-none lg:hidden">
-                            <label htmlFor="my-drawer-3" aria-label="open sidebar" className="btn btn-square btn-ghost">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    className="inline-block h-6 w-6 stroke-current"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M4 6h16M4 12h16M4 18h16"
-                                    ></path>
-                                </svg>
+                            <label htmlFor="my-drawer-3" aria-label="open sidebar" className="btn btn-ghost btn-circle">
+                                <Menu size={20} />
                             </label>
                         </div>
-                        <div className="flex flex-1 flex-row justify-items-center">
-                            <Link href="/shop" className="btn btn-ghost">
-                                <Image width={40} height={50} src="/logos/channel-logo.png" priority alt="logo" className="w-[100%] h-[40px]" />
+
+                        {/* Logo and brand */}
+                        <div className="flex flex-1 items-center gap-3">
+                            <Link href="/shop" className="btn btn-ghost hover:bg-transparent p-2">
+                                <Image 
+                                    width={40} 
+                                    height={40} 
+                                    src="/logos/channel-logo.png" 
+                                    priority 
+                                    alt="logo" 
+                                    className="w-10 h-10 object-contain" 
+                                />
                             </Link>
-                            <div className="mx-0 my-auto">Buñuelo Shop</div>
+                            <div className="hidden sm:block">
+                                <h1 className="text-xl font-bold text-gradient">Buñuelo Shop</h1>
+                                <p className="text-xs text-base-content/70">Equipamiento para motociclistas</p>
+                            </div>
                         </div>
-                        <div className='hidden flex-none lg:block'>
+
+                        {/* Desktop navigation */}
+                        <div className="hidden lg:flex flex-none">
                             <NavbarLinks />
                         </div>
-                        <div className="flex-none">
-                            <label htmlFor="cart-drawer" className="btn btn-ghost btn-circle mr-5">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-shopping-cart-icon lucide-shopping-cart"><circle cx="8" cy="21" r="1" /><circle cx="19" cy="21" r="1" /><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" /></svg>
-                            </label>
+
+                        {/* Action buttons */}
+                        <div className="flex flex-none items-center gap-2">
+                            {/* Theme toggle */}
+                            <ThemeToggle />
+
+                            {/* User account */}
+                            <div className="dropdown dropdown-end">
+                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+                                    <User size={20} />
+                                </div>
+                                <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow-lg border">
+                                    <li><a>Mi cuenta</a></li>
+                                    <li><a>Mis pedidos</a></li>
+                                    <li><a>Configuración</a></li>
+                                    <div className="divider my-1"></div>
+                                    <li><a>Cerrar sesión</a></li>
+                                </ul>
+                            </div>
+
+                            {/* Shopping cart */}
+                            <div className="indicator">
+                                {itemsCount > 0 && (
+                                    <span className="indicator-item badge badge-primary badge-sm">{itemsCount}</span>
+                                )}
+                                <label htmlFor="cart-drawer" className="btn btn-ghost btn-circle">
+                                    <ShoppingCart size={20} />
+                                </label>
+                            </div>
                         </div>
                     </div>
-                    {children}
+
+                    {/* Main content */}
+                    <main className="flex-1">
+                        {children}
+                    </main>
                 </div>
-                <div className="drawer-side z-10">
+
+                {/* Mobile sidebar */}
+                <div className="drawer-side z-40">
                     <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
-                    <ul className="menu bg-base-200 min-h-full w-80 p-4">
+                    <div className="menu bg-base-100 min-h-full w-80 p-4 shadow-xl">
+                        <div className="flex items-center justify-between mb-6">
+                            <div className="flex items-center gap-3">
+                                <Image 
+                                    width={32} 
+                                    height={32} 
+                                    src="/logos/channel-logo.png" 
+                                    alt="logo" 
+                                    className="w-8 h-8" 
+                                />
+                                <span className="text-lg font-bold">Buñuelo Shop</span>
+                            </div>
+                            <label htmlFor="my-drawer-3" className="btn btn-ghost btn-sm btn-circle">
+                                <X size={16} />
+                            </label>
+                        </div>
                         <NavbarLinks />
-                    </ul>
+                        <div className="divider"></div>
+                        <ul className="menu">
+                            <li><a><User size={16} /> Mi cuenta</a></li>
+                            <li><a>Mis pedidos</a></li>
+                            <li><a>Ayuda</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+
+            {/* Shopping cart drawer */}
             <div className="drawer drawer-end">
                 <input id="cart-drawer" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content"></div>
-                <div className="drawer-side z-20">
+                <div className="drawer-side z-50">
                     <label htmlFor="cart-drawer" aria-label="close cart" className="drawer-overlay"></label>
-                    <div className="menu bg-base-200 min-h-full w-80 p-4">
-                        <div className="flex justify-between items-center mb-4">
-                            <h2 className="text-xl font-bold">Carrito de compras</h2>
-                            <label htmlFor="cart-drawer" className="btn btn-sm btn-ghost">✕</label>
+                    <div className="bg-base-100 min-h-full w-96 shadow-2xl">
+                        <div className="sticky top-0 bg-base-100 border-b p-4 z-10">
+                            <div className="flex justify-between items-center">
+                                <h2 className="text-xl font-bold flex items-center gap-2">
+                                    <ShoppingCart size={20} />
+                                    Carrito de compras
+                                </h2>
+                                <label htmlFor="cart-drawer" className="btn btn-ghost btn-sm btn-circle">
+                                    <X size={16} />
+                                </label>
+                            </div>
                         </div>
-                        <Cart />
+                        <div className="p-4">
+                            <Cart />
+                        </div>
                     </div>
                 </div>
             </div>

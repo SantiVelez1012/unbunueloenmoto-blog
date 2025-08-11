@@ -3,11 +3,11 @@ import React from 'react';
 
 function ShopLayout({ children }: { children: React.ReactNode }) {
   return (
-    <main className='bg-base-200'>
+    <div className='min-h-screen bg-base-100'>
       <Navbar>
         {children}
       </Navbar>
-    </main>
+    </div>
   );
 }
 

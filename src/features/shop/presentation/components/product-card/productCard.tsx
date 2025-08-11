@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { ShoppingCart, Heart, Eye } from 'lucide-react';
 import { extractShopifyNumericId, formatThousands } from '../../../domain/utils/productUtils';
 
 interface ProductCardProps {
@@ -19,6 +20,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   onAddToCart,
 }) => {
   const router = useRouter();
+  const [isLiked, setIsLiked] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const goToProductDetail = () => {
     if (productId) {
@@ -27,41 +30,106 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     }
   };
 
+  const handleAddToCart = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (onAddToCart) {
+      setIsLoading(true);
+      await new Promise(resolve => setTimeout(resolve, 300)); // Simulate loading
+      onAddToCart();
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <div
-      className="bg-gray-900 border border-gray-700 rounded-lg shadow-md p-4 max-w-xs flex flex-col items-center cursor-pointer transition-transform duration-200 hover:scale-105 hover:shadow-xl group focus:outline-none focus:ring-2 focus:ring-blue-500"
-      onClick={goToProductDetail}
-      tabIndex={0}
-      role="button"
-      aria-label={`Ver detalles de ${title}`}
-      onKeyDown={e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          goToProductDetail();
-        }
-      }}
-    >
-      <Image
-        src={image}
-        alt={title}
-        className="w-full h-[250px] object-cover rounded-md mb-3 group-hover:opacity-90 transition-opacity"
-        width={176}
-        height={176}
-        priority={true}
-      />
-      <div className="text-lg font-semibold mb-1 text-center text-gray-100">{title}</div>
-      <div className="text-green-400 font-bold text-base my-2">${formatThousands(price)}</div>
-      {onAddToCart && (
-        <button
-          className="mt-auto px-4 py-2 cursor-pointer bg-blue-500 text-gray-100 rounded hover:bg-blue-600 font-semibold transition-colors z-10"
-          onClick={e => {
-            e.stopPropagation();
-            onAddToCart();
-          }}
+    <div className="card bg-base-100 shadow-lg hover-lift group cursor-pointer border border-base-300">
+      <figure className="relative overflow-hidden aspect-square">
+        <Image
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          width={300}
+          height={300}
+          priority={false}
+          onClick={goToProductDetail}
+        />
+        
+        {/* Overlay actions */}
+        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">
+          <button
+            className="btn btn-circle btn-primary btn-sm glass-card"
+            onClick={goToProductDetail}
+            aria-label={`Ver detalles de ${title}`}
+          >
+            <Eye size={16} />
+          </button>
+          <button
+            className={`btn btn-circle btn-sm glass-card ${isLiked ? 'btn-error' : 'btn-ghost'}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsLiked(!isLiked);
+            }}
+            aria-label={isLiked ? 'Quitar de favoritos' : 'Agregar a favoritos'}
+          >
+            <Heart size={16} fill={isLiked ? 'currentColor' : 'none'} />
+          </button>
+        </div>
+
+        {/* Badge */}
+        <div className="absolute top-3 left-3">
+          <div className="badge badge-primary badge-sm">Nuevo</div>
+        </div>
+      </figure>
+
+      <div className="card-body p-4">
+        <h3 
+          className="card-title text-base font-semibold line-clamp-2 cursor-pointer hover:text-primary transition-colors"
+          onClick={goToProductDetail}
         >
-          Agregar al carrito
-        </button>
-      )}
+          {title}
+        </h3>
+        
+        <div className="flex items-center justify-between mt-2">
+          <div className="flex flex-col">
+            <span className="text-2xl font-bold text-primary">
+              ${formatThousands(price)}
+            </span>
+            <span className="text-sm text-base-content/60 line-through">
+              ${formatThousands(Math.floor(price * 1.2))}
+            </span>
+          </div>
+          
+          <div className="rating rating-sm">
+            {[1, 2, 3, 4, 5].map((star) => (
+              <input
+                key={star}
+                type="radio"
+                name={`rating-${productId}`}
+                className="mask mask-star-2 bg-warning"
+                defaultChecked={star === 4}
+                readOnly
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="card-actions justify-between items-center mt-4">
+          <div className="flex items-center gap-1 text-sm text-base-content/60">
+            <span>🏍️</span>
+            <span>Para motociclistas</span>
+          </div>
+          
+          {onAddToCart && (
+            <button
+              className={`btn btn-primary btn-sm btn-modern gap-2 ${isLoading ? 'loading' : ''}`}
+              onClick={handleAddToCart}
+              disabled={isLoading}
+            >
+              {!isLoading && <ShoppingCart size={14} />}
+              {isLoading ? 'Agregando...' : 'Agregar'}
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
