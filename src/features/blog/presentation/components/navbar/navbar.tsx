@@ -12,7 +12,7 @@ function Navbar({
         <div className="drawer" data-theme="dark">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col">
-                <div className="navbar bg-base-300 w-full">
+                <div className="navbar bg-base-300 w-full sticky top-0 z-50">
                     <div className="flex-none lg:hidden">
                         <label htmlFor="my-drawer-3" aria-label="open sidebar" className="btn btn-square btn-ghost">
                             <svg
