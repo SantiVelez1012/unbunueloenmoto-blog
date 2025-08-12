@@ -57,7 +57,7 @@ function Navbar({ children }: { children: React.ReactNode }) {
                     </div>
                     {children}
                 </div>
-                <div className="drawer-side z-10">
+                <div className="drawer-side z-[100]">
                     <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
                     <ul className="menu bg-base-200 min-h-full w-80 p-4">
                         <NavbarLinks />
@@ -67,7 +67,7 @@ function Navbar({ children }: { children: React.ReactNode }) {
             <div className="drawer drawer-end mr-2">
                 <input id="cart-drawer" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content"></div>
-                <div className="drawer-side z-20">
+                <div className="drawer-side z-[100]">
                     <label htmlFor="cart-drawer" aria-label="close cart" className="drawer-overlay"></label>
                     <div className="menu bg-base-200 min-h-full w-80 p-4">
                         <div className="flex justify-between items-center mb-4">
