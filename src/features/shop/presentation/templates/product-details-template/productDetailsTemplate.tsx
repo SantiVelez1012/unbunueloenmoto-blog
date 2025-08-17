@@ -19,7 +19,7 @@ function ProductDetailsTemplate({ product }: ProductDetailsTemplateProps) {
 
     return (
         <div className="min-h-[100dvh] bg-base-200 flex items-center justify-center pb-10">
-            <div className="container mx-auto max-w-6xl bg-base-100 rounded-lg shadow-lg border border-base-300 p-0 md:p-8 flex flex-col md:flex-row gap-10">
+            <div className="sm:mx-10 md:mx-0 container mx-auto max-w-6xl bg-base-100 rounded-lg shadow-lg border border-base-300 p-0 md:p-8 flex flex-col md:flex-row gap-10">
                 <div className="flex-1 flex flex-col items-center justify-start">
                     <div className="bg-base-100 rounded-lg border border-base-300 shadow p-4 w-full max-w-lg">
                         <Image src={product.imageUrl || "/placeholder.png"} width={600} height={600}
@@ -36,7 +36,7 @@ function ProductDetailsTemplate({ product }: ProductDetailsTemplateProps) {
                             )}
                             <span className="text-xs text-gray-400">SKU: {product.id.split("/").pop()}</span>
                         </div>
-                        <h1 className="text-3xl md:text-4xl font-bold mb-2">{product.title}</h1>
+                        <h1 className="text-3xl md:text-4xl font-bold sm:mx-2 md:mx-0 mb-2">{product.title}</h1>
                         <div className="text-2xl md:text-3xl font-bold mb-4">
                             ${formatThousands(product.price.max)} {product.price.currency}
                         </div>
