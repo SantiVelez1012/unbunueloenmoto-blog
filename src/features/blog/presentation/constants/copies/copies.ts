@@ -16,6 +16,13 @@ export class Copies {
         imageUrl: "/imgs/shop-banner.jpeg",
         imageAlt: 'Tienda Buñuelística',
         link: '/shop'
-    }];
+    },
+    {
+        title: "¿Quieres comprar productos de la marca Carpuride?",
+        description: "Disfruta de un 30% de descuento en TODOS los productos de esta marca, como beneficio especial por ser seguidor de Un Buñuelo en Moto",
+        imageUrl: "/imgs/carpuride.webp",
+        imageAlt: "30% de descuento en Carpuride",
+        link: "https://carpuride.com/?ref=bunueloenmoto"
+    },];
 
 }
