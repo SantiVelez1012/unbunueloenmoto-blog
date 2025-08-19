@@ -46,6 +46,12 @@ export async function generateMetadata({ params }: ProductDetailPageProps) {
     return {
       title: "Producto no encontrado",
       description: "No se pudo cargar el producto.",
+      openGraph: {
+        title: "Producto no encontrado",
+        description: "No se pudo cargar el producto.",
+        images: [],
+        type: "product",
+      },
     };
   }
 }
