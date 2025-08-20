@@ -28,7 +28,7 @@ const nextConfig: NextConfig = {
       headers: [
         {
           key: "Content-Security-Policy",
-          value:"  frame-src 'self' https://www.youtube.com; script-src 'unsafe-inline' 'self' https://www.youtube.com https://apis.google.com; style-src 'unsafe-inline' 'self';",
+          value:"  frame-src 'self' https://www.youtube.com; script-src 'unsafe-inline' 'self' https://va.vercel-scripts.com https://www.youtube.com https://apis.google.com; style-src 'unsafe-inline' 'self';",
         },
       ],
     },
