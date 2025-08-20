@@ -30,11 +30,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group overflow-hidden">
-      <figure className="relative overflow-hidden">
+      <figure className="relative h-64 overflow-hidden">
         <Image
           src={image}
           alt={title}
-          className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+          className="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-110"
           width={400}
           height={256}
           priority={true}
