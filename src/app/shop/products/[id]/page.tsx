@@ -34,6 +34,7 @@ export async function generateMetadata({ params }: ProductDetailPageProps) {
             alt: product.imageAlt || product.title,
           },
         ],
+        type: "website"
       },
       twitter: {
         card: "summary_large_image",
@@ -46,6 +47,12 @@ export async function generateMetadata({ params }: ProductDetailPageProps) {
     return {
       title: "Producto no encontrado",
       description: "No se pudo cargar el producto.",
+      openGraph: {
+        title: "Producto no encontrado",
+        description: "No se pudo cargar el producto.",
+        images: [],
+        type: "website",
+      },
     };
   }
 }
