@@ -92,7 +92,7 @@ function ProductDetailsTemplate({ product }: ProductDetailsTemplateProps) {
                                 };
                                 addItem(cartItem);
                                 showToast("Producto agregado al carrito");
-                                reset();
+                                reset({quantity: 1});
                             }}
                         >
                             Agregar al carrito
