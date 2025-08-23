@@ -28,4 +28,4 @@ function SidebarCartItem({ item }: SidebarCartItemProps) {
     )
 }
 
-export default SidebarCartItem
+export default SidebarCartItem;

@@ -7,12 +7,19 @@ import { ProductViewModel } from '../../adapters/product-details/productDetails'
 import { CartItem } from '@/features/shop/domain/entities/cartItem';
 import { showToast } from '@/features/shared/presentation/utils/triggerToast';
 import { formatThousands } from '../../../domain/utils/productUtils';
+import { useForm } from 'react-hook-form';
 
 type ProductDetailsTemplateProps = {
     product: ProductViewModel;
 }
 
+type QuantityFormValues = {
+    quantity: number;
+}
+
 function ProductDetailsTemplate({ product }: ProductDetailsTemplateProps) {
+
+    const {register, watch, reset} = useForm<QuantityFormValues>();
 
     const addItem = useCartStore(state => state.addItem);
 
@@ -55,16 +62,19 @@ function ProductDetailsTemplate({ product }: ProductDetailsTemplateProps) {
                             <p className="text-base">{product.description}</p>
                         )}
                     </div>
-                    {/* <div className="flex items-center gap-3 mb-6">
+                    <div className="flex items-center gap-3 mb-6">
                         <label htmlFor="quantity" className="text-sm font-medium">Cantidad:</label>
                         <input
                             id="quantity"
                             type="number"
                             min={1}
                             defaultValue={1}
+                            {...register("quantity", {
+                                required: true,
+                            })}
                             className="input input-bordered input-sm w-20"
                         />
-                    </div> */}
+                    </div>
                     <div className="flex flex-col gap-3">
                         <button
                             className="btn btn-outline btn-lg w-full font-bold text-lg"
@@ -78,10 +88,11 @@ function ProductDetailsTemplate({ product }: ProductDetailsTemplateProps) {
                                     imageAlt: product.imageAlt || null,
                                     price: product.price.max as unknown as number,
                                     currency: product.price.currency,
-                                    quantity: 1
+                                    quantity: watch("quantity") || 1,
                                 };
                                 addItem(cartItem);
                                 showToast("Producto agregado al carrito");
+                                reset();
                             }}
                         >
                             Agregar al carrito
@@ -93,4 +104,4 @@ function ProductDetailsTemplate({ product }: ProductDetailsTemplateProps) {
     )
 }
 
-export default ProductDetailsTemplate
+export default ProductDetailsTemplate;

@@ -9,7 +9,7 @@ export const useCartStore = create<CartState>((set, get) => ({
       set({
         items: get().items.map(i =>
           i.id === item.id
-            ? { ...i, quantity: i.quantity + item.quantity }
+            ? { ...i, quantity: Number(i.quantity) + Number(item.quantity) }
             : i
         ),
       });
