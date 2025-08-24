@@ -71,6 +71,9 @@ function ProductDetailsTemplate({ product }: ProductDetailsTemplateProps) {
                             defaultValue={1}
                             {...register("quantity", {
                                 required: true,
+                                min: 1,
+                                max: 10,
+                                valueAsNumber: true,
                             })}
                             className="input input-bordered input-sm w-20"
                         />
