@@ -17,5 +17,5 @@ export function formatThousands(price: number): string {
 
 
 export function getProductIds(cart: CartItem[]): string[] {
-    return cart.map(item => item.id);
+  return cart.map(item => item.id);
 }
