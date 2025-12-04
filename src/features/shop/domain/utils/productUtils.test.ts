@@ -18,7 +18,7 @@ describe('productUtils', () => {
   });
 
   test('getProductIds maps cart items to ids', () => {
-    const cart: CartItem[] = [{
+    const cart:CartItem[] = [{
       id: 'a',
       title: '',
       handle: '',
@@ -38,24 +38,6 @@ describe('productUtils', () => {
       quantity: 0
     }];
     // cast to any to avoid importing CartItem type just for test
-    expect(getProductIds(cart)).toEqual([{
-      id: 'a',
-      title: '',
-      handle: '',
-      imageUrl: null,
-      imageAlt: null,
-      price: 0,
-      currency: '',
-      quantity: 0
-    }, {
-      id: 'b',
-      title: '',
-      handle: '',
-      imageUrl: null,
-      imageAlt: null,
-      price: 0,
-      currency: '',
-      quantity: 0
-    }]);
+    expect(getProductIds(cart)).toEqual(['a', 'b']);
   });
 });
