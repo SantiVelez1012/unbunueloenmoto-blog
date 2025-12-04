@@ -37,7 +37,6 @@ describe('productUtils', () => {
       currency: '',
       quantity: 0
     }];
-    // cast to any to avoid importing CartItem type just for test
     expect(getProductIds(cart)).toEqual(['a', 'b']);
   });
 });
