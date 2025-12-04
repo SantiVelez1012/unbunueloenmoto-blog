@@ -1,3 +1,4 @@
+import { CartItem } from '../entities/cartItem';
 import { extractShopifyNumericId, addShopifyNumericIdPrefix, formatThousands, getProductIds } from './productUtils';
 
 describe('productUtils', () => {
@@ -17,8 +18,44 @@ describe('productUtils', () => {
   });
 
   test('getProductIds maps cart items to ids', () => {
-    const cart = [{ id: 'a' }, { id: 'b' }];
+    const cart: CartItem[] = [{
+      id: 'a',
+      title: '',
+      handle: '',
+      imageUrl: null,
+      imageAlt: null,
+      price: 0,
+      currency: '',
+      quantity: 0
+    }, {
+      id: 'b',
+      title: '',
+      handle: '',
+      imageUrl: null,
+      imageAlt: null,
+      price: 0,
+      currency: '',
+      quantity: 0
+    }];
     // cast to any to avoid importing CartItem type just for test
-    expect(getProductIds(cart as any)).toEqual(['a', 'b']);
+    expect(getProductIds(cart)).toEqual([{
+      id: 'a',
+      title: '',
+      handle: '',
+      imageUrl: null,
+      imageAlt: null,
+      price: 0,
+      currency: '',
+      quantity: 0
+    }, {
+      id: 'b',
+      title: '',
+      handle: '',
+      imageUrl: null,
+      imageAlt: null,
+      price: 0,
+      currency: '',
+      quantity: 0
+    }]);
   });
 });
