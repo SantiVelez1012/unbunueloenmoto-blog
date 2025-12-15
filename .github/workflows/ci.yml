@@ -29,6 +29,18 @@ jobs:
         env:
           CI: true
 
+  sonarqube:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: SonarQube Scan
+      uses: SonarSource/sonarqube-scan-action@v7.0.0
+      env:
+        SONAR_TOKEN: ${{ secrets.SONARQUBE }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   security-scan:
     name: Security Scan (Trivy)
     runs-on: ubuntu-latest
