@@ -1,6 +1,12 @@
 module.exports = {
     ci: {
-        upload:{
+        collect: {
+            startServerCommand: 'yarn start',
+            url: ['http://localhost:3000'],
+            startServerReadyTimeout: 20000,
+            numberOfRuns: 3,
+        },
+        upload: {
             target: 'temporary-public-storage',
         }
     },
