@@ -6,8 +6,8 @@ import Loader from "@/features/shared/presentation/components/loader/loader";
 import { useCartStore } from "@/features/shop/infrastructure/state/cartStore";
 import { CartItem } from "@/features/shop/domain/entities/cartItem";
 import { showToast } from "@/features/shared/presentation/utils/triggerToast";
-import HeroBannerCarousel from '../../../../shared/presentation/components/hero-banner-carousel/heroBannerCarousel';
 import { ShopCopies } from "../../constants/copies";
+import HeroBanner from "@/features/shared/presentation/components/hero-banner/heroBanner";
 
 function HomePageTemplate() {
 
@@ -57,7 +57,7 @@ function HomePageTemplate() {
   return (
     <div className="min-h-screen bg-base-200 mb-10">
       <div className="w-full mb-16">
-        <HeroBannerCarousel banners={ShopCopies.SHOP_BANNER_CAROUSEL} />
+        <HeroBanner info={ShopCopies.SHOP_BANNER_CAROUSEL} />
       </div>
 
 

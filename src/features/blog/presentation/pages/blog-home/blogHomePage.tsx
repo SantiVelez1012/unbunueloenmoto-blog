@@ -12,7 +12,7 @@ import { useRouter } from 'next/navigation';
 import SocialMedia from '../../components/social-media/socialMedia';
 import { useGetLatestPosts } from '../../hooks/get-latest-posts/useGetLatestPosts';
 import { useGetSubscribersCount } from '../../hooks/get-subscribers-count/useGetSubscribersCount';
-import HeroBannerCarousel from '../../../../shared/presentation/components/hero-banner-carousel/heroBannerCarousel';
+import HeroBanner from '@/features/shared/presentation/components/hero-banner/heroBanner';
 
 function BlogHomePage() {
 
@@ -26,7 +26,7 @@ function BlogHomePage() {
 
     return (
         <div className='w-full font-sans overflow-y-auto'>
-            <HeroBannerCarousel banners={Copies.homeBannerInfo} />
+            <HeroBanner info={Copies.homeBannerInfo} />
             <div className="flex justify-center items-center w-full my-4 px-2">
                 <SocialMedia />
             </div>
