@@ -25,6 +25,7 @@ export class ContentfulHttpClient {
 
     async getLatestPosts(): Promise<PostsResponse> {
         const response: BlogBaseResponse<PostsResponse> = await this.client.post('', { query: Queries.getLatestPosts }, this.requestHeaders);
+        console.log(CONTENTFUL_API_URL);
         return response.data;
     }
     

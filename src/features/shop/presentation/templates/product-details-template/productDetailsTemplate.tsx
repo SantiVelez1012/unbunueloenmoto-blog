@@ -17,7 +17,7 @@ type QuantityFormValues = {
     quantity: number;
 }
 
-function ProductDetailsTemplate({ product }: ProductDetailsTemplateProps) {
+function ProductDetailsTemplate({ product }: Readonly<ProductDetailsTemplateProps>) {
 
     const {register, watch, reset} = useForm<QuantityFormValues>();
 

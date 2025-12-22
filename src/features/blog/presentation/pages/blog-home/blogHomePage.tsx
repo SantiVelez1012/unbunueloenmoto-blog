@@ -25,7 +25,7 @@ function BlogHomePage() {
     }
 
     return (
-        <div className='w-full bg-base-200 overflow-y-auto' data-theme="dark">
+        <div className='w-full font-sans overflow-y-auto'>
             <HeroBannerCarousel banners={Copies.homeBannerInfo} />
             <div className="flex justify-center items-center w-full my-4 px-2">
                 <SocialMedia />
@@ -33,8 +33,9 @@ function BlogHomePage() {
             <SubscribersCount isLoading={isCountLoading} count={count!} />
 
             <div className='flex justify-center items-center px-5 text-center mt-10 h-full'>
-                <h3 className='text-4xl text-white'>Últimas Publicaciones</h3>
+                <h3 className='text-4xl text-primary font-display'>Últimas Publicaciones</h3>
             </div>
+            
             <div className='flex justify-center items-center m-5 self-center md:mx-0 min-h-[250px]'>
                 {isLoading && <LatestPostsSkeleton />}
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 my-5'>

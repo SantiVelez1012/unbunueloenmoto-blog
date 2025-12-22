@@ -42,20 +42,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       </figure>
 
       <div className="card-body p-6">
-        <h3
-          className="card-title text-lg font-bold text-base-content line-clamp-2 cursor-pointer hover:text-base-content/60 transition-colors duration-200"
-          onClick={goToProductDetail}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              goToProductDetail();
-            }
-          }}
-        >
-          {title}
-        </h3>
+          <span
+          className="card-title text-lg font-bold text-base-content line-clamp-2 cursor-pointer hover:text-base-content/60 transition-colors duration-200">
+            {title}
+          </span>      
         <div className="flex items-center justify-between mt-2">
           <div className="flex flex-col">
             <span className="text-2xl font-bold text-base-content">

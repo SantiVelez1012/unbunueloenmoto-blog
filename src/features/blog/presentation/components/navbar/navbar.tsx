@@ -9,7 +9,7 @@ function Navbar({
     children: React.ReactNode;
 }>) {
     return (
-        <div className="drawer" data-theme="dark">
+        <div className="drawer font-display">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col">
                 <div className="navbar bg-base-300 w-full sticky top-0 z-50">
