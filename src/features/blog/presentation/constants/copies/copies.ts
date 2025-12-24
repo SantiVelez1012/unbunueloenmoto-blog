@@ -1,6 +1,13 @@
-import { HeroBannerInfo } from "../../../../shared/presentation/entities/hero-banner-info/heroBannerInfo";
+import { HeroBannerInfo } from "@/features/shared/presentation/entities/hero-banner-info/heroBannerInfo";
+import { NavbarLink } from "../../../../shared/presentation/entities/navbar-link/navbar-link";
 
 export class Copies {
+
+    static readonly navbarLinks: NavbarLink[] = [
+        { label: "Inicio", href: "/" },
+        { label: "Blog", href: "/blog/all" },
+        { label: "Tienda", href: "/shop" },
+    ];
 
 
     static readonly homeBannerInfo: HeroBannerInfo = {

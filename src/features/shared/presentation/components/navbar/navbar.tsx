@@ -6,8 +6,14 @@ import Image from 'next/image';
 import { motion, useMotionValueEvent, useScroll } from 'motion/react';
 import { Menu } from 'lucide-react';
 import MobileMenu from './components/mobileMenu';
+import { NavbarLink } from '@/features/shared/presentation/entities/navbar-link/navbar-link';
 
-function Navbar() {
+interface NavbarProps {
+    links?: NavbarLink[];
+}
+
+
+function Navbar({links} : Readonly<NavbarProps>) {
 
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
@@ -63,7 +69,7 @@ function Navbar() {
                     transition={{ duration: 0.3, ease: "easeOut" }}
                     
                 >
-                    <MobileMenu />
+                    <MobileMenu links={links!} />
                 </motion.div>
             )}
 
