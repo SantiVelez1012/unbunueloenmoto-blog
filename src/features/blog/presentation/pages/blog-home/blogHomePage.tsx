@@ -33,7 +33,7 @@ function BlogHomePage() {
             <SubscribersCount isLoading={isCountLoading} count={count!} />
 
             <div className='flex justify-center items-center px-5 text-center mt-10 h-full'>
-                <h3 className='text-4xl text-primary font-display'>Últimas Publicaciones</h3>
+                <h3 className='text-4xl text-primary font-sans'>Últimas Publicaciones</h3>
             </div>
             
             <div className='flex justify-center items-center m-5 self-center md:mx-0 min-h-[250px]'>

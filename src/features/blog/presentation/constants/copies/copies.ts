@@ -3,7 +3,7 @@ import { HeroBannerInfo } from "../../../../shared/presentation/entities/hero-ba
 export class Copies {
 
 
-    static homeBannerInfo: HeroBannerInfo = {
+    static readonly homeBannerInfo: HeroBannerInfo = {
         topInfo: "Nueva actualización a la web",
         footerInfo: "Sigue bajando, más cosas te esperan",
         title: "El Blog de Un Buñuelo en Moto",

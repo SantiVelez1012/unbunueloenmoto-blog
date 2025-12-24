@@ -8,8 +8,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-inter)', 'sans-serif'],
-        display: ['var(--font-rubik)', 'sans-serif'],
+        sans: ['var(--font-lexend-deca)', 'sans-serif'],
+        display: ['var(--font-ibm-plex-mono)', 'sans-serif'],
+        mono: ['var(--font-arimo)', 'monospace'],
       },
       colors: {
         bunuelo: {

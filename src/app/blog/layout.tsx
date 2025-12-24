@@ -7,10 +7,11 @@ export default function BlogLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <Navbar>
+        <>
+            <Navbar />
             <main className="bg-base-200 flex-1 h-full" >
                 {children}
             </main>
-        </Navbar>
+        </>
     );
 }

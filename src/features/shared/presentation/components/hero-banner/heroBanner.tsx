@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { HeroBannerInfo } from '@/features/shared/presentation/entities/hero-banner-info/heroBannerInfo';
 import { motion } from 'framer-motion';
-import { ChevronRight, PlayCircle } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 
 type HeroBannerProps = {
@@ -55,7 +55,7 @@ function HeroBanner({ info }: Readonly<HeroBannerProps>) {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="mt-6 max-w-2xl text-lg text-gray-200 sm:text-xl font-light"
+                    className="mt-6 max-w-2xl text-lg text-gray-200 sm:text-xl font-light font-mono"
                 >
                     {info.description}
                 </motion.p>
@@ -66,13 +66,12 @@ function HeroBanner({ info }: Readonly<HeroBannerProps>) {
                     transition={{ duration: 0.6, delay: 0.3 }}
                     className="mt-10 flex flex-col w-full sm:w-auto gap-4 sm:flex-row items-center"
                 >
-                    <Link href={info.actions.primary.url} className="btn btn-primary border-none rounded-full px-8 h-14 text-lg normal-case font-bold shadow-orange-500/20 shadow-xl hover:scale-105 transition-transform w-full sm:w-auto">
+                    <Link href={info.actions.primary.url} className="font-display btn btn-primary border-none rounded-full px-8 h-14 text-lg normal-case font-bold shadow-orange-500/20 shadow-xl hover:scale-105 transition-transform w-full sm:w-auto">
                         {info.actions.primary.label}
-                        <ChevronRight className="w-5 h-5 ml-1" />
                     </Link>
 
-                    {info.actions.secondary && <Link href={info.actions.secondary.url} target={info.actions.secondary.blank ? "_blank" : undefined} className="btn btn-ghost bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full px-8 h-14 text-lg normal-case hover:bg-white/20 w-full sm:w-auto">
-                        <PlayCircle className="w-5 h-5 mr-2" />
+                    {info.actions.secondary && <Link href={info.actions.secondary.url} target={info.actions.secondary.blank ? "_blank" : undefined} className="font-display btn btn-ghost bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full px-8 h-14 text-lg normal-case hover:bg-white/20 w-full sm:w-auto">
+                        <ChevronRight className="w-5 h-5 ml-1" />
                         {info.actions.secondary.label}
                     </Link>}
                 </motion.div>}
@@ -84,7 +83,7 @@ function HeroBanner({ info }: Readonly<HeroBannerProps>) {
                 transition={{ delay: 1, duration: 1 }}
                 className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 text-center"
             >
-                <span className="text-xs uppercase tracking-widest">{info.footerInfo}</span>
+                <span className="text-xs font-display uppercase tracking-widest">{info.footerInfo}</span>
                 <div className="w-[1px] h-12 bg-gradient-to-b from-white/50 to-transparent" />
             </motion.div>
 

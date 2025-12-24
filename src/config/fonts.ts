@@ -1,16 +1,22 @@
-import { Inter, Rubik } from "next/font/google";
+import { Arimo, IBM_Plex_Mono, Lexend_Deca } from "next/font/google";
 
-const inter = Inter({
+
+const lexendDeca = Lexend_Deca({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-lexend-deca",
+  display: "swap",
+})
+const ibmPlexMono = IBM_Plex_Mono({
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-ibm-plex-mono",
   display: "swap",
 });
 
-const rubik = Rubik({
+const arimo = Arimo({
   subsets: ["latin"],
-  variable: "--font-rubik",
+  variable: "--font-arimo",
   display: "swap",
 });
 
-// 3. Exportamos una sola variable combinada
-export const fontClasses = `${inter.variable} ${rubik.variable}`;
+export const fontClasses = `${lexendDeca.variable} ${ibmPlexMono.variable} ${arimo.variable}`;

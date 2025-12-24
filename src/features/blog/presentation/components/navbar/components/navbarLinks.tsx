@@ -1,12 +1,24 @@
-import Link from 'next/link'
-import React from 'react'
+import Link from 'next/link';
+import React from 'react';
+import { NavbarLink } from '../../../entities/navbar-link/navbar-link';
 
-export default function NavbarLinks() {
+interface NavbarLinksProps {
+    links: NavbarLink[];
+}
+
+export default function NavbarLinks({links} : Readonly<NavbarLinksProps>) {
   return (
-    <>
-      <li><Link href='/'>Home</Link></li>
-      <li><Link href='/blog/all'>Articulos de blog</Link></li>
-      <li><Link href='/shop'>Tienda Buñuela</Link></li>
-    </>
+    <ul>
+      {links.map((link)=>(
+        <li key={link.href} className="mx-2">
+          <Link 
+            href={link.href}
+            className="text-white hover:text-primary transition-colors"
+          >
+            {link.label}
+          </Link>
+        </li>
+      ))}
+    </ul>
   )
 }

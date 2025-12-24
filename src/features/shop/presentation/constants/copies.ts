@@ -7,7 +7,7 @@ export class ShopCopies {
         {
             topInfo: "¡Web Renovada!",
             footerInfo:'Sigue bajando y mira todos los productos que tenemos disponibles',
-            title: "Bienvenido a nuestra tienda Buñuelística",
+            title: "Tienda Buñuelística",
             description: "Recuerda que todos los envíos son contraentrega, asi que realizas el pago al recibir tu pedido.",
             imageUrl: "/imgs/shop-banner.jpeg",
             imageAlt: "Banner de bienvenida a la tienda",

@@ -3,7 +3,6 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useScroll } from '@/features/shared/presentation/hooks/useScroll/useScroll';
 import NavbarLinks from './nav-links/navbarLinks';
 import { useCartStore } from '@/features/shop/infrastructure/state/cartStore';
 import Cart from '../cart/cart';
@@ -13,13 +12,11 @@ function Navbar({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const isScrolled = useScroll();
+    
     const countItems = useCartStore(state => state.items.length);
     const displayCount = countItems > 10 ? '10+' : countItems;
 
-    const navbarStyle = isScrolled
-        ? "bg-base-100/80 backdrop-blur-md shadow-lg border-b border-white/5 py-2"
-        : "bg-transparent py-4";
+    const navbarStyle = countItems > 0 ? 'bg-base-200/90 backdrop-blur-md border-b border-white/20 shadow-lg' : 'bg-transparent';
 
     return (
         <>
