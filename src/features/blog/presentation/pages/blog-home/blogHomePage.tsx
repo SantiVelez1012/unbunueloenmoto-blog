@@ -16,14 +16,8 @@ function BlogHomePage() {
 
     const { data: posts, isLoading } = useGetLatestPosts();
 
-    const router = useRouter();
-
-    const handleAllPostsClick = () => {
-        router.push('/blog/all');
-    }
-
     return (
-        <div className='w-full font-sans overflow-y-auto'>
+        <div className='w-full font-sans'>
             <HeroBanner info={Copies.homeBannerInfo} />
 
             <div className="flex justify-center items-center w-full pt-8 px-2">
@@ -34,12 +28,11 @@ function BlogHomePage() {
                 <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
             </div>
 
-            <div className='flex justify-center items-center self-center min-h-[200px] pt-8'>
-                <h3 className='text-3xl text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-300 font-display'>El Blog de Un Buñuelo en Moto</h3>
+            <div className='flex justify-center items-center self-center min-h-[200px] pt-8 px-4'>
+                <h3 className='text-3xl text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-300 font-display text-center'>El Blog de Un Buñuelo en Moto</h3>
             </div>
 
-            <div className='flex justify-center items-center self-center min-h-[250px] relative'>
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
+            <div className='flex justify-center items-center self-center min-h-[250px] relative overflow-hidden'>
                 {isLoading ? (
                     <LatestPostsSkeleton />
                 ) : (
@@ -53,9 +46,6 @@ function BlogHomePage() {
                 )}
             </div>
 
-            <div className='flex justify-center items-center my-10'>
-                <button className='btn btn-primary' onClick={handleAllPostsClick} >Ver todas las publicaciones</button>
-            </div>
         </div>
     );
 }

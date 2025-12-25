@@ -12,8 +12,6 @@ export default function SocialGrid() {
   return (
     <section className="relative w-full py-20 px-4 overflow-hidden h-[800px]">
 
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
-
       <div className="max-w-5xl mx-auto">
 
         <div className="text-center mb-12">
