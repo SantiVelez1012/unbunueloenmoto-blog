@@ -7,6 +7,7 @@ import { motion, useMotionValueEvent, useScroll } from 'motion/react';
 import { Menu } from 'lucide-react';
 import MobileMenu from './components/mobileMenu';
 import { NavbarLink } from '@/features/shared/presentation/entities/navbar-link/navbar-link';
+import NavbarLinks from './components/navbarLinks';
 
 interface NavbarProps {
     links?: NavbarLink[];
@@ -35,7 +36,7 @@ function Navbar({links} : Readonly<NavbarProps>) {
     return (
         <nav className={`navbar bg-base-100 flex font-mono gap-3 ${navbarStyle} fixed top-0 z-50 w-full px-4 md:px-8 transition-all duration-300`}>
 
-            <div className="md:hidden ml-2">
+            <div className="lg:hidden ml-2">
                 <motion.span
                     whileTap={{ scale: 1.5 }}
                     className="btn btn-ghost p-0 hover:bg-transparent"
@@ -60,10 +61,14 @@ function Navbar({links} : Readonly<NavbarProps>) {
                 </Link>
             </div>
 
+            <div className='justify-end hidden lg:flex flex-grow flex-row'>
+                <NavbarLinks links={links!} />
+            </div>
+
 
             {isOpen && (
                 <motion.div
-                    className="absolute flex-grow flex justify-start mr-2 md:hidden"
+                    className="absolute flex-grow flex justify-start mr-2 lg:hidden"
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
