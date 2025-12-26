@@ -1,5 +1,5 @@
 import "./globals.css";
-import Footer from "@/features/blog/presentation/components/footer/footer";
+import Footer from "@/features/shared/presentation/components/footer/footer";
 import ToastHandler from '../features/shared/presentation/components/toast/toastHandler';
 import { Analytics } from "@vercel/analytics/next";
 import { fontClasses } from "@/config/fonts";

@@ -6,8 +6,6 @@ import PostCard from '../../components/post-card/postCard';
 import LatestPostsSkeleton from '../../components/latest-posts-skeleton/latestPostsSkeleton';
 import { Copies } from '../../constants/copies/copies';
 
-import { useRouter } from 'next/navigation';
-
 import SocialMedia from '../../components/social-media/socialMedia';
 import { useGetLatestPosts } from '../../hooks/get-latest-posts/useGetLatestPosts';
 import HeroBanner from '@/features/shared/presentation/components/hero-banner/heroBanner';
@@ -20,7 +18,7 @@ function BlogHomePage() {
         <div className='w-full font-sans'>
             <HeroBanner info={Copies.homeBannerInfo} />
 
-            <div className="flex justify-center items-center w-full pt-8 px-2">
+            <div className="flex justify-center items-center w-full px-2">
                 <SocialMedia />
             </div>
 
@@ -29,13 +27,13 @@ function BlogHomePage() {
             </div>
 
             <div className='flex justify-center items-center self-center min-h-[200px] pt-8 px-4'>
-                <h3 className='text-3xl text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-300 font-display text-center'>El Blog de Un Buñuelo en Moto</h3>
+                <h3 className='text-3xl text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-300 font-display text-center'>Publicaciones recientes</h3>
             </div>
 
-            <div className='flex justify-center items-center self-center min-h-[250px] relative overflow-hidden'>
-                {isLoading ? (
-                    <LatestPostsSkeleton />
-                ) : (
+            <div className='flex justify-center items-center self-center min-h-[300px] relative overflow-hidden mb-[200px]'>
+                {isLoading && <LatestPostsSkeleton />}
+
+                {!isLoading && (
                     <div className='grid justify-center grid-cols-1 md:grid-cols-3 gap-4 my-5 max-w-6xl mx-10 md:mx-0'>
                         {posts.map((post) => (
                             <div key={post.urlSlug} className='flex justify-center'>

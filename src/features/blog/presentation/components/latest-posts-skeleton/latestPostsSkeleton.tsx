@@ -2,7 +2,7 @@ export default function LatestPostsSkeleton() {
     const skeletons = Array(3).fill(0);
 
     return (
-        <div className="grid justify-center grid-cols-1 md:grid-cols-3 gap-4 my-5 max-w-6xl mx-10 md:mx-0 w-full">
+        <div className="grid z-10 transform-gpu justify-center grid-cols-1 md:grid-cols-3 gap-4 my-5 max-w-6xl mx-10 md:mx-0 w-full">
             {skeletons.map((_, index) => (
                 <div
                     key={index + 1}

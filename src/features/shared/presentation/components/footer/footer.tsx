@@ -5,16 +5,9 @@ import Image from "next/image";
 import { Heart } from "lucide-react";
 import { FaInstagram, FaYoutube } from "react-icons/fa";
 import { SocialButton } from "../social-button/socialButton";
+import { SharedCopies } from '../../constants/copies';
 
-const FOOTER_LINKS = [
-    {
-        title: "Explorar", links: [
-            { name: "Inicio", href: "/" },
-            { name: "Blog de Rutas", href: "/blog" },
-            { name: "Tienda Buñuelística", href: "/tienda" }
-        ]
-    },
-];
+
 
 export default function Footer() {
 
@@ -64,7 +57,7 @@ export default function Footer() {
 
                     <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-8">
 
-                        {FOOTER_LINKS.map((section) => (
+                        {SharedCopies.FOOTER_LINKS.map((section) => (
                             <div key={section.title}>
                                 <h4 className="text-white font-bold mb-6 font-display tracking-wide">
                                     {section.title}
