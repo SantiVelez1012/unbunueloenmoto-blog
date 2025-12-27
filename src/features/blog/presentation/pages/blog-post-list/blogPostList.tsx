@@ -3,6 +3,7 @@ import React from 'react'
 import PostCard from '../../components/post-card/postCard';
 import { useGetPaginatedPosts } from '../../hooks/get-paginated-posts/useGetPaginatedPosts';
 import SimplePagination from '../../components/simple-pagination/simplePagination';
+import { PostListed } from '@/features/blog/domain/entities/postListed';
 
 
 function BlogPostList() {
@@ -33,7 +34,7 @@ function BlogPostList() {
 
             <section className="container mx-auto px-4 md:px-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {posts.map((post: any) => (
+                    {posts.map((post: PostListed) => (
                         <PostCard key={post.urlSlug} post={post} />
                     ))}
 
