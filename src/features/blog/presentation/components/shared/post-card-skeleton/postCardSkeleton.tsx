@@ -2,13 +2,32 @@ import React from 'react'
 
 function PostCardSkeleton() {
     return (
-        <div className="flex h-[300px] lg:w-96 md:w-80 sm:w-72 w-64 flex-col gap-3">
-            <div className="skeleton h-60 w-full"></div>
-            <div className="skeleton self-end mt-2 h-6 w-full"></div>
-            <div className="skeleton h-10 w-full"></div>
-            <div className="skeleton h-10 self-end w-28"></div>
+        <div
+            className="flex flex-col h-full bg-base-200 rounded-2xl overflow-hidden border border-base-300"
+        >
+            <div className="w-full aspect-[16/9] bg-base-300 animate-pulse" />
+            <div className="p-6 flex flex-col flex-grow gap-4">
+
+                <div className="h-3 w-24 bg-base-300 rounded animate-pulse" />
+
+                <div className="space-y-2">
+                    <div className="h-6 w-full bg-base-300 rounded animate-pulse" />
+                    <div className="h-6 w-2/3 bg-base-300 rounded animate-pulse" />
+                </div>
+
+                <div className="space-y-2 mt-2">
+                    <div className="h-3 w-full bg-base-300/50 rounded animate-pulse" />
+                    <div className="h-3 w-full bg-base-300/50 rounded animate-pulse" />
+                    <div className="h-3 w-3/4 bg-base-300/50 rounded animate-pulse" />
+                </div>
+
+                <div className="mt-auto pt-4 border-t border-base-300 flex justify-between items-center">
+                    <div className="h-4 w-20 bg-primary/20 rounded animate-pulse" />
+                    <div className="h-4 w-4 bg-base-300 rounded animate-pulse" />
+                </div>
+            </div>
         </div>
     )
 }
 
-export default PostCardSkeleton
+export default PostCardSkeleton;

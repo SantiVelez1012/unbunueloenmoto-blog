@@ -31,6 +31,7 @@ function BlogHomePage() {
             </div>
 
             <div className='flex justify-center items-center self-center min-h-[300px] relative overflow-hidden mb-[200px]'>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-[400px] bg-primary/5 blur-3xl rounded-full pointer-events-none -z-10" />
                 {isLoading && <LatestPostsSkeleton />}
 
                 {!isLoading && (
