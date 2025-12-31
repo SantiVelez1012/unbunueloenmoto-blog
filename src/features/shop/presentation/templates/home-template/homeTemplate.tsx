@@ -36,7 +36,7 @@ function HomePageTemplate() {
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <Loader />
+        <Loader fullScreen={true} />
       </div>
     );
   }
@@ -61,7 +61,7 @@ function HomePageTemplate() {
       </div>
 
 
-      <div className="container mx-auto px-4 flex flex-col items-center">
+      <div className="container mx-auto px-4 flex flex-col items-center font-sans">
 
         <h1 className="text-3xl font-bold mb-10 text-center">Los mejores productos para acompañar tus recorridos en moto</h1>
 

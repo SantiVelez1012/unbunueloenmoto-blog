@@ -18,7 +18,7 @@ function BlogPostPage({ postSlug }: Readonly<BlogPostPageProps>) {
   const { data: post, isLoading, error } = useGetPostBySlug(postSlug);
 
 
-  if (!post || !('title' in post)) {
+  if ((!post || !('title' in post) && !isLoading)) {
     return (
       <div className="min-h-screen bg-base-100 flex flex-col items-center justify-center p-6 text-center">
         <div className="w-24 h-24 rounded-full bg-base-200 border border-base-300 flex items-center justify-center mb-6 shadow-2xl shadow-primary/5">

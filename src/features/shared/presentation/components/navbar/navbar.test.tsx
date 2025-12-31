@@ -5,8 +5,8 @@ import { render, screen, fireEvent, waitFor, act } from "@testing-library/react"
 // Mock motion/react
 let scrollYCallback: ((value: number) => void) | null = null;
 
-jest.mock('motion/react', () => {
-    const actual = jest.requireActual('motion/react');
+jest.mock('framer-motion', () => {
+    const actual = jest.requireActual('framer-motion');
     return {
         ...actual,
         useScroll: jest.fn(() => ({
@@ -17,8 +17,26 @@ jest.mock('motion/react', () => {
         useMotionValueEvent: jest.fn((motionValue, event, callback) => {
             scrollYCallback = callback;
         }),
+        motion: {
+            ...actual.motion,
+            button: actual.motion.button,
+            div: actual.motion.div,
+        },
     };
 });
+
+// Mock next/navigation
+jest.mock('next/navigation', () => ({
+    usePathname: jest.fn(() => '/'),
+}));
+
+// Mock cart store
+jest.mock('@/features/shop/infrastructure/state/cartStore', () => ({
+    useCartStore: jest.fn((selector) => {
+        const state = { items: [] };
+        return selector ? selector(state) : state;
+    }),
+}));
 
 const navbarLinks: NavbarLink[] = [
     { label: 'Inicio', href: '/' },
@@ -30,7 +48,7 @@ describe('Navbar Component', () => {
 
     beforeEach(() => {
         scrollYCallback = null;
-        Object.defineProperty(window, 'scrollY', {
+        Object.defineProperty(globalThis, 'scrollY', {
             writable: true,
             configurable: true,
             value: 0
@@ -139,7 +157,7 @@ describe('Navbar Component', () => {
 
         // Wait for state update and re-render
         await waitFor(() => {
-            expect(nav.className).toContain('bg-base-100/80');
+            expect(nav.className).toContain('bg-base-100/90');
             expect(nav.className).toContain('backdrop-blur-md');
             expect(nav.className).toContain('shadow-lg');
             expect(nav.className).toContain('border-b');
@@ -161,7 +179,7 @@ describe('Navbar Component', () => {
         });
 
         await waitFor(() => {
-            expect(nav.className).toContain('bg-base-100/80');
+            expect(nav.className).toContain('bg-base-100/90');
         });
 
         // Simulate scroll back to top (<= 15)
@@ -202,7 +220,7 @@ describe('Navbar Component', () => {
         });
 
         await waitFor(() => {
-            expect(nav.className).toContain('bg-base-100/80');
+            expect(nav.className).toContain('bg-base-100/90');
         });
     });
 });

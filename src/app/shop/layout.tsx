@@ -1,12 +1,12 @@
-import Navbar from '@/features/shop/presentation/components/navbar/navbar';
+import Navbar from '@/features/shared/presentation/components/navbar/navbar';
+import { SharedCopies } from '@/features/shared/presentation/constants/copies';
 import React from 'react';
 
-function ShopLayout({ children }: { children: React.ReactNode }) {
+function ShopLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <main className='bg-base-200'>
-      <Navbar>
-        {children}
-      </Navbar>
+      <Navbar links={SharedCopies.navbarLinks} />
+      {children}
     </main>
   );
 }
