@@ -6,7 +6,6 @@ export class Copies {
     static readonly navbarLinks: NavbarLink[] = [
         { label: "Inicio", href: "/" },
         { label: "Blog", href: "/blog/all" },
-        { label: "Tienda", href: "/shop" },
     ];
 
 
@@ -23,8 +22,9 @@ export class Copies {
                 url: "/blog/all"
             },
             secondary: {
-                label: "Visitar tienda",
-                url: "/shop"
+                label: "Visitar canal de YouTube",
+                url: "https://www.youtube.com/@unbunueloenmoto",
+                blank: true
             }
         }
     }

@@ -3,14 +3,11 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation'; // Hook para saber dónde estamos
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion'; // Ajustado a framer-motion o motion/react según tu versión
-import { Menu, ShoppingCart } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import MobileMenu from './components/mobileMenu';
 import { NavbarLink } from '@/features/shared/presentation/entities/navbar-link/navbar-link';
 import NavbarLinks from './components/navbarLinks'; // Importamos el nuevo componente
-import CartSidebar from './components/cartSidebar';
-import { useCartStore } from '@/features/shop/infrastructure/state/cartStore';
 
 interface NavbarProps {
     links?: NavbarLink[];
@@ -18,17 +15,9 @@ interface NavbarProps {
 
 function Navbar({ links }: Readonly<NavbarProps>) {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [isCartOpen, setIsCartOpen] = useState(false); // Estado manual del carrito
     const [isScrolled, setIsScrolled] = useState(false);
 
-    const pathname = usePathname();
     const { scrollY } = useScroll();
-
-    const showCart = !pathname.startsWith('/blog');
-
-
-    const countItems = useCartStore(state => state.items.length);
-    const displayCount = countItems > 10 ? '10+' : countItems;
 
     useMotionValueEvent(scrollY, "change", (latest) => {
         setIsScrolled(latest > 15);
@@ -74,25 +63,6 @@ function Navbar({ links }: Readonly<NavbarProps>) {
                     <NavbarLinks links={links!} />
                 </div>
 
-                <div className="flex-none ml-4">
-                    {showCart && (
-                        <button
-                            onClick={() => setIsCartOpen(true)}
-                            className="btn btn-ghost btn-circle group relative"
-                            aria-label="Abrir carrito"
-                        >
-                            <div className="indicator">
-                                <ShoppingCart className="h-6 w-6 text-white group-hover:text-primary transition-colors" />
-                                {countItems > 0 && (
-                                    <span className="badge badge-sm badge-primary indicator-item border-none text-base-100 font-bold">
-                                        {displayCount}
-                                    </span>
-                                )}
-                            </div>
-                        </button>
-                    )}
-                </div>
-
                 {isMobileMenuOpen && (
                     <motion.div
                         className="absolute top-full left-0 w-full bg-base-100/95 backdrop-blur-xl border-t border-white/5 lg:hidden shadow-2xl"
@@ -106,11 +76,6 @@ function Navbar({ links }: Readonly<NavbarProps>) {
                     </motion.div>
                 )}
             </nav>
-
-            <CartSidebar
-                isOpen={isCartOpen}
-                onClose={() => setIsCartOpen(false)}
-            />
         </>
     );
 }

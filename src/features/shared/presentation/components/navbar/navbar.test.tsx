@@ -30,18 +30,10 @@ jest.mock('next/navigation', () => ({
     usePathname: jest.fn(() => '/'),
 }));
 
-// Mock cart store
-jest.mock('@/features/shop/infrastructure/state/cartStore', () => ({
-    useCartStore: jest.fn((selector) => {
-        const state = { items: [] };
-        return selector ? selector(state) : state;
-    }),
-}));
 
 const navbarLinks: NavbarLink[] = [
     { label: 'Inicio', href: '/' },
     { label: 'Blog', href: '/blog' },
-    { label: 'Tienda', href: '/shop' }
 ];
 
 describe('Navbar Component', () => {
@@ -95,7 +87,7 @@ describe('Navbar Component', () => {
         render(<Navbar links={navbarLinks} />);
 
         // Mobile menu should not be visible initially
-        let mobileMenus = screen.queryAllByText('Tienda');
+        let mobileMenus = screen.queryAllByText('Blog');
         const initialMobileMenuCount = mobileMenus.length;
 
         // Find and click the hamburger menu (it's a span with the Menu icon inside)
@@ -104,14 +96,14 @@ describe('Navbar Component', () => {
         fireEvent.click(hamburgerButton!);
 
         // Mobile menu should now be visible (additional links appear)
-        mobileMenus = screen.queryAllByText('Tienda');
+        mobileMenus = screen.queryAllByText('Blog');
         expect(mobileMenus.length).toBeGreaterThan(initialMobileMenuCount);
 
         // Click again to close
         fireEvent.click(hamburgerButton!);
 
         // Menu count should return to initial state
-        mobileMenus = screen.queryAllByText('Tienda');
+        mobileMenus = screen.queryAllByText('Blog');
         expect(mobileMenus.length).toBe(initialMobileMenuCount);
     });
 
