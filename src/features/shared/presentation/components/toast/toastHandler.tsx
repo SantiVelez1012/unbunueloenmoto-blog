@@ -5,33 +5,55 @@ function ToastHandler() {
   return (
     <Toaster
         position="top-right"
-        containerClassName='mt-10'
         reverseOrder={false}
-        gutter={8}
+        gutter={10}
+        containerClassName="mt-16 sm:mt-20 mr-2 sm:mr-4"
         toastOptions={{
-            className: '',
-            duration: 1500,
+            duration: 3000,
+            
+            className: '!bg-base-200 !text-white !border !border-white/5 !shadow-2xl !rounded-2xl !font-sans',
+            
             style: {
-            background: 'rgb(24 30 36)',
-            color: '#fff',
+                background: '#1E1E1E',
+                color: '#fff',
+                padding: '16px 24px',
+                border: '1px solid rgba(255, 255, 255, 0.05)',
+                borderRadius: '1rem',
+                boxShadow: '0 20px 40px -10px rgba(0, 0, 0, 0.5)',
+                fontSize: '0.95rem',
+                fontWeight: 500,
+                maxWidth: '400px',
             },
-            success:{
-                style: {
-                    background: '#4caf50',
-                    color: '#fff',
+
+            success: {
+                iconTheme: {
+                    primary: '#FF9F43', 
+                    secondary: '#1E1E1E', 
                 },
+                style: {
+                    borderLeft: '4px solid #FF9F43', 
+                }
             },
+
             error: {
-                style: {
-                    background: '#f44336',
-                    color: '#fff',
+                iconTheme: {
+                    primary: '#EF4444',
+                    secondary: '#1E1E1E',
                 },
+                style: {
+                    borderLeft: '4px solid #EF4444',
+                }
             },
+
+            loading: {
+                iconTheme: {
+                    primary: '#A6ADBB',
+                    secondary: '#1E1E1E',
+                },
+            }
         }}
-    
-    
     />
   )
 }
 
-export default ToastHandler
+export default ToastHandler;

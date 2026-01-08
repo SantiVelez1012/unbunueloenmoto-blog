@@ -1,42 +1,59 @@
 
 import React from 'react'
-import { PostsSkeleton } from '../../components/posts-skeleton/postsSkeleton';
 import PostCard from '../../components/post-card/postCard';
 import { useGetPaginatedPosts } from '../../hooks/get-paginated-posts/useGetPaginatedPosts';
+import SimplePagination from '../../components/simple-pagination/simplePagination';
 import { PostListed } from '@/features/blog/domain/entities/postListed';
 
 
 function BlogPostList() {
-    const { posts, isLoading, currentPage, setCurrentPage, isLastPage } = useGetPaginatedPosts();
+    const { posts, currentPage, setCurrentPage, isLastPage } = useGetPaginatedPosts();
 
-    const handlePageChange = (page: number) => () => {
+    const handlePageChange = (page: number) => {
         setCurrentPage(page);
     }
     return (
-        <div className='flex flex-col gap-5 justify-center bg-base-200 items-center m-10 h-full min-h-dvh'>
-            <span className="md:mb-5 text-center"> <h1 className='text-3xl'> Todas las publicaciones </h1> </span>
-            {isLoading && <PostsSkeleton />}
-            {!isLoading && posts.length > 0 && (
-                <>
-                    <div className='flex justify-center items-center mt-5 self-center'>
-                        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 my-5 max-w-full">
-                            {posts.map((post: PostListed) => (
-                                <div key={post.urlSlug} className='flex justify-center'>
-                                    <PostCard post={post} />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </>
-            )}
+        <div className="min-h-screen pb-20 pt-32">
 
-            <div className="join mt-10">
-                {currentPage > 1 && (<button className="join-item btn-primary btn btn-lg rounded-sm mr-5" onClick={handlePageChange(currentPage - 1)}>«</button>)}
-                <button className="join-item btn btn-lg cursor-default btn-primary rounded-sm">Página {currentPage}</button>
-                {!isLastPage && <button className="join-item btn btn-lg btn-primary rounded-sm ml-5" onClick={handlePageChange(currentPage + 1)}>»</button>}
-            </div>
+            <header className="container mx-auto px-6 mb-16 text-center">
+                <span className="text-primary font-bold tracking-widest uppercase text-xs mb-2 block animate-pulse font-sans">
+                    El Archivo del Buñuelo
+                </span>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-6">
+                    Explora todas <br className="hidden md:block" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">
+                        las rutas y consejos
+                    </span>
+                </h1>
+                <p className="max-w-2xl mx-auto text-gray-400 text-lg font-sans">
+                    Todo lo que necesitas para dejar de ser un buñuelo.
+                </p>
+
+                <div className="w-24 h-1 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mt-8 rounded-full" />
+            </header>
+
+            <section className="container mx-auto px-4 md:px-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {posts.map((post: PostListed) => (
+                        <PostCard key={post.urlSlug} post={post} />
+                    ))}
+
+                    {posts.length === 0 && (
+                        <div className="col-span-full text-center py-20">
+                            <p className="text-gray-500">No hay publicaciones en esta página.</p>
+                        </div>
+                    )}
+                </div>
+                <SimplePagination
+                    currentPage={currentPage}
+                    isLastPage={isLastPage}
+                    onPageChange={handlePageChange}
+                />
+            </section>
         </div>
+
+
     )
 }
 
-export default BlogPostList
+export default BlogPostList;

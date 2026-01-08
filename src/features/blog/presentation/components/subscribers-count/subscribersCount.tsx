@@ -1,6 +1,6 @@
+import { motion } from 'motion/react';
 import Link from 'next/link';
-import { FaYoutube, FaUsers } from 'react-icons/fa';
-import SubscribersCountSkeleton from './subscribersCountSkeleton';
+import { FaYoutube } from 'react-icons/fa';
 
 type SubscribersCountProps = {
     count: {
@@ -11,33 +11,41 @@ type SubscribersCountProps = {
 
 const SubscribersCount = ({ count, isLoading }: SubscribersCountProps) => {
     return (
-        <section className="flex flex-col items-center justify-center mt-10 mx-auto max-w-md bg-gradient-to-br from-[#1e293b] to-[#334155] rounded-3xl shadow-xl p-8 gap-6 border border-base-200">
-            <div className="flex flex-col items-center gap-2">
-                <h3 className="text-3xl md:text-4xl font-bold text-white flex items-center gap-2">
-                    <FaUsers className="text-blue-400 text-4xl" />
-                    Actualmente somos
-                </h3>
-                {isLoading ? (
-                    <SubscribersCountSkeleton />
-                ) : (
-                    <span className="flex items-end gap-2 text-5xl md:text-6xl font-extrabold text-yellow-300 drop-shadow-lg animate-pulse">
-                        {count?.subscriberCount}
-                        <span className="text-lg md:text-xl font-semibold text-white ml-2">Buñuelos</span>
+
+        <motion.div
+            whileHover={{ scale: 1.02, y: -5 }}
+            className="md:col-span-2 relative group overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-2xl"
+        >
+
+            <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/10 to-transparent opacity-50 group-hover:opacity-70 transition-opacity" />
+            <Link href="https://youtube.com/@unbunueloenmoto" target="_blank" className="relative z-10 flex flex-col justify-between h-full p-8">
+                <div className="flex justify-between items-start">
+                    <div className="p-3 bg-red-600/20 rounded-2xl border border-red-500/30 backdrop-blur-md">
+                        <FaYoutube className="w-8 h-8 text-red-500" />
+                    </div>
+                    <span className="px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-xs font-bold border border-green-500/20 flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                        Suscribete
                     </span>
-                )}
-            </div>
-            <p className="text-base md:text-lg text-white text-center">
-                ¡Únete a nuestra comunidad buñuelística y mantente al tanto de las últimas novedades!
-            </p>
-            <Link
-                href="https://www.youtube.com/@unbunueloenmoto"
-                target="_blank"
-                className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white text-xl font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-200"
-            >
-                <FaYoutube className="text-2xl" />
-                Ir al canal de Youtube!
+                </div>
+
+                <div>
+                    {isLoading ? (
+                        <div className="h-8 w-32 bg-gray-700 rounded-md animate-pulse mt-4" />
+                    ) : (
+                        <h3 className="text-5xl font-display font-bold text-white tracking-tighter drop-shadow-lg">
+                            {count?.subscriberCount}
+                        </h3>
+                    )}
+                    <p className="text-gray-300 font-medium mt-1 flex items-center gap-2">
+                        Suscriptores en YouTube
+                        <span className="group-hover:translate-x-1 transition-transform">→</span>
+                    </p>
+                </div>
             </Link>
-        </section>
+
+            <FaYoutube className="absolute -bottom-10 -right-10 w-64 h-64 text-white/5 rotate-[-15deg] group-hover:rotate-[-10deg] transition-transform duration-500" />
+        </motion.div>
     );
 };
 
