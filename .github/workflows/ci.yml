@@ -59,36 +59,36 @@ jobs:
           exit-code: '1'
           severity: 'CRITICAL,HIGH'
 
-  # lighthouse-performance-test:
-  #   name: Lighthouse
-  #   runs-on: ubuntu-latest
-  #   env:
-  #     NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN: ${{ secrets.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN }}
-  #     NEXT_PUBLIC_CONTENTFUL_SPACE_ID: ${{ secrets.NEXT_PUBLIC_CONTENTFUL_SPACE_ID }}
-  #     NEXT_PUBLIC_CONTENTFUL_API_URL: ${{ secrets.NEXT_PUBLIC_CONTENTFUL_API_URL }}
-  #     NEXT_PUBLIC_YOUTUBE_API_KEY: ${{ secrets.NEXT_PUBLIC_YOUTUBE_API_KEY }}
-  #     NEXT_PUBLIC_YOUTUBE_API_URL: ${{ secrets.NEXT_PUBLIC_YOUTUBE_API_URL }}
-  #     NEXT_PUBLIC_YOUTUBE_CHANNEL_ID: ${{ secrets.NEXT_PUBLIC_YOUTUBE_CHANNEL_ID }}
-  #     SHOPIFY_ADMIN_ACCESS_TOKEN: ${{ secrets.SHOPIFY_ADMIN_ACCESS_TOKEN }}
-  #     SHOPIFY_ADMIN_URL: ${{ secrets.SHOPIFY_ADMIN_URL }}
-  #     SHOPIFY_ACCESS_TOKEN: ${{ secrets.SHOPIFY_ACCESS_TOKEN }}
-  #     SHOPIFY_SHOP_URL: ${{ secrets.SHOPIFY_SHOP_URL }}
-  #     SHOPIFY_API_VERSION: ${{ secrets.SHOPIFY_API_VERSION }}
-  #     NEXT_PUBLIC_CART_STORAGE_KEY: ${{ secrets.NEXT_PUBLIC_CART_STORAGE_KEY }}
-  #     NEXT_PUBLIC_COLOMBIA_API_URL: ${{ secrets.NEXT_PUBLIC_COLOMBIA_API_URL }}
-  #     NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
+  lighthouse-performance-test:
+    name: Lighthouse
+    runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN: ${{ secrets.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN }}
+      NEXT_PUBLIC_CONTENTFUL_SPACE_ID: ${{ secrets.NEXT_PUBLIC_CONTENTFUL_SPACE_ID }}
+      NEXT_PUBLIC_CONTENTFUL_API_URL: ${{ secrets.NEXT_PUBLIC_CONTENTFUL_API_URL }}
+      NEXT_PUBLIC_YOUTUBE_API_KEY: ${{ secrets.NEXT_PUBLIC_YOUTUBE_API_KEY }}
+      NEXT_PUBLIC_YOUTUBE_API_URL: ${{ secrets.NEXT_PUBLIC_YOUTUBE_API_URL }}
+      NEXT_PUBLIC_YOUTUBE_CHANNEL_ID: ${{ secrets.NEXT_PUBLIC_YOUTUBE_CHANNEL_ID }}
+      SHOPIFY_ADMIN_ACCESS_TOKEN: ${{ secrets.SHOPIFY_ADMIN_ACCESS_TOKEN }}
+      SHOPIFY_ADMIN_URL: ${{ secrets.SHOPIFY_ADMIN_URL }}
+      SHOPIFY_ACCESS_TOKEN: ${{ secrets.SHOPIFY_ACCESS_TOKEN }}
+      SHOPIFY_SHOP_URL: ${{ secrets.SHOPIFY_SHOP_URL }}
+      SHOPIFY_API_VERSION: ${{ secrets.SHOPIFY_API_VERSION }}
+      NEXT_PUBLIC_CART_STORAGE_KEY: ${{ secrets.NEXT_PUBLIC_CART_STORAGE_KEY }}
+      NEXT_PUBLIC_COLOMBIA_API_URL: ${{ secrets.NEXT_PUBLIC_COLOMBIA_API_URL }}
+      NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
       
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - name: Use Node.js ${{ matrix.node-version }}
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: ${{ matrix.node-version }}
-  #     - name: Install and build project
-  #       run: |
-  #         yarn
-  #         yarn build
-  #     - name: run Lighthouse CI
-  #       run: |
-  #         npm install -g @lhci/cli@0.15.x
-  #         lhci autorun
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install and build project
+        run: |
+          yarn
+          yarn build
+      - name: run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.15.x
+          lhci autorun
