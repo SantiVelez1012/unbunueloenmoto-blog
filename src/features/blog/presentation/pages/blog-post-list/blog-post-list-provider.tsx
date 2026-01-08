@@ -14,4 +14,4 @@ function BlogPostListProvider() {
   )
 }
 
-export default BlogPostListProvider
+export default BlogPostListProvider;

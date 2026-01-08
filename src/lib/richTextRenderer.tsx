@@ -15,22 +15,22 @@ export const renderRichText = (json: Document, links: Links) => {
   const rendererOptions = {
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node: Node, children: React.ReactNode) => (
-        <p className="text-base md:text-lg text-gray-200 mb-4 leading-relaxed">{children}</p>
+        <p className="text-base font-sans md:text-lg text-gray-200 mb-4 leading-relaxed">{children}</p>
       ),
       [BLOCKS.HEADING_1]: (node: Node, children: React.ReactNode) => (
-        <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-6 mt-10">{children}</h1>
+        <h1 className="text-3xl font-sans md:text-4xl font-extrabold text-white mb-6 mt-10">{children}</h1>
       ),
       [BLOCKS.HEADING_2]: (node: Node, children: React.ReactNode) => (
-        <h2 className="text-2xl md:text-3xl font-bold text-white mb-5 mt-8">{children}</h2>
+        <h2 className="text-2xl font-sans md:text-3xl font-bold text-white mb-5 mt-8">{children}</h2>
       ),
       [BLOCKS.HEADING_3]: (node: Node, children: React.ReactNode) => (
-        <h3 className="text-xl md:text-2xl font-semibold text-gray-100 mb-4 mt-6">{children}</h3>
+        <h3 className="text-xl font-sans md:text-2xl font-semibold text-gray-100 mb-4 mt-6">{children}</h3>
       ),
       [BLOCKS.UL_LIST]: (node: Node, children: React.ReactNode) => (
-        <ul className="list-disc list-inside pl-6 mb-4 text-gray-200">{children}</ul>
+        <ul className="list-disc font-sans list-inside pl-6 mb-4 text-gray-200">{children}</ul>
       ),
       [BLOCKS.OL_LIST]: (node: Node, children: React.ReactNode) => (
-        <ol className="list-decimal list-inside pl-6 mb-4 text-gray-200">{children}</ol>
+        <ol className="list-decimal font-sans list-inside pl-6 mb-4 text-gray-200">{children}</ol>
       ),
       [BLOCKS.LIST_ITEM]: (node: Node, children: React.ReactNode) => {
         const cleanChildren = React.Children.map(children, child => {
@@ -42,15 +42,15 @@ export const renderRichText = (json: Document, links: Links) => {
         return <li className="mb-2">{cleanChildren}</li>;
       },
       [BLOCKS.QUOTE]: (node: Node, children: React.ReactNode) => (
-        <blockquote className="border-l-4 border-blue-500 pl-4 italic text-gray-300 my-6">{children}</blockquote>
+        <blockquote className="border-l-4 font-sans border-blue-500 pl-4 italic text-gray-300 my-6">{children}</blockquote>
       ),
       [BLOCKS.HR]: () => (
-        <hr className="my-8 border-t-2 border-base-300" />
+        <hr className="my-8 border-t-2 font-sans border-base-300" />
       ),
       [INLINES.HYPERLINK]: (node: Node, children: React.ReactNode) => (
         <a
           href={node.data.uri}
-          className="text-blue-400 underline hover:text-blue-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 transition"
+          className="text-blue-400 font-sans underline hover:text-blue-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 transition"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -59,7 +59,7 @@ export const renderRichText = (json: Document, links: Links) => {
       ),
       [BLOCKS.EMBEDDED_ASSET]: (node: Node) => {
         const asset = assetMap.get(node.data.target.sys.id);
-        if (!asset || !asset.url) return null;
+        if (!asset?.url) return null;
         return (
           <figure className="my-8 flex flex-col items-center">
             <Image
