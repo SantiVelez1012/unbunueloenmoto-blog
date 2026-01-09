@@ -64,15 +64,11 @@ function Navbar({ links }: Readonly<NavbarProps>) {
                 </div>
 
                 {isMobileMenuOpen && (
-                    <motion.div
-                        className="absolute top-full left-0 w-full bg-base-100/95 backdrop-blur-xl border-t border-white/5 lg:hidden shadow-2xl"
+                    <motion.div className="absolute top-full left-4 w-full lg:hidden shadow-2xl"
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                    >
-                        <div className="p-4">
-                            <MobileMenu links={links!} />
-                        </div>
+                        exit={{ opacity: 0, y: -10 }}>
+                        <MobileMenu links={links!} />
                     </motion.div>
                 )}
             </nav>
