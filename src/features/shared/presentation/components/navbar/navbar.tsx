@@ -28,8 +28,7 @@ function Navbar({ links }: Readonly<NavbarProps>) {
         : "bg-transparent py-4";
 
     return (
-        <>
-            <nav className={`navbar flex font-mono gap-3 ${navbarStyle} fixed top-0 z-50 w-full px-4 md:px-8 transition-all duration-300`}>
+        <nav className={`navbar flex font-mono gap-3 ${navbarStyle} fixed top-0 z-50 w-full px-4 md:px-8 transition-all duration-300`}>
 
                 <div className="flex-1 flex items-center gap-2">
                     <div className="lg:hidden">
@@ -72,7 +71,6 @@ function Navbar({ links }: Readonly<NavbarProps>) {
                     </motion.div>
                 )}
             </nav>
-        </>
     );
 }
 

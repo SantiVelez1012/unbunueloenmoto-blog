@@ -1,5 +1,5 @@
 export default function LatestPostsSkeleton() {
-    const skeletons = Array(3).fill(0);
+    const skeletons = new Array(3).fill(0);
 
     return (
         <div className="grid justify-center grid-cols-1 md:grid-cols-3 gap-6 my-5 max-w-6xl mx-auto w-full px-4">

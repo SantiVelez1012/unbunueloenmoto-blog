@@ -1,3 +1,7 @@
+[![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-light.svg)](https://sonarcloud.io/summary/new_code?id=SantiVelez1012_unbunueloenmoto-blog)
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=SantiVelez1012_unbunueloenmoto-blog&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=SantiVelez1012_unbunueloenmoto-blog)
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
