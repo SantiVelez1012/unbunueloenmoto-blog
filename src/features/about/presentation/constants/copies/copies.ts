@@ -6,7 +6,7 @@ export class AboutCopies {
         {
             id: 1,
             title: "La Identidad",
-            text: "Mi nombre es Santiago Velez, Tengo 22 años y soy desarrollador de software, pero tengo una pasión tremenda por las motos y la aventura. Empecé este canal como un espacio para compartir mis experiencias y aprendizajes en el mundo del motociclismo.",
+            text: "Mi nombre es Santiago Velez, tengo 22 años y soy desarrollador de software, pero tengo una pasión tremenda por las motos y la aventura. Empecé este canal como un espacio para compartir mis experiencias y aprendizajes en el mundo del motociclismo.",
             img: "/imgs/about/1.jpeg",
             align: "justify-end",
         },

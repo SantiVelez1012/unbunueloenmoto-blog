@@ -10,7 +10,7 @@ export const metadata: Metadata = {
         url: 'https://unbunueloenmoto.com/about',
         images: [
             {
-                url: 'https://www.unbunueloenmoto.com/imgs/hero-banner.jpg',
+                url: 'https://unbunueloenmoto.com/imgs/hero-banner.jpg',
                 width: 1200,
                 height: 630,
                 alt: 'Un Buñuelo en Moto',

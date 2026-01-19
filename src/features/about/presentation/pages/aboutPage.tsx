@@ -16,10 +16,10 @@ const AboutPage = () => {
                         </p>
                     </div>
 
-                    <Image src="/imgs/about/section1.jpg" className="rounded-lg self-center" alt="Description" width={400} height={300} />
+                    <Image src="/imgs/about/section1.jpg" className="rounded-lg self-center" alt="Un Buñuelo en Moto" width={400} height={300} />
                 </section>
                 <section className="flex mt-24 flex-col md:flex-row items-center flex-wrap px-4 justify-center gap-16">
-                    <Image src="/imgs/about/section2.jpg" className="rounded-lg self-center" alt="Description" width={400} height={300} />
+                    <Image src="/imgs/about/section2.jpg" className="rounded-lg self-center" alt="Un Buñuelo en Moto" width={400} height={300} />
                     <div className="border-l-4 border-primary pl-4 max-w-lg flex flex-col">
                         <p className="max-w-md text-start text-lg text-content font-sans">
                             {AboutCopies.INFO_SECTIONS[1]}
@@ -27,6 +27,10 @@ const AboutPage = () => {
                     </div>
 
                 </section>
+            </div>
+
+            <div className="">
+
             </div>
 
 
