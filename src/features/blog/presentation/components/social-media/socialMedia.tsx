@@ -23,7 +23,7 @@ export default function SocialGrid() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-auto md:h-[250px]">
 
-          <SubscribersCount count={count!} isLoading={isCountLoading} />
+          <SubscribersCount count={count ?? { subscriberCount: "0" }} isLoading={isCountLoading} />
 
           <div className="flex flex-col gap-6 h-full">
 

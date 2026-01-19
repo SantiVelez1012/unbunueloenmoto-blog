@@ -8,6 +8,7 @@ export class SharedCopies {
             title: "Explorar", links: [
                 { name: "Inicio", href: "/blog" },
                 { name: "Blog de Rutas", href: "/blog/all" },
+                { name: "Sobre mi", href: "/about" },
             ]
         },
 
@@ -16,7 +17,7 @@ export class SharedCopies {
     static readonly navbarLinks: NavbarLink[] = [
         { label: "Inicio", href: "/" },
         { label: "Blog", href: "/blog/all" },
-        { label: "Tienda", href: "/shop" },
+        { label: "Sobre mí", href: "/about" },
     ];
 
 }
