@@ -1,10 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import StoryScroller from './storyScroller';
+import { useScroll, useTransform } from 'framer-motion';
 
 // Mock framer-motion
 jest.mock('framer-motion', () => ({
     motion: {
-        div: ({ children, className, style, ...props }: any) => (
+        div: ({ children, className, style, ...props }: React.ComponentProps<'div'>) => (
             <div className={className} style={style} {...props}>
                 {children}
             </div>
@@ -22,7 +23,7 @@ jest.mock('framer-motion', () => ({
 // Mock Next.js Image component
 jest.mock('next/image', () => ({
     __esModule: true,
-    default: ({ src, alt, className, priority }: any) => (
+    default: ({ src, alt, className, priority }: { src: string; alt: string; className?: string; priority?: boolean }) => (
         // eslint-disable-next-line @next/next/no-img-element
         <img src={src} alt={alt} className={className} data-priority={priority} />
     ),
@@ -210,16 +211,12 @@ describe('StoryScroller', () => {
 
     describe('Framer Motion Integration', () => {
         it('uses useScroll hook with correct target', () => {
-            const { useScroll } = require('framer-motion');
-            
             render(<StoryScroller />);
             
             expect(useScroll).toHaveBeenCalled();
         });
 
         it('uses useTransform for animations', () => {
-            const { useTransform } = require('framer-motion');
-            
             render(<StoryScroller />);
             
             expect(useTransform).toHaveBeenCalled();
