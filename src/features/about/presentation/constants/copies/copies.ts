@@ -14,7 +14,7 @@ export class AboutCopies {
             id: 2,
             title: "El Origen",
             text: "En Colombia, 'buñuelo' es el novato, el que comete errores. Muchos lo usan como insulto; yo lo uso como bandera. Creé este canal para compartir mi crecimiento como motociclista y como persona. Aquí se vale equivocarse.",
-            img: "/imgs/about/2.jpeg",
+            img: "/imgs/about/2.JPEG",
             align: "justify-end",
         },
         {
