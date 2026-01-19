@@ -75,15 +75,15 @@ describe('StoryScroller', () => {
         it('renders section descriptions', () => {
             render(<StoryScroller />);
             
-            expect(screen.getByText(/Me llamo Santiago Velez/i)).toBeInTheDocument();
+            expect(screen.getByText(/Mi nombre es Santiago Velez/i)).toBeInTheDocument();
             expect(screen.getByText(/En Colombia, 'buñuelo' es el novato/i)).toBeInTheDocument();
-            expect(screen.getByText(/100 videos. 2 años/i)).toBeInTheDocument();
+            expect(screen.getByText(/Van 2 años, más de 100 videos/i)).toBeInTheDocument();
         });
 
         it('renders section descriptions with correct styling', () => {
             render(<StoryScroller />);
             
-            const description = screen.getByText(/Me llamo Santiago Velez/i);
+            const description = screen.getByText(/Mi nombre es Santiago Velez/i);
             expect(description).toHaveClass('text-lg', 'md:text-xl', 'text-gray-200');
         });
     });
@@ -153,7 +153,7 @@ describe('StoryScroller', () => {
         it('applies responsive text sizes to descriptions', () => {
             render(<StoryScroller />);
             
-            const description = screen.getByText(/Me llamo Santiago Velez/i);
+            const description = screen.getByText(/Mi nombre es Santiago Velez/i);
             expect(description).toHaveClass('text-lg', 'md:text-xl');
         });
 
@@ -236,7 +236,7 @@ describe('StoryScroller', () => {
         it('applies drop shadow to descriptions', () => {
             render(<StoryScroller />);
             
-            const description = screen.getByText(/Me llamo Santiago Velez/i);
+            const description = screen.getByText(/Mi nombre es Santiago Velez/i);
             expect(description).toHaveClass('drop-shadow-md');
         });
 
@@ -246,7 +246,7 @@ describe('StoryScroller', () => {
             const title = screen.getByText('La Identidad');
             expect(title).toHaveClass('leading-tight');
             
-            const description = screen.getByText(/Me llamo Santiago Velez/i);
+            const description = screen.getByText(/Mi nombre es Santiago Velez/i);
             expect(description).toHaveClass('leading-relaxed');
         });
     });
