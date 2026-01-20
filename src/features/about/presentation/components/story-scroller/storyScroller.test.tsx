@@ -111,7 +111,7 @@ describe('StoryScroller', () => {
             const misionImage = screen.getByAltText('La Misión');
             
             expect(identidadImage).toHaveAttribute('src', '/imgs/about/1.jpeg');
-            expect(origenImage).toHaveAttribute('src', '/imgs/about/2.jpeg');
+            expect(origenImage).toHaveAttribute('src', '/imgs/about/2.JPEG');
             expect(misionImage).toHaveAttribute('src', '/imgs/about/3.jpg');
         });
 
