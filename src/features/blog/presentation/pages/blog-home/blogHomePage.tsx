@@ -9,6 +9,7 @@ import { Copies } from '../../constants/copies/copies';
 import SocialMedia from '../../components/social-media/socialMedia';
 import { useGetLatestPosts } from '../../hooks/get-latest-posts/useGetLatestPosts';
 import HeroBanner from '@/features/shared/presentation/components/hero-banner/heroBanner';
+import AboutMeSection from '../../components/about-me-section/aboutMeSection';
 
 function BlogHomePage() {
 
@@ -18,6 +19,7 @@ function BlogHomePage() {
         <div className='w-full font-sans'>
             <HeroBanner info={Copies.homeBannerInfo} />
 
+            <AboutMeSection></AboutMeSection>
             <div className="flex justify-center items-center w-full px-2">
                 <SocialMedia />
             </div>
@@ -25,6 +27,8 @@ function BlogHomePage() {
             <div className="w-full max-w-6xl mx-auto mb-10">
                 <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
             </div>
+
+
 
             <div className='flex justify-center items-center self-center min-h-[200px] pt-8 px-4'>
                 <h3 className='text-3xl text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-300 font-display text-center'>Publicaciones recientes</h3>
