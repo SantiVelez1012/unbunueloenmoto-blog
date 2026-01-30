@@ -9,6 +9,8 @@ import { Copies } from '../../constants/copies/copies';
 import SocialMedia from '../../components/social-media/socialMedia';
 import { useGetLatestPosts } from '../../hooks/get-latest-posts/useGetLatestPosts';
 import HeroBanner from '@/features/shared/presentation/components/hero-banner/heroBanner';
+import AboutMeSection from '../../components/about-me-section/aboutMeSection';
+import PostCardHorizontal from '../../components/post-card-horizontal/postCardHorizontal';
 
 function BlogHomePage() {
 
@@ -18,6 +20,7 @@ function BlogHomePage() {
         <div className='w-full font-sans'>
             <HeroBanner info={Copies.homeBannerInfo} />
 
+            <AboutMeSection></AboutMeSection>
             <div className="flex justify-center items-center w-full px-2">
                 <SocialMedia />
             </div>
@@ -26,11 +29,13 @@ function BlogHomePage() {
                 <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
             </div>
 
-            <div className='flex justify-center items-center self-center min-h-[200px] pt-8 px-4'>
+
+
+            <div className='flex justify-center items-center self-center min-h-[150px] px-4'>
                 <h3 className='text-3xl text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-300 font-display text-center'>Publicaciones recientes</h3>
             </div>
 
-            <div className='flex justify-center items-center self-center min-h-[300px] relative overflow-hidden mb-[200px]'>
+            <div className='md:hidden flex justify-center items-center self-center min-h-[300px] relative overflow-hidden mb-[200px]'>
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-[400px] bg-primary/5 blur-3xl rounded-full pointer-events-none -z-10" />
                 {isLoading && <LatestPostsSkeleton />}
 
@@ -42,8 +47,18 @@ function BlogHomePage() {
                             </div>
                         ))}
                     </div>
+
+
                 )}
+
             </div>
+            <section className='hidden md:flex gap-10 flex-col justify-center items-center self-center min-h-[300px] relative overflow-hidden mb-20'>
+                {posts.map((post) => (
+                    <div key={post.urlSlug} className='flex justify-center'>
+                        <PostCardHorizontal post={post} />
+                    </div>
+                ))}
+            </section>
 
         </div>
     );

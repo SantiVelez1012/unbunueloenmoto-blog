@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight, Tag } from "lucide-react";
 import { PostListed } from "@/features/blog/domain/entities/postListed";
+import { DateFormatter } from "@/features/shared/presentation/utils/dateFormatter";
 
 
 interface BlogCardProps {
@@ -12,11 +13,7 @@ interface BlogCardProps {
 }
 
 export default function BlogCard({ post }: Readonly<BlogCardProps>) {
-  const formattedDate = new Date(post.createdAt).toLocaleDateString("es-CO", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const formattedDate = DateFormatter.formatDateToSpanishColombia(post.createdAt);
     return (
     <motion.article
       initial={{ opacity: 0, y: 20 }}

@@ -10,7 +10,7 @@ export default function SocialGrid() {
   const { count, isLoading: isCountLoading } = useGetSubscribersCount();
 
   return (
-    <section className="relative w-full pt-20 px-4 overflow-hidden h-[800px]">
+    <section className="relative w-full pt-20 px-4 overflow-hidden h-[800px] md:h-[600px]">
 
       <div className="max-w-5xl mx-auto">
 

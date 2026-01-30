@@ -22,11 +22,18 @@ export class Copies {
                 url: "/blog/all"
             },
             secondary: {
-                label: "Visitar canal de YouTube",
-                url: "https://www.youtube.com/@unbunueloenmoto",
-                blank: true
+                label: "Sobre mí",
+                url: "/about",
             }
         }
     }
+
+    static readonly aboutMeSection = {
+        title: "Sobre mí",
+        description: "Más allá de las rutas: conoce mi origen, mis motos y la filosofía de aprender en cada kilómetro. Bienvenido a mi garaje.",
+        imageUrl: "/imgs/about/unbunueloenmoto.jpg",
+        imageAlt: "Un Buñuelo en Moto",
+        moreInfoUrl: "/about"
+    };
 
 }
