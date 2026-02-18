@@ -1,12 +1,12 @@
 import { ContentfulHttpClient } from "../../infrastructure/api/http/contentful/contentful-http-client";
 import { PostResponse } from "../../infrastructure/entities/post";
-import { PostsResponse } from "../../infrastructure/entities/posts-response";
+import { PostCountResponse, PostsResponse } from "../../infrastructure/entities/posts-response";
 import { PostsRepository } from "../../infrastructure/repositories/postsRepository";
 
 
 export class PostsRepositoryImpl implements PostsRepository {
 
-    private contentfulHttpClient: ContentfulHttpClient;
+    private readonly contentfulHttpClient: ContentfulHttpClient;
 
     constructor(contentfulHttpClient: ContentfulHttpClient) {
         this.contentfulHttpClient = contentfulHttpClient;
@@ -25,6 +25,11 @@ export class PostsRepositoryImpl implements PostsRepository {
 
     async getPaginatedPosts(pageSize: number, skip:number): Promise<PostsResponse> {
         const response: PostsResponse = await this.contentfulHttpClient.getPaginatedPosts(pageSize, skip );
+        return response;
+    }
+    
+    async getTotalPostsCount(): Promise<PostCountResponse> {
+        const response: PostCountResponse = await this.contentfulHttpClient.getTotalPostsCount();
         return response;
     }
 }

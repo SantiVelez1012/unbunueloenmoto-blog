@@ -1,6 +1,6 @@
 export class Queries {
 
-    static getLatestPosts = `
+    static readonly getLatestPosts = `
         query {
             blogPostCollection (limit: 3, order: createdAt_DESC) {
                 items {
@@ -26,7 +26,7 @@ export class Queries {
     `;
 
 
-    static getPostBySlug = (slug: string) => `
+    static readonly getPostBySlug = (slug: string) => `
         query {
             blogPostCollection (where: {urlSlug: "${slug}"} limit: 1) {
                 items {
@@ -63,7 +63,7 @@ export class Queries {
 
 
     //eslint-disable-next-line @typescript-eslint/no-unused-vars
-    static getPaginatedPosts = (_limit = 6, _skip = 0) => `
+    static readonly getPaginatedPosts = (_limit = 6, _skip = 0) => `
         query GetBlogPosts($limit: Int!, $skip: Int!) {
             blogPostCollection(limit: $limit, skip: $skip, order: createdAt_DESC) {
                 items {
@@ -84,6 +84,14 @@ export class Queries {
                         }
                     }
                 }
+            }
+        }
+    `;
+
+    static readonly getTotalPostsCount = `
+        query {
+            blogPostCollection {
+                total
             }
         }
     `;

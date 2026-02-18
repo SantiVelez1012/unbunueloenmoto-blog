@@ -1,6 +1,5 @@
 "use client";
 
-import React from 'react'
 import BlogPostList from './blogPostList'
 import { PostsProvider } from '../../post-context/postContext';
 

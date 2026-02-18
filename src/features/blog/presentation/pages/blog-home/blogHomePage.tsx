@@ -1,7 +1,5 @@
 "use client";
 
-import React from 'react';
-
 import PostCard from '../../components/post-card/postCard';
 import LatestPostsSkeleton from '../../components/latest-posts-skeleton/latestPostsSkeleton';
 import { Copies } from '../../constants/copies/copies';

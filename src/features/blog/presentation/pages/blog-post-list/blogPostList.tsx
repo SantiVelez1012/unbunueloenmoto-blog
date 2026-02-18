@@ -4,10 +4,13 @@ import PostCard from '../../components/post-card/postCard';
 import { useGetPaginatedPosts } from '../../hooks/get-paginated-posts/useGetPaginatedPosts';
 import SimplePagination from '../../components/simple-pagination/simplePagination';
 import { PostListed } from '@/features/blog/domain/entities/postListed';
+import { useGetTotalPostCount } from '../../hooks/get-total-post-count/useGetTotalPostCount';
 
 
 function BlogPostList() {
     const { posts, currentPage, setCurrentPage, isLastPage } = useGetPaginatedPosts();
+
+    const { totalPostCount } = useGetTotalPostCount();
 
     const handlePageChange = (page: number) => {
         setCurrentPage(page);
@@ -32,7 +35,17 @@ function BlogPostList() {
                 <div className="w-24 h-1 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mt-8 rounded-full" />
             </header>
 
-            <section className="container mx-auto px-4 md:px-6">
+            <section className="container mx-auto px-4 md:px-6 font-sans">
+                <span>
+                    {totalPostCount === null ? (
+                        <p className="text-primary mb-4">Cargando total de publicaciones...</p>
+                    ) : (
+                        <p className="text-primary mb-4">
+                            Total de publicaciones: {totalPostCount.total}
+                        </p>
+                    )}
+                </span>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {posts.map((post: PostListed) => (
                         <PostCard key={post.urlSlug} post={post} />

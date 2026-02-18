@@ -25,7 +25,7 @@ const SubscribersCount = ({ count, isLoading }: SubscribersCountProps) => {
                     </div>
                     <span className="px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-xs font-bold border border-green-500/20 flex items-center gap-2">
                         <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                        Suscribete
+                        <p>Suscríbete</p>
                     </span>
                 </div>
 
@@ -38,7 +38,7 @@ const SubscribersCount = ({ count, isLoading }: SubscribersCountProps) => {
                         </h3>
                     )}
                     <p className="text-gray-300 font-medium mt-1 flex items-center gap-2">
-                        Suscriptores en YouTube
+                        <p>Suscriptores en YouTube</p>
                         <span className="group-hover:translate-x-1 transition-transform">→</span>
                     </p>
                 </div>
