@@ -91,16 +91,16 @@ describe('Navbar Component', () => {
         const initialMobileMenuCount = mobileMenus.length;
 
         // Find and click the hamburger menu (it's a span with the Menu icon inside)
-        const hamburgerButton = screen.getByRole('navigation').querySelector('.btn-ghost');
+        const hamburgerButton = screen.getByRole('navigation').querySelector('.btn-ghost') as HTMLElement;
         expect(hamburgerButton).toBeInTheDocument();
-        fireEvent.click(hamburgerButton!);
+        fireEvent.click(hamburgerButton);
 
         // Mobile menu should now be visible (additional links appear)
         mobileMenus = screen.queryAllByText('Blog');
         expect(mobileMenus.length).toBeGreaterThan(initialMobileMenuCount);
 
         // Click again to close
-        fireEvent.click(hamburgerButton!);
+        fireEvent.click(hamburgerButton);
 
         // Menu count should return to initial state
         mobileMenus = screen.queryAllByText('Blog');

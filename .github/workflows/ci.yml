@@ -2,7 +2,7 @@ name: CI Pipeline for Un Buñuelo en Moto Project
 
 on:
   push:
-    branches: [ config/**, refactor/** ]
+    branches: [ config/**, refactor/**, feature/** ]
   pull_request:
     branches: [ develop ]
 
